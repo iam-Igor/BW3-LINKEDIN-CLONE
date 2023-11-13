@@ -6,10 +6,17 @@ import Modal from "react-bootstrap/Modal";
 const Profile = () => {
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
-
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [username, setUsername] = useState("");
+  const [title, setTitle] = useState("");
+  const [area, setArea] = useState("");
+  const [image, setProfileImage] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleShow = () => {
     setName(myProfile.name || "");
@@ -24,26 +31,6 @@ const Profile = () => {
     setShow(true);
   };
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [username, setUsername] = useState("");
-  const [title, setTitle] = useState("");
-  const [area, setArea] = useState("");
-  const [image, setProfileImage] = useState("");
-  const [bio, setBio] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [formData, setFormData] = useState({
-    name: "",
-    surname: "",
-    username: "",
-    email: "",
-    title: "",
-    area: "",
-    image: "",
-    bio: "",
-  });
-
   const handleSave = () => {
     const updatedData = {
       name,
@@ -55,13 +42,6 @@ const Profile = () => {
       image,
       bio,
     };
-
-    setFormData((prevData) => ({
-      ...prevData,
-      ...updatedData,
-    }));
-
-    console.log("Form Data:", formData);
 
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
@@ -144,7 +124,7 @@ const Profile = () => {
   return (
     <Container>
       {myProfile && (
-        <Row className="d-flex flex-column flex-md-row">
+        <Row className="d-flex flex-column flex-md-row mt-3">
           <Col className="col-md-9 ">
             <Row className="d-flex flex-column">
               <Col className="position-relative p-0 mb-2">
@@ -170,7 +150,7 @@ const Profile = () => {
                         <h2>
                           {myProfile.name} {myProfile.surname}
                         </h2>
-                        <div>
+                        <div className="edit-profile text-center">
                           <i
                             className="bi bi-pencil fs-4"
                             onClick={handleShow}
