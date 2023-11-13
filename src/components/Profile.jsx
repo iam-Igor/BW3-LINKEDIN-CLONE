@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
+  //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
   const [show, setShow] = useState(false);
@@ -17,6 +19,11 @@ const Profile = () => {
   const [image, setProfileImage] = useState("");
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
+
+  // SEZIONE DISPATCH PER LEGGERE I FOLLOWING
+
+  const following = useSelector((state) => state.following);
+  const dispatch = useDispatch();
 
   const handleShow = () => {
     setName(myProfile.name || "");
@@ -58,7 +65,7 @@ const Profile = () => {
           throw new Error("error in fetching user profiles");
         }
       })
-      .then((data) => {
+      .then(() => {
         console.log("dati modificati!");
         handleClose();
         getMyProfile();
@@ -159,7 +166,7 @@ const Profile = () => {
                       </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
-                      <p>Follower</p>
+                      <p>Following: {following.length}</p>
                     </div>
                     <div className="mx-2">
                       <Button className="rounded-pill fw-bold">
@@ -222,7 +229,7 @@ const Profile = () => {
                   </Button>
                 </div>
               </Col>
-              <Col className="p-0  border my-2 bg-white text-center">
+              <Col className="p-0  border my-2 bg-white rounded text-center">
                 <img
                   className="img-fluid rounded"
                   src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
@@ -236,13 +243,25 @@ const Profile = () => {
                       Profili che potresti conoscere
                     </p>
                     {profilesData.slice(0, 6).map((profile, index) => {
-                      return <SuggestedProfile key={index} profile={profile} />;
+                      return (
+                        <SuggestedProfile
+                          key={index}
+                          profile={profile}
+                          dispatch={dispatch}
+                        />
+                      );
                     })}
                   </Col>
                   <Col className="border my-2 bg-white d-flex flex-column rounded">
                     <p className="fw-bold mt-2">Protrebbero interessarti</p>
                     {profilesData.slice(6, 8).map((profile, index) => {
-                      return <SuggestedProfile key={index} profile={profile} />;
+                      return (
+                        <SuggestedProfile
+                          key={index}
+                          profile={profile}
+                          dispatch={dispatch}
+                        />
+                      );
                     })}
                   </Col>
                 </>
