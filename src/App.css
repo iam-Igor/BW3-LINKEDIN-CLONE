@@ -12,3 +12,18 @@ body {
 .info-section {
   border-color: rgb(210, 210, 210) !important;
 }
+
+#search {
+  max-height: 35px;
+  border: 0;
+  background-color: rgb(237, 243, 248);
+}
+#mynav p {
+  font-size: 0.8em;
+}
+.search-icon {
+  background-color: rgb(237, 243, 248);
+}
+.search-icon i {
+  font-size: 0.8em;
+}

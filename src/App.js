@@ -6,6 +6,7 @@ import Mynavbar from "./components/MyNavbar";
 function App() {
   return (
     <div className="App">
+      <Mynavbar />
       <Profile />
     </div>
   );

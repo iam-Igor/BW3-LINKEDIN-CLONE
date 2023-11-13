@@ -62,8 +62,8 @@ const Profile = () => {
   return (
     <Container>
       {myProfile && (
-        <Row className="d-flex">
-          <Col className="col-9">
+        <Row className="d-flex flex-column flex-md-row">
+          <Col className="col-md-9 ">
             <Row className="d-flex flex-column">
               <Col className="position-relative p-0 mb-2">
                 <Card>
@@ -124,8 +124,8 @@ const Profile = () => {
               </div>
             </Row>
           </Col>
-          <Col className="col-3 d-none d-md-block">
-            <Row className="ms-4 flex-column">
+          <Col className="col-12 col-md-3 ps-0">
+            <Row className="ms-md-4 flex-column ms-0">
               <Col className="bg-white p-3 border rounded d-flex justify-content-center">
                 <div className="d-flex justify-content-around w-75">
                   <Button variant="success" className="rounded-pill w-50 me-2">
@@ -136,7 +136,7 @@ const Profile = () => {
                   </Button>
                 </div>
               </Col>
-              <Col className="p-0  border my-2">
+              <Col className="p-0  border my-2 bg-white text-center">
                 <img
                   className="img-fluid rounded"
                   src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
