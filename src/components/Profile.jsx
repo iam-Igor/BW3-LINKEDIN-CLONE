@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 
@@ -26,21 +27,24 @@ const Profile = () => {
       });
   };
 
-  const getAllprofilesInfo = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+  const getMyProfile = () => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+      method: "GET",
       headers: {
-        Authorization: apiKey,
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
       },
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
         } else {
-          throw new Error("error in fetching user profiles");
+          throw new Error("errore nella ricezione del profilo");
         }
       })
       .then((data) => {
-        setProfilesData(data);
+        console.log(data);
+        setMyProfile(data);
       })
       .catch((err) => {
         console.log(err);
