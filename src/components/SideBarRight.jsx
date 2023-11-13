@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row,Col, Container } from 'react-bootstrap';
-import {InfoSquareFill}  from "react-bootstrap-icons"
+import {InfoSquareFill,CaretDownFill}  from "react-bootstrap-icons"
 
 
 const SideBarRight = () => {
@@ -32,14 +32,41 @@ const SideBarRight = () => {
       </ul>
       </div>
      </Col>
-     <Col xs={12} className='mt-2 d-flex gap-2' >
+     <Col xs={12} className='mt-2 d-flex gap-2 ' >
        <div>
       <p className='text-secondary text-center'>Informazioni</p>
     </div>
+    <div>
         <p className='text-secondary text-center'>Accessibilità</p>
+        </div>
       <div>
-      <p className='text-secondary text-center'>Centro Assistenza Privacy e Accessibilità</p>
+      <p className='text-secondary text-center'>Centro Assistenza </p>
     </div>
+    <div>
+        <p className='text-secondary text-center'>Privacy e condizioni <CaretDownFill /></p> 
+        
+        </div>
+        <div>
+        <p className='text-secondary text-center'>Opzioni per gli annunci pubblicitari</p>
+        </div>
+        <div>
+        <p className='text-secondary text-center'>Pubblicità</p>
+        </div>
+        <div>
+        <p className='text-secondary text-center'>Servizi alle aziende <CaretDownFill /></p>
+        </div>
+        <div>
+        <p className='text-secondary text-center'>Scarica app Linkedln</p>
+        </div>
+        <div>
+        <p className='text-secondary text-center'>Altro</p>
+        </div>
+        
+        <div className='text-secondary' >
+          &copy; {new Date().getFullYear()} 
+          
+        </div>
+    
      </Col>
    </Row>
    </Container>
