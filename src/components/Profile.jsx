@@ -1,8 +1,31 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import SuggestedProfile from "./SuggestedProfile";
 
 const Profile = () => {
   const [myProfile, setMyProfile] = useState(null);
+  const [profilesData, setProfilesData] = useState(null);
+
+  const getAllprofilesInfo = () => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+      headers: {
+        Authorization: apiKey,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        setProfilesData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const getMyProfile = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
@@ -28,15 +51,19 @@ const Profile = () => {
       });
   };
 
+  const apiKey =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU";
+
   useEffect(() => {
     getMyProfile();
+    getAllprofilesInfo();
   }, []);
 
   return (
     <Container>
       {myProfile && (
         <Row className="d-flex">
-          <Col className="col-8">
+          <Col className="col-9">
             <Row className="d-flex flex-column">
               <Col className="position-relative p-0 mb-2">
                 <Card>
@@ -97,7 +124,52 @@ const Profile = () => {
               </div>
             </Row>
           </Col>
-          <Col className="col-4"></Col>
+          <Col className="col-3 d-none d-md-block">
+            <Row className="ms-4 flex-column">
+              <Col className="bg-white p-3 border rounded d-flex justify-content-center">
+                <div className="d-flex justify-content-around w-75">
+                  <Button variant="success" className="rounded-pill w-50 me-2">
+                    English
+                  </Button>
+                  <Button variant="outline-dark" className="rounded-pill w-50">
+                    Italiano
+                  </Button>
+                </div>
+              </Col>
+              <Col className="p-0  border my-2">
+                <img
+                  className="img-fluid rounded"
+                  src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                  alt="linkedin"
+                />
+              </Col>
+              {profilesData && (
+                <>
+                  <Col className="border my-2 bg-white d-flex flex-column rounded">
+                    <p className="fw-bold mt-2">
+                      Profili che potresti conoscere
+                    </p>
+                    {profilesData.slice(0, 6).map((profile, index) => {
+                      return <SuggestedProfile key={index} profile={profile} />;
+                    })}
+                  </Col>
+                  <Col className="border my-2 bg-white d-flex flex-column rounded">
+                    <p className="fw-bold mt-2">Protrebbero interessarti</p>
+                    {profilesData.slice(6, 8).map((profile, index) => {
+                      return <SuggestedProfile key={index} profile={profile} />;
+                    })}
+                  </Col>
+                </>
+              )}
+              <Col className="p-0  border my-2 rounded">
+                <img
+                  className="img-fluid rounded"
+                  src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                  alt="linkedin"
+                />
+              </Col>
+            </Row>
+          </Col>
         </Row>
       )}
     </Container>
