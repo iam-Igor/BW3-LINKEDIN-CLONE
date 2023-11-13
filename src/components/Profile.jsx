@@ -69,6 +69,7 @@ const Profile = () => {
       .then((data) => {
         console.log("dati modificati!");
         handleClose();
+        getMyProfile();
       })
       .catch((err) => {
         console.log(err);
