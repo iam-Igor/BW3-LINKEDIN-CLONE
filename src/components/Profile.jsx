@@ -10,7 +10,19 @@ const Profile = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+  const handleShow = () => {
+    setName(myProfile.name || "");
+    setSurname(myProfile.surname || "");
+    setUsername(myProfile.username || "");
+    setEmail(myProfile.email || "");
+    setTitle(myProfile.title || "");
+    setArea(myProfile.area || "");
+    setProfileImage(myProfile.image || "");
+    setBio(myProfile.bio || "");
+
+    setShow(true);
+  };
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -170,15 +182,17 @@ const Profile = () => {
                       <p>Follower</p>
                     </div>
                     <div className="mx-2">
-                      <Button className="rounded-pill">+Segui</Button>
+                      <Button className="rounded-pill fw-bold">
+                        Disponibile per
+                      </Button>
                       <Button
-                        variant="outline-primary"
+                        variant="outline-primary fw-bold"
                         className="rounded-pill mx-2"
                       >
                         Messaggio
                       </Button>
                       <Button
-                        variant="outline-secondary"
+                        variant="outline-secondary fw-bold"
                         className="rounded-pill"
                       >
                         Altro
@@ -283,6 +297,7 @@ const Profile = () => {
                     setName(e.target.value);
                   }}
                   required
+                  value={name}
                 />
 
                 <Form.Label>Surname</Form.Label>
@@ -293,6 +308,7 @@ const Profile = () => {
                     setSurname(e.target.value);
                   }}
                   required
+                  value={surname}
                 />
 
                 <Form.Label>Username</Form.Label>
@@ -303,6 +319,7 @@ const Profile = () => {
                     setUsername(e.target.value);
                   }}
                   required
+                  value={username}
                 />
 
                 <Form.Label>Email</Form.Label>
@@ -313,6 +330,7 @@ const Profile = () => {
                     setEmail(e.target.value);
                   }}
                   required
+                  value={email}
                 />
 
                 <Form.Label>Title</Form.Label>
@@ -323,6 +341,7 @@ const Profile = () => {
                     setTitle(e.target.value);
                   }}
                   required
+                  value={title}
                 />
 
                 <Form.Label>Area</Form.Label>
@@ -333,6 +352,7 @@ const Profile = () => {
                     setArea(e.target.value);
                   }}
                   required
+                  value={area}
                 />
 
                 <Form.Label>Profile image</Form.Label>
@@ -343,6 +363,7 @@ const Profile = () => {
                     setProfileImage(e.target.value);
                   }}
                   required
+                  value={image}
                 />
               </Form.Group>
               <Form.Group
@@ -358,6 +379,7 @@ const Profile = () => {
                     setBio(e.target.value);
                   }}
                   required
+                  value={bio}
                 />
               </Form.Group>
             </Form>
