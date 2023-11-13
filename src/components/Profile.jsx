@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
+import Modal from "react-bootstrap/Modal";
 
 const Profile = () => {
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getAllprofilesInfo = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
@@ -73,7 +78,10 @@ const Profile = () => {
                     src="https://placekitten.com/300"
                   />
                   <Card.Body>
-                    <a href="ujiu" className="pencil-button p-2 rounded-circle">
+                    <div
+                      className="pencil-button p-2 rounded-circle pointer"
+                      onClick={handleShow}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -86,7 +94,25 @@ const Profile = () => {
                       >
                         <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                       </svg>
-                    </a>
+                    </div>
+                    {/* --------MODALE----------- */}
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Woohoo, you are reading this text in a modal!
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    {/* --------MODALE----------- */}
                     <img
                       style={{ width: "140px" }}
                       src={myProfile.image}
