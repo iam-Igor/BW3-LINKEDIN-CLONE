@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Row,
+  Form,
+  ModalBody,
+} from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +32,9 @@ const Profile = () => {
 
   const following = useSelector((state) => state.following);
   const dispatch = useDispatch();
+
+  // SEXIONE SECONDO SHOWTIME PER MODALE DEI FOLLOWING
+  const [show2, setShow2] = useState(false);
 
   const handleShow = () => {
     setName(myProfile.name || "");
@@ -166,7 +177,17 @@ const Profile = () => {
                       </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
-                      <p>Following: {following.length}</p>
+                      <p>
+                        Following:{" "}
+                        <span
+                          className="fw-bold"
+                          onClick={() => {
+                            setShow2(true);
+                          }}
+                        >
+                          {following.length}
+                        </span>{" "}
+                      </p>
                     </div>
                     <div className="mx-2">
                       <Button className="rounded-pill fw-bold">
@@ -397,6 +418,67 @@ const Profile = () => {
               onClick={handleSave}
             >
               Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+      <>
+        <Modal
+          show={show2}
+          onHide={() => {
+            setShow2(false);
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Following users</Modal.Title>
+          </Modal.Header>
+          {following ? (
+            <Modal.Body>
+              {following.map((profile, index) => {
+                return (
+                  <div className="my-2 d-flex">
+                    <div>
+                      <img
+                        src={profile.image}
+                        style={{ width: "40px" }}
+                        alt="profile-img"
+                        className="rounded-circle"
+                      />
+                    </div>
+                    <div className="ms-2">
+                      <p className="fw-bold m-0"></p>
+                      <p>
+                        {profile.name} {profile.surname}
+                      </p>
+                      <Button
+                        variant="outline-dark"
+                        className="rounded-pill"
+                        onClick={() => {
+                          dispatch({ type: "REMOVE", payload: index });
+                        }}
+                      >
+                        Rimuovi
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </Modal.Body>
+          ) : (
+            <ModalBody>
+              <p>You are not following any user</p>
+            </ModalBody>
+          )}
+
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              className="rounded-pill"
+              onClick={() => {
+                setShow2(false);
+              }}
+            >
+              Close
             </Button>
           </Modal.Footer>
         </Modal>
