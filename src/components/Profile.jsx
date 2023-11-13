@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 
@@ -11,6 +11,69 @@ const Profile = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [username, setUsername] = useState("");
+  const [title, setTitle] = useState("");
+  const [area, setArea] = useState("");
+  const [image, setProfileImage] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    username: "",
+    email: "",
+    title: "",
+    area: "",
+    image: "",
+    bio: "",
+  });
+
+  const handleSave = () => {
+    const updatedData = {
+      name,
+      surname,
+      username,
+      email,
+      title,
+      area,
+      image,
+      bio,
+    };
+
+    setFormData((prevData) => ({
+      ...prevData,
+      ...updatedData,
+    }));
+
+    console.log("Form Data:", formData);
+
+    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+      method: "PUT",
+      headers: {
+        Authorization: apiKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        console.log("dati modificati!");
+        handleClose();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const getAllprofilesInfo = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
@@ -75,12 +138,12 @@ const Profile = () => {
                 <Card>
                   <Card.Img
                     variant="fluid"
-                    style={{ height: "150px" }}
-                    src="https://placekitten.com/300"
+                    style={{ height: "150px", objectFit: "cover" }}
+                    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/488f115d-6e44-4ccd-b238-b2699af64966/d7bmt54-cde04c58-1c7d-41d2-84aa-ba777a5e5e57.jpg/v1/fill/w_1192,h_670,q_70,strp/web_developer_wallpaper__code__by_plusjack_d7bmt54-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvNDg4ZjExNWQtNmU0NC00Y2NkLWIyMzgtYjI2OTlhZjY0OTY2XC9kN2JtdDU0LWNkZTA0YzU4LTFjN2QtNDFkMi04NGFhLWJhNzc3YTVlNWU1Ny5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.vHgupyecAg5BSAmKddsETVA6TmT2Dp-kGL64C5Oprqk"
                   />
                   <Card.Body>
                     <img
-                      style={{ width: "140px" }}
+                      style={{ width: "150px", height: "150px" }}
                       src={myProfile.image}
                       className="rounded-circle position-absolute user-image"
                       alt="img-user"
@@ -191,7 +254,99 @@ const Profile = () => {
           <Modal.Header closeButton>
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+          <Modal.Body>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your name"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Surname</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your surname"
+                  onChange={(e) => {
+                    setSurname(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your new username"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Your new email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Es Developer.."
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Area</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your area region"
+                  onChange={(e) => {
+                    setArea(e.target.value);
+                  }}
+                  required
+                />
+
+                <Form.Label>Profile image</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Image url"
+                  onChange={(e) => {
+                    setProfileImage(e.target.value);
+                  }}
+                  required
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Bio</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Bio details"
+                  onChange={(e) => {
+                    setBio(e.target.value);
+                  }}
+                  required
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
           <Modal.Footer>
             <Button
               variant="secondary"
@@ -200,7 +355,11 @@ const Profile = () => {
             >
               Close
             </Button>
-            <Button variant="primary" className="rounded-pill">
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={handleSave}
+            >
               Save
             </Button>
           </Modal.Footer>
