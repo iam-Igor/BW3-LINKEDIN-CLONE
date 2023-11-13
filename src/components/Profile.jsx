@@ -63,7 +63,7 @@ const Profile = () => {
     <Container>
       {myProfile && (
         <Row className="d-flex flex-column flex-md-row">
-          <Col className="col-md-9 ">
+          <Col className="col-md-8 ">
             <Row className="d-flex flex-column">
               <Col className="position-relative p-0 mb-2">
                 <Card>
@@ -73,6 +73,20 @@ const Profile = () => {
                     src="https://placekitten.com/300"
                   />
                   <Card.Body>
+                    <a href="ujiu" className="pencil-button p-2 rounded-circle">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        data-supported-dps="24x24"
+                        fill="currentColor"
+                        className="mercado-match"
+                        width="24"
+                        height="24"
+                        focusable="false"
+                      >
+                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                      </svg>
+                    </a>
                     <img
                       style={{ width: "140px" }}
                       src={myProfile.image}
@@ -124,7 +138,7 @@ const Profile = () => {
               </div>
             </Row>
           </Col>
-          <Col className="col-12 col-md-3 ps-0">
+          <Col className="col-12 col-md-4 ps-0">
             <Row className="ms-md-4 flex-column ms-0">
               <Col className="bg-white p-3 border rounded d-flex justify-content-center">
                 <div className="d-flex justify-content-around w-75">
