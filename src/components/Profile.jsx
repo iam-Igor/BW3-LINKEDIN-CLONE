@@ -4,7 +4,7 @@ const Profile = () => {
   return (
     <Container>
       <Row className="d-flex">
-        <Col className="col-8">
+        <Col className="col-9">
           <Row className="d-flex flex-column">
             <Col className="position-relative p-0">
               <Card>
@@ -42,7 +42,30 @@ const Profile = () => {
             </Col>
           </Row>
         </Col>
-        <Col className="col-4"></Col>
+        <Col className="col-3">
+          <Row className="ms-4 flex-column">
+            <Col className="bg-white p-3 border rounded d-flex justify-content-center">
+              <div className="d-flex justify-content-around w-75">
+                <Button variant="success" className="rounded-pill w-50 me-2">
+                  English
+                </Button>
+                <Button variant="outline-dark" className="rounded-pill w-50">
+                  Italiano
+                </Button>
+              </div>
+            </Col>
+            <Col className="p-0  border my-2">
+              <img
+                className="img-fluid rounded"
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="linkedin"
+              />
+            </Col>
+            <Col className="p-0  border my-2 bg-white">
+              <p>Altri profili consultati</p>
+            </Col>
+          </Row>
+        </Col>
       </Row>
     </Container>
   );
