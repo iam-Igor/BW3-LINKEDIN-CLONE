@@ -143,7 +143,11 @@ const Profile = () => {
                   />
                   <Card.Body>
                     <img
-                      style={{ width: "150px", height: "150px" }}
+                      style={{
+                        width: "150px",
+                        height: "150px",
+                        objectFit: "cover",
+                      }}
                       src={myProfile.image}
                       className="rounded-circle position-absolute user-image"
                       alt="img-user"
@@ -165,9 +169,19 @@ const Profile = () => {
                       <p>Follower</p>
                     </div>
                     <div className="mx-2">
-                      <Button>+Segui</Button>
-                      <Button>Messaggio</Button>
-                      <Button>Altro</Button>
+                      <Button className="rounded-pill">+Segui</Button>
+                      <Button
+                        variant="outline-primary"
+                        className="rounded-pill mx-2"
+                      >
+                        Messaggio
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        className="rounded-pill"
+                      >
+                        Altro
+                      </Button>
                     </div>
                   </Card.Body>
                 </Card>
