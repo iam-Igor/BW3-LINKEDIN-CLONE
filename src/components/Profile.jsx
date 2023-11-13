@@ -40,7 +40,7 @@ const Profile = () => {
       <Row className="d-flex">
         <Col className="col-12 col-md-9">
           <Row className="d-flex flex-column">
-            <Col className="position-relative p-0 mb-2">
+            <Col className="position-relative p-0">
               <Card>
                 <Card.Img
                   variant="fluid"
@@ -54,13 +54,12 @@ const Profile = () => {
                     alt="img-user"
                   />
                   <div className="mt-5">
-                  <Card.Text className="mt-5 mx-2">
                     <h2>Username</h2>
                     <p>Mansione/impiego</p>
                     <p>luogo</p>
                     <p>Follower</p>
-                  </Card.Text>
-                  <div className="mx-2">
+                  </div>
+                  <div>
                     <Button>+Segui</Button>
                     <Button>Messaggio</Button>
                     <Button>Altro</Button>
@@ -68,32 +67,59 @@ const Profile = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col className="bg-white rounded-2 border mb-2 pt-3 info-section">
-              <div className="mx-2">
-                <h3>Informazioni</h3>
-                <p>Javascript</p>
-                <p>CSS</p>
-                <p>HTML</p>
-                <p>React</p>
-              </div>
-            </Col>
-            <Col className="bg-white rounded-2 border info-section mb-2">
-              <Row className="mx-2">
-                <h3 className="p-0 mt-3 mb-4">Esperienza</h3>
-                <Col className="col-1 p-0">
-                  <img src="https://placekitten.com/50" alt="job-icon" />
-                </Col>
-                <Col className="col-11">
-                  <h6>Ruolo ricoperto</h6>
-                  <p>Nome azienda - Tempo pieno/part-time</p>
-                  <p>Data - Periodo - Durata</p>
-                  <p>Località, Regione, Stato</p>
-                </Col>
-              </Row>
+            <Col className="bg-white rounded-2 border my-2">
+              <h2>Informazioni</h2>
+              <p>Javascript</p>
+              <p>CSS</p>
+              <p>HTML</p>
+              <p>React</p>
             </Col>
           </Row>
         </Col>
-        <Col className="col-4"></Col>
+        <Col className="col-3 d-none d-md-block">
+          <Row className="ms-4 flex-column">
+            <Col className="bg-white p-3 border rounded d-flex justify-content-center">
+              <div className="d-flex justify-content-around w-75">
+                <Button variant="success" className="rounded-pill w-50 me-2">
+                  English
+                </Button>
+                <Button variant="outline-dark" className="rounded-pill w-50">
+                  Italiano
+                </Button>
+              </div>
+            </Col>
+            <Col className="p-0  border my-2">
+              <img
+                className="img-fluid rounded"
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="linkedin"
+              />
+            </Col>
+            {profilesData && (
+              <>
+                <Col className="border my-2 bg-white d-flex flex-column rounded">
+                  <p className="fw-bold mt-2">Profili che potresti conoscere</p>
+                  {profilesData.slice(0, 6).map((profile, index) => {
+                    return <SuggestedProfile key={index} profile={profile} />;
+                  })}
+                </Col>
+                <Col className="border my-2 bg-white d-flex flex-column rounded">
+                  <p className="fw-bold mt-2">Protrebbero interessarti</p>
+                  {profilesData.slice(6, 8).map((profile, index) => {
+                    return <SuggestedProfile key={index} profile={profile} />;
+                  })}
+                </Col>
+              </>
+            )}
+            <Col className="p-0  border my-2 rounded">
+              <img
+                className="img-fluid rounded"
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="linkedin"
+              />
+            </Col>
+          </Row>
+        </Col>
       </Row>
     </Container>
   );
