@@ -1,0 +1,8 @@
+.user-image {
+  top: 13%;
+  left: 5%;
+  border: 3px solid white;
+}
+body {
+  background-color: rgb(244, 242, 238) !important;
+}
