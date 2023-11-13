@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
+import Modal from "react-bootstrap/Modal";
 
 const Profile = () => {
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getAllprofilesInfo = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
@@ -80,9 +86,17 @@ const Profile = () => {
                       alt="img-user"
                     />
                     <div className="mt-5 mx-2">
-                      <h2>
-                        {myProfile.name} {myProfile.surname}
-                      </h2>
+                      <div className="d-flex justify-content-between">
+                        <h2>
+                          {myProfile.name} {myProfile.surname}
+                        </h2>
+                        <div>
+                          <i
+                            className="bi bi-pencil fs-4"
+                            onClick={handleShow}
+                          ></i>
+                        </div>
+                      </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
                       <p>Follower</p>
@@ -172,6 +186,26 @@ const Profile = () => {
           </Col>
         </Row>
       )}
+      <>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit profile</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              className="rounded-pill"
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+            <Button variant="primary" className="rounded-pill">
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     </Container>
   );
 };

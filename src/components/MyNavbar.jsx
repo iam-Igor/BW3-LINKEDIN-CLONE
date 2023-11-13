@@ -3,35 +3,31 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 const Mynavbar = () => {
   return (
     <>
-      <Navbar className="d-flex" expand="lg">
-        <Container className="p-0">
-          <Navbar.Brand href="#home">
-            {" "}
-            {/* logo e input */}
-            <div className="d-flex">
-              <div className="d-flex align-items-center">
-                <img
-                  className="me-2"
-                  style={{ width: "40px", height: "35px" }}
-                  src="https://logospng.org/download/linkedin/logo-linkedin-icon-4096.png"
-                  alt="logo-linkedin"
-                />
-                <div className="d-flex">
-                  <div className="search-icon rounded-start ps-1 d-flex align-items-center">
-                    <i className="bi bi-search"></i>
-                  </div>
-                  <input
-                    id="search"
-                    className="rounded-end"
-                    style={{ height: "45px" }}
-                    type="search"
-                    placeholder="cerca"
-                  />
+      <Navbar className="d-flex sticky-top p-0" expand="lg">
+        <Container fluid className="p-0 bg-white ">
+          <div className="d-flex ">
+            <div className="d-flex align-items-center">
+              <img
+                className="me-2"
+                style={{ width: "40px", height: "35px" }}
+                src="https://logospng.org/download/linkedin/logo-linkedin-icon-4096.png"
+                alt="logo-linkedin"
+              />
+              <div className="d-flex">
+                <div className="search-icon rounded-start ps-1 d-flex align-items-center">
+                  <i className="bi bi-search"></i>
                 </div>
+                <input
+                  id="search"
+                  className="rounded-end"
+                  style={{ height: "45px" }}
+                  type="search"
+                  placeholder="cerca"
+                />
               </div>
             </div>
-            {/* logo e input */}
-          </Navbar.Brand>
+          </div>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse id="basic-navbar-nav">
