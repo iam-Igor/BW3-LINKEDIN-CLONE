@@ -13,7 +13,7 @@ const SingleExperience = ({ job }) => {
   return (
     <div className="d-flex mx-2">
       <div className="p-0 me-3">
-        <img src={job.image} alt="job-icon" />
+        <img style={{ width: "70px" }} src={job.image} alt="job-icon" />
       </div>
       <div className="">
         <h6>Ruolo: {job.role}</h6>
