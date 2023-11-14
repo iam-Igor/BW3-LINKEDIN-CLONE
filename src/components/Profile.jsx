@@ -23,8 +23,28 @@ const Profile = () => {
   const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
   const location = useLocation();
+  const [editExoerience, setEditExoerience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+    // image: "",
+  });
 
-  console.log(location.pathname);
+  const apiKey =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU";
+
+  let newparams = "";
+
+  if (location.pathname === "/profile/me") {
+    newparams = "6551ed5ac55e7e0018f83c0b";
+  } else {
+    newparams = urlParams.userID;
+  }
+
+  console.log(newparams);
   // const [name, setName] = useState("");
   // const [surname, setSurname] = useState("");
   // const [username, setUsername] = useState("");
@@ -41,6 +61,7 @@ const Profile = () => {
 
   // SEXIONE SECONDO SHOWTIME PER MODALE DEI FOLLOWING
   const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
 
   const handleShow = () => {
     // setName(myProfile.name || "");
@@ -53,6 +74,60 @@ const Profile = () => {
     // setBio(myProfile.bio || "");
 
     setShow(true);
+  };
+
+  const getExperiences = () => {
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/" +
+        newparams +
+        "/experiences",
+      {
+        headers: {
+          Authorization: apiKey,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const saveExperience = () => {
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/" +
+        newparams +
+        "/experiences",
+      {
+        method: "POST",
+        headers: {
+          Authorization: apiKey,
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(editExoerience),
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log("salvato");
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleSave = () => {
@@ -111,16 +186,13 @@ const Profile = () => {
   };
 
   const getMyProfile = () => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" + urlParams.userID,
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
-        },
-      }
-    )
+    fetch("https://striveschool-api.herokuapp.com/api/profile/" + newparams, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -149,12 +221,10 @@ const Profile = () => {
       });
   };
 
-  const apiKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU";
-
   useEffect(() => {
     getMyProfile();
     getAllprofilesInfo();
+    getExperiences();
   }, [urlParams]);
 
   return (
@@ -250,7 +320,29 @@ const Profile = () => {
                 </div>
               </div>
               <div className="bg-white rounded-2 border info-section mb-2">
-                <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
+                <div className="position-relative d-flex align-items-center">
+                  <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
+                  {location.pathname === "/profile/me" ? (
+                    <div
+                      className="pencil-button p-2 rounded-circle pointer"
+                      onClick={() => setShow3(true)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        data-supported-dps="24x24"
+                        fill="currentColor"
+                        className="mercado-match"
+                        width="24"
+                        height="24"
+                        focusable="false"
+                      >
+                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                      </svg>
+                    </div>
+                  ) : null}
+                </div>
+
                 <div className="d-flex mx-2">
                   <div className="p-0 me-3">
                     <img src="https://placekitten.com/50" alt="job-icon" />
@@ -531,6 +623,142 @@ const Profile = () => {
               }}
             >
               Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+      <>
+        <Modal show={show3}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit profile</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Role</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your role"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      role: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.role}
+                />
+
+                <Form.Label>Company</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your Company"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      company: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.company}
+                />
+
+                <Form.Label>Start Date</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your start date"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      startDate: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.startDate}
+                />
+
+                <Form.Label>End Date</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your start date"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      endDate: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.endDate}
+                />
+
+                <Form.Label>Area</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Your Area"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      area: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.area}
+                />
+
+                {/* <Form.Label>Image</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Image url"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      image: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.image}
+                /> */}
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Bio details"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      description: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.description}
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              className="rounded-pill"
+              onClick={() => setShow3(false)}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={() => {
+                saveExperience();
+              }}
+            >
+              Save
             </Button>
           </Modal.Footer>
         </Modal>
