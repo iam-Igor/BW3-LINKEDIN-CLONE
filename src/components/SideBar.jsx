@@ -1,8 +1,10 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { BookmarkFill, PersonFillAdd, PlusLg } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const SideBar = () => {
+  const myProfile = useSelector((state) => state.profileData);
   return (
     <Row>
       <Col className="p-4 border border-bottom rounded background-columns">
@@ -14,8 +16,8 @@ const SideBar = () => {
               className="img-fluid rounded-circle"
               style={{ width: "20%" }}
             />
-            <h3 className="mt-3">Nome Utente</h3>
-            <p className="text-secondary">Titolo Professionale</p>
+            <h3 className="mt-3">{myProfile.username}</h3>
+            <p className="text-secondary">{myProfile.title}</p>
             <hr></hr>
           </div>
           <div className="mt-4">
@@ -40,17 +42,17 @@ const SideBar = () => {
           </div>
         </div>
       </Col>
-      <Col xs={12} className="mt-2 rounded border background-columns" ì>
-        <div className="d-flex flex-column ">
-          <p className="text-primary ms-4">Gruppi</p>
-          <div className="d-flex justify-content-between">
+      <Col xs={12} className="mt-2 rounded border background-columns">
+        <div className="d-flex flex-column mt-4">
+          <p className="text-primary ms-4 cursor">Gruppi</p>
+          <div className="d-flex justify-content-between cursor">
             <p className="text-primary ms-4">Eventi</p>
             <PlusLg className="me-4" />
           </div>
-          <p className="text-primary ms-4">Hashtag Seguiti</p>
+          <p className="text-primary ms-4 cursor">Hashtag Seguiti</p>
           <div>
             <hr></hr>
-            <p className="text-secondary text-center">Scopri di più</p>
+            <p className="text-secondary text-center cursor">Scopri di più</p>
           </div>
         </div>
       </Col>

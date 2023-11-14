@@ -37,16 +37,11 @@ const Mynavbar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <div className="d-flex">
-                <Nav.Link
-                  href="#home"
-                  className="d-flex flex-column text-center"
-                >
+                <Nav.Link className="d-flex flex-column text-center">
                   <i className="bi bi-house-door-fill fs-4"></i>
-                  <Link to="/home" className="text-decoration-none">
-                    <p className="m-0" to="/home">
-                      Home
-                    </p>
-                  </Link>
+                  <p className="m-0" to="/home">
+                    Home
+                  </p>
                 </Nav.Link>
                 <Nav.Link
                   href="#link"

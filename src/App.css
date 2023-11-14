@@ -40,5 +40,32 @@ body {
 
 /* COLORE BACKGROUND */
 .background-columns {
-  background-color: #f3f3f3;
+  background-color: rgb(255, 255, 255);
+}
+
+/* POSTS */
+
+#select-feed {
+  font-size: 0.7rem;
+}
+
+#select-feed hr {
+  width: 25%;
+}
+
+#select-feed p {
+  margin-left: 0.2em;
+  margin-top: 1em;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+#ul-sidebar li {
+  font-weight: 500;
+}
+
+#ul-sidebar p {
+  font-size: 0.8rem;
 }

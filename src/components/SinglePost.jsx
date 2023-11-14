@@ -19,11 +19,12 @@ import {
   Trash3Fill,
   PencilFill,
 } from "react-bootstrap-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SingleComment from "./SingleComment";
-import { useFetcher } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SinglePost = ({ post, updatePosts }) => {
+  const myProfile = useSelector((state) => state.profileData);
   // Testo di partenza, modificabile, del modale
   const [textArea, setTextArea] = useState(post.text);
 
@@ -198,7 +199,7 @@ const SinglePost = ({ post, updatePosts }) => {
         <div className="d-flex gap-2">
           <img src="https://placekitten.com/40" alt="author-img" />
 
-          <h4 className="fw-bold fs-6">{post.username.split("@")[0]}</h4>
+          <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
         </div>
         <div>
           <Dropdown>
@@ -250,6 +251,7 @@ const SinglePost = ({ post, updatePosts }) => {
         </div>
       </div>
       <p>{post.text}</p>
+      {console.log(post)}
       <div className="d-flex justify-content-center">
         <img
           src="https://placekitten.com/500"
@@ -259,14 +261,20 @@ const SinglePost = ({ post, updatePosts }) => {
       </div>
       <div className="d-flex justify-content-between mt-2">
         <div className="d-flex align-items-center gap-2">
-          <div>
-            <HandThumbsUp className="ms-2 rounded-circle border " />
+          <div
+            className="border d-flex justify-content-center align-items-center rounded-circle"
+            style={{ width: "25px", height: "25px" }}
+          >
+            <HandThumbsUp />
           </div>
-          <p className="mb-0">1.213</p>
+          <p className="mb-0">{Math.floor(Math.random() * 2000)}</p>
         </div>
         <div className="d-flex align-items-center ">
-          <p className="mb-0">6 commenti</p> <Dot className="mt-1" />{" "}
-          <p className="mb-0">44 diffusioni post</p>
+          <p className="mb-0">{Math.floor(Math.random() * 100)} commenti</p>{" "}
+          <Dot className="mt-1" />{" "}
+          <p className="mb-0">
+            {Math.floor(Math.random() * 50)} diffusioni post
+          </p>
         </div>
       </div>
       <hr className="mx-3" />

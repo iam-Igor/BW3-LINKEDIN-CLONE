@@ -7,12 +7,15 @@ import {
   ArrowRight,
   Clock,
   ThreeDots,
+  CaretDownFill,
 } from "react-bootstrap-icons";
 import SinglePost from "./SinglePost";
 import { useEffect, useState } from "react";
 import { API_KEY, URL_POSTS } from "../redux/actions/actionsHome";
+import { useSelector } from "react-redux";
 
 const Posts = () => {
+  const myProfile = useSelector((state) => state.profileData);
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
   const [update, setUpdate] = useState(0);
@@ -91,7 +94,7 @@ const Posts = () => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">{myProfile.username}</Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
@@ -106,7 +109,6 @@ const Posts = () => {
                 onChange={(e) => {
                   e.preventDefault();
                   setTextArea(e.target.value);
-                  console.log(e.target.value);
                 }}
                 as="textarea"
                 className="border-0 fs-5"
@@ -171,28 +173,29 @@ const Posts = () => {
           </Form>
         </div>
         <div className="d-flex justify-content-between ">
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2 cursor">
             <CardImage />
             <p className="mb-0">Contenuti multimediali</p>
           </div>
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2 cursor">
             <Calendar3 />
 
             <p className="mb-0">Evento</p>
           </div>
 
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2 cursor">
             <Postcard />
             <p className="mb-0">Scrivi un articolo</p>
           </div>
         </div>
       </Col>
       <Col xs={12}>
-        <div className="d-flex align-items-center">
-          <hr className="w-50" />
-          <p>
+        <div className="d-flex align-items-center" id="select-feed">
+          <hr />
+          <p className="cursor">
             Seleziona la visualizzazione dei feed:
-            <strong>Più rilevanti per primi</strong>
+            <strong className="ms-1">Più rilevanti per primi</strong>
+            <CaretDownFill />
           </p>
         </div>
       </Col>
@@ -212,7 +215,7 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary">
+            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
@@ -231,7 +234,7 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary">
+            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
@@ -250,14 +253,14 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary">
+            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
         </Row>
         <hr className="my-0" />
         <Row className="mt-3">
-          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold ">
+          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold cursor">
             <p>Visualizza altro</p>
             <ArrowRight className="mb-3" />
           </Col>

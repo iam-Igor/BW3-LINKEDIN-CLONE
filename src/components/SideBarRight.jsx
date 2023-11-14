@@ -16,7 +16,7 @@ const SideBarRight = () => {
               <InfoSquareFill className="me-3" />
             </div>
           </div>
-          <ul>
+          <ul id="ul-sidebar">
             <li>Single e fieri di esserlo</li>
             <p className="text-secondary">3 giorni fa </p>
             <li>Che cosa vuole l'Italia dall'AI</li>
