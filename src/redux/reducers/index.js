@@ -1,7 +1,8 @@
-import { FOLLOW, REMOVE } from "../store";
+import { FOLLOW, REMOVE, PARAMS } from "../store";
 
 const initialState = {
   following: "",
+  urlParams: "",
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const mainReducer = (state = initialState, action) => {
         ),
       };
     }
+    case PARAMS:
+      return {
+        ...state,
+        urlParams: action.payload,
+      };
     default:
       return state;
   }
