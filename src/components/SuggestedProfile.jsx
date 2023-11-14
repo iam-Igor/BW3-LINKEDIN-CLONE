@@ -9,8 +9,6 @@ const SuggestedProfile = ({ profile }) => {
 
   const location = useNavigate();
 
-  console.log(profile);
-
   return (
     <div className="d-flex my-2">
       <div>

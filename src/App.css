@@ -37,6 +37,12 @@ body {
 .pencil-button:hover {
   background-color: rgb(235, 235, 235);
 }
+#dropdown-basic{
+    width: 250px;
+}
+#icon-footer i {
+    font-size: 1.2em;
+}
 
 /* COLORE BACKGROUND */
 .background-columns {
@@ -82,4 +88,7 @@ body {
 
 #footer-sidebar {
   font-size: 0.8rem;
+}
+.navbar-nav a {
+    color: inherit;
 }

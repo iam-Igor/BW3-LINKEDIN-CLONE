@@ -193,9 +193,9 @@ const SideBar = ({ myProfile }) => {
         </div>
       </Col>
       <Col xs={12} className="mt-2 rounded border background-columns">
-        <div className="d-flex flex-column mt-4">
-          <p className="text-primary ms-4 cursor">Gruppi</p>
-          <div className="d-flex justify-content-between cursor">
+        <div className="d-flex flex-column mt-3">
+          <p className="text-primary ms-4">Gruppi</p>
+          <div className="d-flex justify-content-between">
             <p className="text-primary ms-4">Eventi</p>
             <PlusLg className="me-4" onClick={handleShow} />
           </div>

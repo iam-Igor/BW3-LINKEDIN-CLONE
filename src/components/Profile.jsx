@@ -7,24 +7,57 @@ import {
   Row,
   Form,
   ModalBody,
+  Alert,
 } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { PARAMS } from "../redux/store";
 import { useLocation, useParams } from "react-router-dom";
+import SingleExperience from "./SingleExperience";
+import Myfooter from "./Myfooter";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setShow2(false);
+    setShow3(false);
+  };
+
+  const [allExperiences, setAllExperiuences] = useState(null);
+
+  console.log(allExperiences);
+
+  const [contentSaved, setContentSaved] = useState(false);
   const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
   const location = useLocation();
+  const [editExoerience, setEditExoerience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+    username: "totti10",
+    // image: "",
+  });
 
-  console.log(location.pathname);
+  const apiKey =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU";
+
+  let newparams = "";
+
+  if (location.pathname === "/profile/me") {
+    newparams = "6551ed5ac55e7e0018f83c0b";
+  } else {
+    newparams = urlParams.userID;
+  }
+
   // const [name, setName] = useState("");
   // const [surname, setSurname] = useState("");
   // const [username, setUsername] = useState("");
@@ -41,6 +74,7 @@ const Profile = () => {
 
   // SEXIONE SECONDO SHOWTIME PER MODALE DEI FOLLOWING
   const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
 
   const handleShow = () => {
     // setName(myProfile.name || "");
@@ -53,6 +87,67 @@ const Profile = () => {
     // setBio(myProfile.bio || "");
 
     setShow(true);
+  };
+
+  const getExperiences = () => {
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/" +
+        newparams +
+        "/experiences",
+      {
+        headers: {
+          Authorization: apiKey,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setAllExperiuences(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const saveExperience = () => {
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/6551ed5ac55e7e0018f83c0b/experiences",
+      {
+        method: "POST",
+        headers: {
+          Authorization: apiKey,
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(editExoerience),
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          console.log("salvato");
+        } else {
+          throw new Error("error in saving content");
+        }
+      })
+      .then(() => {
+        setContentSaved(true);
+        setTimeout(() => {
+          handleClose();
+          getExperiences();
+          setContentSaved(false);
+        }, 800);
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleSave = () => {
@@ -77,12 +172,18 @@ const Profile = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert("dati modificati!");
-          getMyProfile();
-          handleClose();
         } else {
           throw new Error("error in fetching user profiles");
         }
+      })
+      .then(() => {
+        setContentSaved(true);
+        setTimeout(() => {
+          handleClose();
+          getAllprofilesInfo();
+          getMyProfile();
+          setContentSaved(false);
+        }, 800);
       })
       .catch((err) => {
         console.log(err);
@@ -111,16 +212,13 @@ const Profile = () => {
   };
 
   const getMyProfile = () => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" + urlParams.userID,
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
-        },
-      }
-    )
+    fetch("https://striveschool-api.herokuapp.com/api/profile/" + newparams, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -149,12 +247,10 @@ const Profile = () => {
       });
   };
 
-  const apiKey =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU";
-
   useEffect(() => {
     getMyProfile();
     getAllprofilesInfo();
+    getExperiences();
   }, [urlParams]);
 
   return (
@@ -249,27 +345,36 @@ const Profile = () => {
                   <p>{myProfile.bio}</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2 border info-section mb-2">
-                <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
-                <div className="d-flex mx-2">
-                  <div className="p-0 me-3">
-                    <img src="https://placekitten.com/50" alt="job-icon" />
+              {allExperiences && (
+                <div className="bg-white rounded-2 border info-section mb-2">
+                  <div className="position-relative d-flex align-items-center">
+                    <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
+                    {location.pathname === "/profile/me" ? (
+                      <div
+                        className="pencil-button p-2 rounded-circle pointer"
+                        onClick={() => setShow3(true)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          data-supported-dps="24x24"
+                          fill="currentColor"
+                          className="mercado-match"
+                          width="24"
+                          height="24"
+                          focusable="false"
+                        >
+                          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                        </svg>
+                      </div>
+                    ) : null}
                   </div>
-                  <div className="">
-                    <h6>Ruolo ricoperto</h6>
-                    <p className="mb-1">Nome azienda - Tempo pieno/part-time</p>
-                    <p className="mb-1">Data - Periodo - Durata</p>
-                    <p className="mb-1">Località, Regione, Stato</p>
-                    <p className="mt-4">
-                      <strong>Competenze: </strong>Lorem ipsum dolor, sit amet
-                      consectetur adipisicing elit. Vero odit asperiores ad,
-                      repudiandae numquam minus officiis eaque, quam vitae nobis
-                      quasi, non possimus adipisci. Laudantium harum quas a
-                      voluptatum soluta.
-                    </p>
-                  </div>
+
+                  {allExperiences.map((exp, index) => {
+                    return <SingleExperience key={index} job={exp} />;
+                  })}
                 </div>
-              </div>
+              )}
             </Row>
           </Col>
           <Col className="col-12 col-md-3 ps-0">
@@ -326,129 +431,133 @@ const Profile = () => {
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your name"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      name: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.name}
-                />
+            {contentSaved ? (
+              <Alert variant="success">Content saved!</Alert>
+            ) : (
+              <Form>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your name"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        name: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.name}
+                  />
 
-                <Form.Label>Surname</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your surname"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      surname: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.surname}
-                />
+                  <Form.Label>Surname</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your surname"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        surname: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.surname}
+                  />
 
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your new username"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      username: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.username}
-                />
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your new username"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        username: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.username}
+                  />
 
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Your new email"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      email: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.email}
-                />
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Your new email"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        email: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.email}
+                  />
 
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Es Developer.."
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      title: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.title}
-                />
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Es Developer.."
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        title: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.title}
+                  />
 
-                <Form.Label>Area</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your area region"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      area: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.area}
-                />
+                  <Form.Label>Area</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your area region"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        area: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.area}
+                  />
 
-                <Form.Label>Profile image</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Image url"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      image: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.image}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Bio</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  placeholder="Bio details"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      bio: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.bio}
-                />
-              </Form.Group>
-            </Form>
+                  <Form.Label>Profile image</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Image url"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        image: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.image}
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label>Bio</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Bio details"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        bio: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.bio}
+                  />
+                </Form.Group>
+              </Form>
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button
@@ -535,6 +644,147 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
+      <>
+        <Modal show={show3} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit profile</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {contentSaved ? (
+              <Alert variant="success">Content saved!</Alert>
+            ) : (
+              <Form>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Role</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your role"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        role: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.role}
+                  />
+
+                  <Form.Label>Company</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Company"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        company: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.company}
+                  />
+
+                  <Form.Label>Start Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Your start date"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        startDate: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.startDate}
+                  />
+
+                  <Form.Label>End Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Your start date"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        endDate: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.endDate}
+                  />
+
+                  <Form.Label>Area</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Area"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        area: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.area}
+                  />
+
+                  {/* <Form.Label>Image</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Image url"
+                  onChange={(e) => {
+                    setEditExoerience({
+                      ...editExoerience,
+                      image: e.target.value,
+                    });
+                  }}
+                  required
+                  value={editExoerience.image}
+                /> */}
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Bio details"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        description: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.description}
+                  />
+                </Form.Group>
+              </Form>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              className="rounded-pill"
+              onClick={() => setShow3(false)}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={() => {
+                saveExperience();
+              }}
+            >
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+      <Myfooter />
     </Container>
   );
 };
