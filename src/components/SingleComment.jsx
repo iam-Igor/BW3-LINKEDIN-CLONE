@@ -120,11 +120,13 @@ const SingleComment = ({ comment, getComments, postId }) => {
           <p className="mb-0">{comment.comment}</p>
         </div>
         <div>
-          <div className="d-flex">
-            <span>3 giorni</span>
+          <div className="d-flex justify-content-end">
+            <div className="text-end">
+              <span>3 giorni</span>
+            </div>
             <Dropdown>
               <Dropdown.Toggle
-                className="pe-0 pt-0"
+                className="pe-0 pt-0 w-25 e-caret-hide"
                 variant="none"
                 id="dropdown-basic"
               >

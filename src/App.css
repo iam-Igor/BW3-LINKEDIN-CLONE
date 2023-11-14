@@ -37,11 +37,11 @@ body {
 .pencil-button:hover {
   background-color: rgb(235, 235, 235);
 }
-#dropdown-basic{
-    width: 250px;
+#dropdown-basic {
+  width: 250px;
 }
 #icon-footer i {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 /* COLORE BACKGROUND */
@@ -50,6 +50,10 @@ body {
 }
 
 /* POSTS */
+
+.dropdown-toggle::after {
+  display: none !important;
+}
 
 #select-feed {
   font-size: 0.7rem;
@@ -90,5 +94,5 @@ body {
   font-size: 0.8rem;
 }
 .navbar-nav a {
-    color: inherit;
+  color: inherit;
 }
