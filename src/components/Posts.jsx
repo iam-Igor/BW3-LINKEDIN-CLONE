@@ -158,8 +158,8 @@ const Posts = () => {
       </Modal>
       {/* SEZIONE INPUT DOVE SCRIVERE I POST*/}
       <Col className="border rounded-3 py-3 px-4 background-columns" xs={12}>
-        <div className="d-flex gap-3 align-items-center ">
-          <div className="mb-3">
+        <div className="d-flex gap-3 align-items-center">
+          <div className="mb-3 cursor">
             <img
               src={myProfile ? myProfile.image : "http://placekitten.com/50"}
               width="50px"
@@ -171,9 +171,10 @@ const Posts = () => {
           <Form className="flex-grow-1" onClick={handleShow}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Control
+                id="control-input"
                 type="email"
                 placeholder="Avvia un post"
-                className="rounded-pill py-3 px-3"
+                className="rounded-pill py-3 px-3 cursor"
               />
             </Form.Group>
           </Form>

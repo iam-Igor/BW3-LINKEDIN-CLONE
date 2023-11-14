@@ -207,7 +207,7 @@ const SinglePost = ({ post, updatePosts }) => {
             />
           )}
 
-          {!post.user.image && <PersonCircle className="fs-1" />}
+          {!post.user.image && <PersonCircle className="fs-1 text-secondary" />}
 
           <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
         </div>
