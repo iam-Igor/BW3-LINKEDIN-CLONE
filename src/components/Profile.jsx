@@ -7,6 +7,7 @@ import {
   Row,
   Form,
   ModalBody,
+  Alert,
 } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
@@ -19,7 +20,12 @@ const Profile = () => {
   const [myProfile, setMyProfile] = useState(null);
   const [profilesData, setProfilesData] = useState(null);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setShow2(false);
+    setShow3(false);
+  };
+  const [contentSaved, setContentSaved] = useState(false);
   const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
   const location = useLocation();
@@ -30,6 +36,7 @@ const Profile = () => {
     endDate: "",
     description: "",
     area: "",
+    username: "totti10",
     // image: "",
   });
 
@@ -44,7 +51,6 @@ const Profile = () => {
     newparams = urlParams.userID;
   }
 
-  console.log(newparams);
   // const [name, setName] = useState("");
   // const [surname, setSurname] = useState("");
   // const [username, setUsername] = useState("");
@@ -104,9 +110,7 @@ const Profile = () => {
 
   const saveExperience = () => {
     fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" +
-        newparams +
-        "/experiences",
+      "https://striveschool-api.herokuapp.com/api/profile/6551ed5ac55e7e0018f83c0b/experiences",
       {
         method: "POST",
         headers: {
@@ -121,8 +125,16 @@ const Profile = () => {
         if (res.ok) {
           console.log("salvato");
         } else {
-          throw new Error("error in fetching user profiles");
+          throw new Error("error in saving content");
         }
+      })
+      .then(() => {
+        setContentSaved(true);
+        setTimeout(() => {
+          handleClose();
+          getExperiences();
+          setContentSaved(false);
+        }, 800);
       })
 
       .catch((err) => {
@@ -152,12 +164,18 @@ const Profile = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert("dati modificati!");
-          getMyProfile();
-          handleClose();
         } else {
           throw new Error("error in fetching user profiles");
         }
+      })
+      .then(() => {
+        setContentSaved(true);
+        setTimeout(() => {
+          handleClose();
+          getAllprofilesInfo();
+          getMyProfile();
+          setContentSaved(false);
+        }, 800);
       })
       .catch((err) => {
         console.log(err);
@@ -418,129 +436,133 @@ const Profile = () => {
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your name"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      name: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.name}
-                />
+            {contentSaved ? (
+              <Alert variant="success">Content saved!</Alert>
+            ) : (
+              <Form>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your name"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        name: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.name}
+                  />
 
-                <Form.Label>Surname</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your surname"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      surname: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.surname}
-                />
+                  <Form.Label>Surname</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your surname"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        surname: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.surname}
+                  />
 
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your new username"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      username: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.username}
-                />
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your new username"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        username: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.username}
+                  />
 
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Your new email"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      email: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.email}
-                />
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Your new email"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        email: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.email}
+                  />
 
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Es Developer.."
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      title: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.title}
-                />
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Es Developer.."
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        title: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.title}
+                  />
 
-                <Form.Label>Area</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your area region"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      area: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.area}
-                />
+                  <Form.Label>Area</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your area region"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        area: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.area}
+                  />
 
-                <Form.Label>Profile image</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Image url"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      image: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.image}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Bio</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  placeholder="Bio details"
-                  onChange={(e) => {
-                    setEditProfile({
-                      ...editProfile,
-                      bio: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editProfile.bio}
-                />
-              </Form.Group>
-            </Form>
+                  <Form.Label>Profile image</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Image url"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        image: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.image}
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label>Bio</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Bio details"
+                    onChange={(e) => {
+                      setEditProfile({
+                        ...editProfile,
+                        bio: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editProfile.bio}
+                  />
+                </Form.Group>
+              </Form>
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button
@@ -628,87 +650,90 @@ const Profile = () => {
         </Modal>
       </>
       <>
-        <Modal show={show3}>
+        <Modal show={show3} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Edit profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Role</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your role"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      role: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.role}
-                />
+            {contentSaved ? (
+              <Alert variant="success">Content saved!</Alert>
+            ) : (
+              <Form>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Role</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your role"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        role: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.role}
+                  />
 
-                <Form.Label>Company</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your Company"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      company: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.company}
-                />
+                  <Form.Label>Company</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Company"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        company: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.company}
+                  />
 
-                <Form.Label>Start Date</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your start date"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      startDate: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.startDate}
-                />
+                  <Form.Label>Start Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Your start date"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        startDate: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.startDate}
+                  />
 
-                <Form.Label>End Date</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your start date"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      endDate: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.endDate}
-                />
+                  <Form.Label>End Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Your start date"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        endDate: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.endDate}
+                  />
 
-                <Form.Label>Area</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Your Area"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      area: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.area}
-                />
+                  <Form.Label>Area</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Area"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        area: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.area}
+                  />
 
-                {/* <Form.Label>Image</Form.Label>
+                  {/* <Form.Label>Image</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Image url"
@@ -721,27 +746,28 @@ const Profile = () => {
                   required
                   value={editExoerience.image}
                 /> */}
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  placeholder="Bio details"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      description: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.description}
-                />
-              </Form.Group>
-            </Form>
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Bio details"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        description: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.description}
+                  />
+                </Form.Group>
+              </Form>
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button
