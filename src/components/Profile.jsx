@@ -14,6 +14,7 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { PARAMS } from "../redux/store";
 import { useLocation, useParams } from "react-router-dom";
+import SingleExperience from "./SingleExperience";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -25,6 +26,11 @@ const Profile = () => {
     setShow2(false);
     setShow3(false);
   };
+
+  const [allExperiences, setAllExperiuences] = useState(null);
+
+  console.log(allExperiences);
+
   const [contentSaved, setContentSaved] = useState(false);
   const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
@@ -102,6 +108,7 @@ const Profile = () => {
       })
       .then((data) => {
         console.log(data);
+        setAllExperiuences(data);
       })
       .catch((err) => {
         console.log(err);
@@ -361,24 +368,9 @@ const Profile = () => {
                   ) : null}
                 </div>
 
-                <div className="d-flex mx-2">
-                  <div className="p-0 me-3">
-                    <img src="https://placekitten.com/50" alt="job-icon" />
-                  </div>
-                  <div className="">
-                    <h6>Ruolo ricoperto</h6>
-                    <p className="mb-1">Nome azienda - Tempo pieno/part-time</p>
-                    <p className="mb-1">Data - Periodo - Durata</p>
-                    <p className="mb-1">Località, Regione, Stato</p>
-                    <p className="mt-4">
-                      <strong>Competenze: </strong>Lorem ipsum dolor, sit amet
-                      consectetur adipisicing elit. Vero odit asperiores ad,
-                      repudiandae numquam minus officiis eaque, quam vitae nobis
-                      quasi, non possimus adipisci. Laudantium harum quas a
-                      voluptatum soluta.
-                    </p>
-                  </div>
-                </div>
+                {allExperiences.map((exp, index) => {
+                  return <SingleExperience key={index} job={exp} />;
+                })}
               </div>
             </Row>
           </Col>
