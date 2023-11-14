@@ -293,8 +293,9 @@ const SinglePost = ({ post, updatePosts }) => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          getComments();
           sendComment();
+          setCommentContent("");
+          getComments();
         }}
       >
         <Form.Group
@@ -309,6 +310,7 @@ const SinglePost = ({ post, updatePosts }) => {
           <Form.Control
             type="text"
             placeholder="Aggiungi un commento"
+            value={commentContent}
             onChange={(e) => {
               setCommentContent(e.target.value);
             }}
@@ -320,8 +322,9 @@ const SinglePost = ({ post, updatePosts }) => {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              getComments();
               sendComment();
+              setCommentContent("");
+              getComments();
             }}
           >
             INVIA
@@ -330,7 +333,11 @@ const SinglePost = ({ post, updatePosts }) => {
       </Form>
       {commentsToShow &&
         commentsToShow.map((comment) => (
-          <SingleComment comment={comment} getComments={getComments} />
+          <SingleComment
+            comment={comment}
+            getComments={getComments}
+            postId={post._id}
+          />
         ))}
     </Col>
   );

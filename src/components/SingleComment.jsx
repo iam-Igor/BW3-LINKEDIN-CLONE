@@ -1,7 +1,15 @@
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Modal, Form, Button } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
 import { URL_COMMENTS, API_KEY_COMMENTS } from "../redux/actions/actionsHome";
-const SingleComment = ({ comment, getComments }) => {
+import { useState } from "react";
+const SingleComment = ({ comment, getComments, postId }) => {
+  // Funzionalità del modale
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  // Testo del modale
+  const [textArea, setTextArea] = useState(comment.comment);
+  //
   const deleteComment = () => {
     fetch(URL_COMMENTS + comment._id, {
       method: "DELETE",
@@ -21,9 +29,84 @@ const SingleComment = ({ comment, getComments }) => {
         console.log(err);
       });
   };
-  console.log(comment);
+  const modifyComment = () => {
+    fetch(URL_COMMENTS + comment._id, {
+      method: "PUT",
+      body: JSON.stringify({
+        comment: textArea,
+        rate: "5",
+        elementId: postId,
+      }),
+      headers: {
+        Authorization: API_KEY_COMMENTS,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          getComments();
+          console.log("YOUR COMMENT HAS BEEN MODIFIED.");
+        } else {
+          throw new Error("SOMETHING WENT WRONG!");
+        }
+      })
+      .catch((err) => {
+        console.log(err, "ERROR.");
+      });
+  };
   return (
     <div className="d-flex gap-2 mb-2">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <div className="d-flex align-items-center gap-3 ms-2">
+            <div>
+              <img
+                // src={post.user.images}
+                src="https://placekitten.com/50"
+                className="rounded-circle"
+                fluid
+                alt="profile-img"
+              />
+            </div>
+            <div>
+              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <p className="mb-0">Pubblica: Chiunque</p>
+            </div>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Control
+                onChange={(e) => {
+                  setTextArea(e.target.value);
+                }}
+                as="textarea"
+                className="border-0 fs-5"
+                rows={10}
+                value={textArea}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            className="rounded-pill py-1"
+            onClick={() => {
+              modifyComment();
+
+              handleClose();
+            }}
+          >
+            Salva
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/*  */}
       <img
         src="https://placedog.net/50"
         className="rounded-circle"
@@ -49,7 +132,13 @@ const SingleComment = ({ comment, getComments }) => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => {}}>Modify comment</Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    handleShow();
+                  }}
+                >
+                  Modifica commento
+                </Dropdown.Item>
                 <Dropdown.Item
                   onClick={() => {
                     deleteComment();
