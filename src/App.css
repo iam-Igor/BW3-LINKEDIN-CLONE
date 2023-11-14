@@ -37,3 +37,9 @@ body {
 .pencil-button:hover {
   background-color: rgb(235,235,235);
 }
+#dropdown-basic{
+    width: 250px;
+}
+#icon-footer i {
+    font-size: 1.2em;
+}

@@ -1,0 +1,75 @@
+import { Container, Row, Col, Dropdown } from "react-bootstrap";
+const Myfooter = () => {
+  return (
+    <Container className="mt-5 text-secondary">
+      <Row className="d-flex aliign-items-center justify-content-center mb-3">
+        {/* testo */}
+        <Col>
+          <div className="d-flex flex-column">
+            <p>Informazioni</p>
+            <p>Linee guida della community</p>
+            <p>Privacy e condizioni</p>
+            <p>Sales Solution</p>
+            <p>Centro sicurezza</p>
+          </div>
+        </Col>
+        {/*  testo */}
+        <Col>
+          <div className="d-flex flex-column">
+            <p>Accessibilità</p>
+            <p>Carriera</p>
+            <p>Opzioni per gli annunci pubblicvitari</p>
+            <p>Mobile</p>
+          </div>
+        </Col>
+        {/* testo */}
+        <Col>
+          <div className="d-flex flex-column">
+            <p>Talent Solution</p>
+            <p>Soluzioni di marketing</p>
+            <p>IPubblicità</p>
+            <p>Piccole imprese</p>
+          </div>
+        </Col>
+        {/* sez icone e domande */}
+        <Col id="icon-footer">
+          <div className="d-flex flex-column">
+            <p>
+              <i class="bi bi-question-circle-fill me-2"></i>Domande?
+            </p>
+            <p>
+              <i class="bi bi-gear-fill me-2"></i>Gestisci il tuo account e la
+              tua privacy
+            </p>
+            <p>
+              <i class="bi bi-shield-shaded me-2"></i>Trasparenza sui contenuti
+              consigliati
+            </p>
+          </div>
+        </Col>
+        {/* input lingua */}
+        <Col>
+          <div className="d-flex flex-column">
+            <p>Seleziona lingua</p>
+
+            <Dropdown>
+              <Dropdown.Toggle
+                id="dropdown-basic"
+                className="text-secondary bg-white border border-dark "
+              >
+                Seleziona
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Italiano</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Inglese</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </Col>
+      </Row>
+      <p>Linkedin Corporation - Copyright {new Date().getFullYear()} </p>
+    </Container>
+  );
+};
+export default Myfooter;
