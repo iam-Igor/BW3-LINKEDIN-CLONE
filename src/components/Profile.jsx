@@ -153,6 +153,23 @@ const Profile = () => {
                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/488f115d-6e44-4ccd-b238-b2699af64966/d7bmt54-cde04c58-1c7d-41d2-84aa-ba777a5e5e57.jpg/v1/fill/w_1192,h_670,q_70,strp/web_developer_wallpaper__code__by_plusjack_d7bmt54-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvNDg4ZjExNWQtNmU0NC00Y2NkLWIyMzgtYjI2OTlhZjY0OTY2XC9kN2JtdDU0LWNkZTA0YzU4LTFjN2QtNDFkMi04NGFhLWJhNzc3YTVlNWU1Ny5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.vHgupyecAg5BSAmKddsETVA6TmT2Dp-kGL64C5Oprqk"
                   />
                   <Card.Body>
+                    <div
+                      className="pencil-button p-2 rounded-circle pointer"
+                      onClick={handleShow}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        data-supported-dps="24x24"
+                        fill="currentColor"
+                        className="mercado-match"
+                        width="24"
+                        height="24"
+                        focusable="false"
+                      >
+                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                      </svg>
+                    </div>
                     <img
                       style={{
                         width: "150px",
@@ -168,12 +185,6 @@ const Profile = () => {
                         <h2>
                           {myProfile.name} {myProfile.surname}
                         </h2>
-                        <div className="edit-profile text-center">
-                          <i
-                            className="bi bi-pencil fs-4"
-                            onClick={handleShow}
-                          ></i>
-                        </div>
                       </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
