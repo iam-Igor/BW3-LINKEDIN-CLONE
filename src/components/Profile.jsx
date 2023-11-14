@@ -7,11 +7,12 @@ import {
   Row,
   Form,
   ModalBody,
+
 } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "react-bootstrap/Modal";
+
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -490,6 +491,7 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
+      
     </Container>
   );
 };
