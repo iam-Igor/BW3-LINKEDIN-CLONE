@@ -18,7 +18,7 @@ body {
   border: 0;
   background-color: rgb(237, 243, 248);
 }
-#mynav p {
+#basic-navbar-nav p {
   font-size: 0.8em;
 }
 .search-icon {

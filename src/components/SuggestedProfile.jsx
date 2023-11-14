@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const SuggestedProfile = ({ profile }) => {
+const SuggestedProfile = ({ profile, dispatch }) => {
   return (
     <div className="d-flex my-2">
       <div>
@@ -16,7 +16,13 @@ const SuggestedProfile = ({ profile }) => {
           {profile.name} {profile.surname}
         </p>
         <p>{profile.title}</p>
-        <Button variant="outline-dark" className="rounded-pill">
+        <Button
+          variant="outline-dark"
+          className="rounded-pill"
+          onClick={() => {
+            dispatch({ type: "FOLLOW", payload: profile });
+          }}
+        >
           + Segui
         </Button>
       </div>
