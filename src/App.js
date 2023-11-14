@@ -1,17 +1,13 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-// import "../bootstrap/dist/css/bootstrap.min.css ";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Home from "./components/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./components/Profile";
+import Mynavbar from "./components/MyNavbar";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+    <div className="App">
+      <Mynavbar />
+      <Profile />
     </div>
   );
 }
