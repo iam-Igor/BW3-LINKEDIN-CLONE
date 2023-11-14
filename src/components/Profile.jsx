@@ -436,7 +436,7 @@ const Profile = () => {
             <Modal.Body>
               {following.map((profile, index) => {
                 return (
-                  <div className="my-2 d-flex">
+                  <div key={index} className="my-2 d-flex">
                     <div>
                       <img
                         src={profile.image}
@@ -445,20 +445,24 @@ const Profile = () => {
                         className="rounded-circle"
                       />
                     </div>
-                    <div className="ms-2">
-                      <p className="fw-bold m-0"></p>
-                      <p>
-                        {profile.name} {profile.surname}
-                      </p>
-                      <Button
-                        variant="outline-dark"
-                        className="rounded-pill"
-                        onClick={() => {
-                          dispatch({ type: "REMOVE", payload: index });
-                        }}
-                      >
-                        Rimuovi
-                      </Button>
+                    <div className="ms-2 d-flex align-items-center justify-content-between w-100">
+                      <div className="me-3">
+                        <p className="m-0">
+                          {profile.name} {profile.surname}
+                        </p>
+                        <p className="fw-bold m-0">{profile.title}</p>
+                      </div>
+                      <div>
+                        <Button
+                          variant="outline-dark"
+                          className="rounded-pill"
+                          onClick={() => {
+                            dispatch({ type: "REMOVE", payload: index });
+                          }}
+                        >
+                          Rimuovi
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 );
