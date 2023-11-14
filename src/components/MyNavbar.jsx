@@ -1,4 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Mynavbar = () => {
   return (
@@ -68,13 +69,13 @@ const Mynavbar = () => {
                   <i className="bi bi-bell-fill fs-4"></i>
                   <p className="m-0">Notifiche</p>
                 </Nav.Link>
-                <Nav.Link
-                  href="#link"
+                <Link
+                  to={"/Profile"}
                   className="nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3"
                 >
                   <i className="bi bi-person-square fs-4"></i>
                   <p className="m-0">Tu</p>
-                </Nav.Link>
+                </Link>
                 <Nav.Link
                   href="#link"
                   className="d-flex flex-column text-center"
