@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <Mynavbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
-          <Route element={<Home />} path="/" />
         </Routes>
       </BrowserRouter>
     </div>

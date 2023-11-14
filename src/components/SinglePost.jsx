@@ -19,9 +19,8 @@ import {
   Trash3Fill,
   PencilFill,
 } from "react-bootstrap-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SingleComment from "./SingleComment";
-import { useFetcher } from "react-router-dom";
 
 const SinglePost = ({ post, updatePosts }) => {
   // Testo di partenza, modificabile, del modale
