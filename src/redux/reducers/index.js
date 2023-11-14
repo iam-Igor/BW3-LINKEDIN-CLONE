@@ -1,8 +1,10 @@
-import { FOLLOW, REMOVE, PARAMS } from "../store";
+import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH } from "../store";
 
 const initialState = {
   following: "",
   urlParams: "",
+  searchInput: "",
+  searchData: false,
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -24,6 +26,16 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         urlParams: action.payload,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        searchInput: action.payload,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        searchData: action.payload,
       };
     default:
       return state;
