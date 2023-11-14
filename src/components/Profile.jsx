@@ -44,7 +44,7 @@ const Profile = () => {
     description: "",
     area: "",
     username: "totti10",
-    // image: "",
+    image: "",
   });
 
   const apiKey =
@@ -728,19 +728,19 @@ const Profile = () => {
                     value={editExoerience.area}
                   />
 
-                  {/* <Form.Label>Image</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Image url"
-                  onChange={(e) => {
-                    setEditExoerience({
-                      ...editExoerience,
-                      image: e.target.value,
-                    });
-                  }}
-                  required
-                  value={editExoerience.image}
-                /> */}
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Image url"
+                    onChange={(e) => {
+                      setEditExoerience({
+                        ...editExoerience,
+                        image: e.target.value,
+                      });
+                    }}
+                    required
+                    value={editExoerience.image}
+                  />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
