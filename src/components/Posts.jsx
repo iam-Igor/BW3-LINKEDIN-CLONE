@@ -213,7 +213,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9}>
+          <Col xs={9} className="p-0">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -221,7 +221,7 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
+            <div className="rounded-pill d-flex align-items-center border border-2 px-2 py-1 border-primary cursor fw-bold">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
@@ -232,7 +232,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9}>
+          <Col xs={9} className="p-0">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -240,7 +240,7 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
+            <div className="rounded-pill d-flex align-items-center border border-2 px-2 py-1 border-primary cursor fw-bold">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
@@ -251,7 +251,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9}>
+          <Col xs={9} className="p-0">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -259,7 +259,7 @@ const Posts = () => {
             </p>
           </Col>
           <Col className="ps-0 text-primary">
-            <div className="rounded-pill d-flex align-items-center border px-2 py-1 border-primary cursor">
+            <div className="rounded-pill d-flex align-items-center border border-2 px-2 py-1 border-primary cursor fw-bold">
               <PlusLg className="mt-1" /> Segui
             </div>
           </Col>
