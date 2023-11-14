@@ -40,7 +40,7 @@ const SideBar = () => {
           </div>
         </div>
       </Col>
-      <Col xs={12} className="mt-2 rounded border background-columns" ì>
+      <Col xs={12} className="mt-2 rounded border background-columns">
         <div className="d-flex flex-column mt-3">
           <p className="text-primary ms-4">Gruppi</p>
           <div className="d-flex justify-content-between">

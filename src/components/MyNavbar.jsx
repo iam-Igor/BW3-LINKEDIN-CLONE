@@ -1,9 +1,11 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Mynavbar = () => {
   const url = useSelector((state) => state.urlParams);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -38,15 +40,17 @@ const Mynavbar = () => {
             <Nav>
               <div className="d-flex">
                 <Nav.Link
+                  onClick={() => {
+                    navigate("/");
+                  }}
                   href="#home"
                   className="d-flex flex-column text-center"
                 >
                   <i className="bi bi-house-door-fill fs-4"></i>
-                  <Link to="/home" className="text-decoration-none">
-                    <p className="m-0" to="/home">
-                      Home
-                    </p>
-                  </Link>
+
+                  <p className="m-0" to="/home">
+                    Home
+                  </p>
                 </Nav.Link>
                 <Nav.Link
                   href="#link"
