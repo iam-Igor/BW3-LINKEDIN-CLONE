@@ -1,4 +1,5 @@
-import { Container, Row, Col, Dropdown } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 const Myfooter = () => {
   return (
     <Container className="mt-5 text-secondary">
@@ -52,19 +53,11 @@ const Myfooter = () => {
           <div className="d-flex flex-column">
             <p>Seleziona lingua</p>
 
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                className="text-secondary bg-white border border-dark "
-              >
-                Seleziona
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Italiano</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Inglese</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Form.Select aria-label="Default select example">
+              <option>Seleziona-</option>
+              <option value="1">Italiano</option>
+              <option value="2">Inglese</option>
+            </Form.Select>
           </div>
         </Col>
       </Row>
