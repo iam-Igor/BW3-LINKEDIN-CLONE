@@ -27,3 +27,13 @@ body {
 .search-icon i {
   font-size: 0.8em;
 }
+.pencil-button {
+  position: absolute;
+  right: 5%;
+  text-decoration: none;
+  color: rgb(94,94,94);
+  cursor: pointer;
+}
+.pencil-button:hover {
+  background-color: rgb(235,235,235);
+}
