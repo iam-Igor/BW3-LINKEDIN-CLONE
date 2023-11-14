@@ -344,34 +344,36 @@ const Profile = () => {
                   <p>{myProfile.bio}</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2 border info-section mb-2">
-                <div className="position-relative d-flex align-items-center">
-                  <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
-                  {location.pathname === "/profile/me" ? (
-                    <div
-                      className="pencil-button p-2 rounded-circle pointer"
-                      onClick={() => setShow3(true)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        data-supported-dps="24x24"
-                        fill="currentColor"
-                        className="mercado-match"
-                        width="24"
-                        height="24"
-                        focusable="false"
+              {allExperiences && (
+                <div className="bg-white rounded-2 border info-section mb-2">
+                  <div className="position-relative d-flex align-items-center">
+                    <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
+                    {location.pathname === "/profile/me" ? (
+                      <div
+                        className="pencil-button p-2 rounded-circle pointer"
+                        onClick={() => setShow3(true)}
                       >
-                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                      </svg>
-                    </div>
-                  ) : null}
-                </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          data-supported-dps="24x24"
+                          fill="currentColor"
+                          className="mercado-match"
+                          width="24"
+                          height="24"
+                          focusable="false"
+                        >
+                          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                        </svg>
+                      </div>
+                    ) : null}
+                  </div>
 
-                {allExperiences.map((exp, index) => {
-                  return <SingleExperience key={index} job={exp} />;
-                })}
-              </div>
+                  {allExperiences.map((exp, index) => {
+                    return <SingleExperience key={index} job={exp} />;
+                  })}
+                </div>
+              )}
             </Row>
           </Col>
           <Col className="col-12 col-md-3 ps-0">
