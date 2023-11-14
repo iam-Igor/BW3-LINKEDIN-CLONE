@@ -51,6 +51,10 @@ body {
 
 /* POSTS */
 
+.single-event {
+  font-size: 0.8rem;
+}
+
 #modal-event-paragraphs {
   font-size: 0.7rem;
 }

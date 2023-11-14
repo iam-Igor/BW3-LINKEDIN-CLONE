@@ -25,7 +25,11 @@ const Home = () => {
             <Posts />
           </Col>
           {/* COLONNA A DESTRA */}
-          <Col md={{ span: 8, offset: 4 }} className="mt-5 d-none d-md-block ">
+          <Col
+            md={{ span: 8, offset: 4 }}
+            lg={{ span: 4, offset: 0 }}
+            className="mt-5 d-none d-md-block "
+          >
             <SideBarRight />
           </Col>
         </Row>
