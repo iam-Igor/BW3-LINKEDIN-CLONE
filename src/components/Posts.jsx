@@ -77,7 +77,7 @@ const Posts = () => {
   }, [update]);
 
   return (
-    <Row className="justify-content-center">
+    <Row className="justify-content-center mx-1">
       {/* MODALE che si apre cliccando sull'input */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -151,7 +151,7 @@ const Posts = () => {
         </Modal.Footer>
       </Modal>
       {/* SEZIONE INPUT DOVE SCRIVERE I POST*/}
-      <Col className="border rounded-3 py-3 px-4" xs={12}>
+      <Col className="border rounded-3 py-3 px-4 background-columns" xs={12}>
         <div className="d-flex gap-3 align-items-center ">
           <div className="mb-3">
             <img
@@ -197,7 +197,7 @@ const Posts = () => {
         </div>
       </Col>
       {/* SEZIONE CONSIGLIATI */}
-      <Col xs={12} className="border rounded-3 pt-3">
+      <Col xs={12} className="border rounded-3 pt-3 background-columns">
         <Row className="mt-3">
           <h5 className="fs-6 mb-4 ">Consigli per te</h5>
           <Col className="pe-0">

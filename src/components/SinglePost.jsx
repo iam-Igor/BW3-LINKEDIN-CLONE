@@ -141,7 +141,7 @@ const SinglePost = ({ post, updatePosts }) => {
   };
 
   return (
-    <Col xs={12} className="py-3 my-2 border rounded-3">
+    <Col xs={12} className="py-3 my-2 border rounded-3 background-columns">
       {/* MODALE per modificare il contenuto del post */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
