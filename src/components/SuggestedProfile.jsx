@@ -2,9 +2,14 @@ import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import { FOLLOW } from "../redux/store";
+import { useNavigate } from "react-router-dom";
 
 const SuggestedProfile = ({ profile }) => {
   const dispatch = useDispatch();
+
+  const location = useNavigate();
+
+  console.log(profile);
 
   return (
     <div className="d-flex my-2">
@@ -17,7 +22,12 @@ const SuggestedProfile = ({ profile }) => {
         />
       </div>
       <div className="ms-2">
-        <p className="fw-bold m-0">
+        <p
+          className="fw-bold m-0"
+          onClick={() => {
+            location(`/profile/${profile._id}`);
+          }}
+        >
           {profile.name} {profile.surname}
         </p>
         <p>{profile.title}</p>

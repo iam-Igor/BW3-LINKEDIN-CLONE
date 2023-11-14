@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Mynavbar />
       <Routes>
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/profile/:userID" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

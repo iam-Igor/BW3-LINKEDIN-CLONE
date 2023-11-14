@@ -1,7 +1,10 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Mynavbar = () => {
+  const url = useSelector((state) => state.urlParams);
+
   return (
     <>
       <Navbar className="d-flex sticky-top p-0" expand="lg">
@@ -70,7 +73,7 @@ const Mynavbar = () => {
                   <p className="m-0">Notifiche</p>
                 </Nav.Link>
                 <Link
-                  to={"/Profile"}
+                  to={`/profile/me`}
                   className="nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3"
                 >
                   <i className="bi bi-person-square fs-4"></i>
