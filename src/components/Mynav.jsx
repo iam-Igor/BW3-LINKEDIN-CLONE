@@ -4,8 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 
 const Mynav = () => {
   return (
-    <Navbar className="d-flex px-3" expand="md">
-      <Container fluid className="p-0">
+    <Navbar className="d-flex px-3 bg-white" expand="md">
+      <Container fluid className="p-0 ">
         {/* logo e input */}
         <div className="d-flex ms-5">
           <div className="d-flex align-items-center">
