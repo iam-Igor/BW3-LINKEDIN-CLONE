@@ -32,43 +32,52 @@ const SideBarRight = () => {
           </ul>
         </div>
       </Col>
-      <Col xs={12} className="mt-2 d-flex gap-2 flex-column ">
+      <Col
+        xs={12}
+        className="mt-4 d-flex gap-2 flex-column "
+        id="footer-sidebar"
+      >
         <div className="d-flex gap-3 justify-content-center ">
-          <p className="text-secondary ">Informazioni</p>
-          <p className="text-secondary ">Accessibilità</p>
+          <p className="text-secondary mb-0">Informazioni</p>
+          <p className="text-secondary mb-0">Accessibilità</p>
         </div>
 
         <div className="d-flex gap-3 justify-content-center ">
-          <p className="text-secondary text-center">Centro Assistenza </p>
-          <p className="text-secondary text-center">
+          <p className="text-secondary mb-0 text-center">Centro Assistenza </p>
+          <p className="text-secondary mb-0 text-center">
             Privacy e condizioni <CaretDownFill />
           </p>
         </div>
 
         <div className="d-flex gap-3 justify-content-center ">
-          <p className="text-secondary ">
+          <p className="text-secondary mb-0">
             Opzioni per gli annunci pubblicitari
           </p>
         </div>
 
         <div className="d-flex gap-3 justify-content-center ">
-          <p className="text-secondary ">
+          <p className="text-secondary mb-0">
             Servizi alle aziende <CaretDownFill />
           </p>
-          <p className="text-secondary ">Pubblicità</p>
+          <p className="text-secondary mb-0">Pubblicità</p>
         </div>
 
         <div className="d-flex gap-3 justify-content-center ">
-          <p className="text-secondary ">Scarica app Linkedln</p>
-          <p className="text-secondary ">Altro</p>
+          <p className="text-secondary mb-0">Scarica app Linkedln</p>
+          <p className="text-secondary mb-0">Altro</p>
         </div>
 
-        <div className="text-secondary">&copy; {new Date().getFullYear()}</div>
-        <img
-          src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr"
-          alt="Immagine copy"
-          width="30%"
-        />
+        <div className="text-secondary d-flex gap-1 justify-content-center">
+          <img
+            src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr"
+            alt="Immagine copy"
+            width="20%"
+            className="mt-1"
+          />
+          <p className="align-self-baseline  mb-0 mt-2">
+            LinkedIn Corporation &copy; {new Date().getFullYear()}
+          </p>
+        </div>
       </Col>
     </Row>
   );

@@ -18,6 +18,7 @@ import {
   EyeSlashFill,
   Trash3Fill,
   PencilFill,
+  PersonCircle,
 } from "react-bootstrap-icons";
 import { useState } from "react";
 import SingleComment from "./SingleComment";
@@ -197,14 +198,16 @@ const SinglePost = ({ post, updatePosts }) => {
 
       <div className="d-flex justify-content-between mb-2">
         <div className="d-flex gap-2">
-          <img
-            src={
-              post.user.image ? post.user.image : "https://placekitten.com/40"
-            }
-            width="50px"
-            height="50px"
-            alt="author-img"
-          />
+          {post.user.image && (
+            <img
+              src={post.user.image}
+              width="50px"
+              height="50px"
+              alt="author-img"
+            />
+          )}
+
+          {!post.user.image && <PersonCircle className="fs-1" />}
 
           <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
         </div>
@@ -228,23 +231,30 @@ const SinglePost = ({ post, updatePosts }) => {
                 <Clipboard className="me-2 mt-1" />
                 Copia link al post
               </Dropdown.Item>
-              <Dropdown.Item
-                className={"d-flex align-items-center"}
-                onClick={deletePost}
-              >
-                <Trash3Fill className="me-2 mt-1" />
-                Elimina questo post
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="d-flex align-items-center"
-                onClick={() => {
-                  console.log("cliccato");
-                  handleShow();
-                }}
-              >
-                <PencilFill className="me-2 mt-1" />
-                Modifica questo post
-              </Dropdown.Item>
+              {myProfile._id === post.user._id ? (
+                <>
+                  <Dropdown.Item
+                    className={"d-flex align-items-center"}
+                    onClick={deletePost}
+                  >
+                    <Trash3Fill className="me-2 mt-1" />
+                    Elimina questo post
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="d-flex align-items-center"
+                    onClick={() => {
+                      console.log("cliccato");
+                      handleShow();
+                    }}
+                  >
+                    <PencilFill className="me-2 mt-1" />
+                    Modifica questo post
+                  </Dropdown.Item>
+                </>
+              ) : (
+                ""
+              )}
+
               <Dropdown.Item className="d-flex align-items-center">
                 <CodeSlash className="me-2 mt-1" />
                 Incorpora questo post

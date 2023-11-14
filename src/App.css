@@ -77,3 +77,9 @@ body {
 .comments-actions {
   font-size: 0.9rem;
 }
+
+/* FOOTER SIDEBAR DESTRA */
+
+#footer-sidebar {
+  font-size: 0.8rem;
+}
