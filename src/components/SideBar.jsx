@@ -11,9 +11,10 @@ const Sidebar = () => {
     <div className="p-4 border border-bottom " style={{ backgroundColor: ' #f3f3f3' }}   >
       <div className="text-center">
         <img
-          src=""
+          src="https://previews.123rf.com/images/siamimages/siamimages1504/siamimages150400651/38413902-segno-icona-utente.jpg"
           alt="Immagine del profilo"
           className="img-fluid rounded-circle" 
+          style={{width:'20%'}}
         />
         <h3 className="mt-3">Nome Utente</h3>
         <p className="text-secondary">Titolo Professionale</p>

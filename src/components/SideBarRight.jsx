@@ -64,9 +64,9 @@ const SideBarRight = () => {
         
         <div className='text-secondary' >
           &copy; {new Date().getFullYear()} 
-          
         </div>
-    
+        <img src='https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr'
+         alt="Immagine copy" />
      </Col>
    </Row>
    </Container>
