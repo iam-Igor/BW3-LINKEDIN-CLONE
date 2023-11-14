@@ -11,6 +11,8 @@ import {
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import { PARAMS } from "../redux/store";
+import { useLocation, useParams } from "react-router-dom";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -18,9 +20,11 @@ const Profile = () => {
   const [profilesData, setProfilesData] = useState(null);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-
+  const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
+  const location = useLocation();
 
+  console.log(location.pathname);
   // const [name, setName] = useState("");
   // const [surname, setSurname] = useState("");
   // const [username, setUsername] = useState("");
@@ -107,13 +111,16 @@ const Profile = () => {
   };
 
   const getMyProfile = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
-      },
-    })
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/" + urlParams.userID,
+      {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
+        },
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -134,6 +141,8 @@ const Profile = () => {
           area: data.area,
           image: data.image,
         });
+
+        dispatch({ type: PARAMS, payload: data._id });
       })
       .catch((err) => {
         console.log(err);
@@ -146,7 +155,7 @@ const Profile = () => {
   useEffect(() => {
     getMyProfile();
     getAllprofilesInfo();
-  }, []);
+  }, [urlParams]);
 
   return (
     <Container>
@@ -162,23 +171,26 @@ const Profile = () => {
                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/488f115d-6e44-4ccd-b238-b2699af64966/d7bmt54-cde04c58-1c7d-41d2-84aa-ba777a5e5e57.jpg/v1/fill/w_1192,h_670,q_70,strp/web_developer_wallpaper__code__by_plusjack_d7bmt54-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvNDg4ZjExNWQtNmU0NC00Y2NkLWIyMzgtYjI2OTlhZjY0OTY2XC9kN2JtdDU0LWNkZTA0YzU4LTFjN2QtNDFkMi04NGFhLWJhNzc3YTVlNWU1Ny5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.vHgupyecAg5BSAmKddsETVA6TmT2Dp-kGL64C5Oprqk"
                   />
                   <Card.Body>
-                    <div
-                      className="pencil-button p-2 rounded-circle pointer"
-                      onClick={handleShow}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        data-supported-dps="24x24"
-                        fill="currentColor"
-                        className="mercado-match"
-                        width="24"
-                        height="24"
-                        focusable="false"
+                    {location.pathname === "/profile/me" ? (
+                      <div
+                        className="pencil-button p-2 rounded-circle pointer"
+                        onClick={handleShow}
                       >
-                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                      </svg>
-                    </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          data-supported-dps="24x24"
+                          fill="currentColor"
+                          className="mercado-match"
+                          width="24"
+                          height="24"
+                          focusable="false"
+                        >
+                          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                        </svg>
+                      </div>
+                    ) : null}
+
                     <img
                       style={{
                         width: "150px",
@@ -197,17 +209,19 @@ const Profile = () => {
                       </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
-                      <p>
-                        Following:{" "}
-                        <span
-                          className="fw-bold"
-                          onClick={() => {
-                            setShow2(true);
-                          }}
-                        >
-                          {following.length}
-                        </span>{" "}
-                      </p>
+                      {location.pathname === "/profile/me" ? (
+                        <p>
+                          Following:{" "}
+                          <span
+                            className="fw-bold"
+                            onClick={() => {
+                              setShow2(true);
+                            }}
+                          >
+                            {following.length}
+                          </span>{" "}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="mx-2">
                       <Button className="rounded-pill fw-bold">
