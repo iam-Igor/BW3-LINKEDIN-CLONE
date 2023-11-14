@@ -7,12 +7,10 @@ import {
   Row,
   Form,
   ModalBody,
-
 } from "react-bootstrap";
 import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
-
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -144,8 +142,6 @@ const Profile = () => {
   return (
     <Container>
       {myProfile && (
-        <Row className="d-flex flex-column flex-md-row">
-          <Col className="col-md-8 ">
         <Row className="d-flex flex-column flex-md-row mt-3">
           <Col className="col-md-9 ">
             <Row className="d-flex flex-column">
@@ -242,7 +238,7 @@ const Profile = () => {
               </div>
             </Row>
           </Col>
-          <Col className="col-12 col-md-4 ps-0">
+          <Col className="col-12 col-md-3 ps-0">
             <Row className="ms-md-4 flex-column ms-0">
               <Col className="bg-white p-3 border rounded d-flex justify-content-center">
                 <div className="d-flex justify-content-around w-75">
@@ -491,8 +487,8 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
-      
     </Container>
   );
 };
+
 export default Profile;
