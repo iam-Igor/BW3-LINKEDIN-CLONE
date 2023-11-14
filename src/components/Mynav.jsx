@@ -29,7 +29,7 @@ const Mynav = () => {
           {/* logo e input */}
           <Row className="align-items-center w-100 ">
             <Col className="col-10 col-md-6">
-              <div className="d-flex ms-5">
+              <div className="d-flex ms-5 flex-grow-2">
                 <div className="d-flex align-items-center">
                   <img
                     className="me-2"
@@ -37,7 +37,7 @@ const Mynav = () => {
                     src="https://logospng.org/download/linkedin/logo-linkedin-icon-4096.png"
                     alt="logo-linkedin"
                   />
-                  <div className="d-flex">
+                  <div className="d-flex ">
                     <div
                       className="search-icon rounded-start ps-1 d-flex align-items-center"
                       onClick={() => {
