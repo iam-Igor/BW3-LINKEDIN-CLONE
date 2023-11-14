@@ -1,6 +1,9 @@
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 
-const SuggestedProfile = ({ profile, dispatch }) => {
+const SuggestedProfile = ({ profile }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="d-flex my-2">
       <div>

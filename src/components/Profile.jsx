@@ -19,14 +19,16 @@ const Profile = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [username, setUsername] = useState("");
-  const [title, setTitle] = useState("");
-  const [area, setArea] = useState("");
-  const [image, setProfileImage] = useState("");
-  const [bio, setBio] = useState("");
-  const [email, setEmail] = useState("");
+  const [editProfile, setEditProfile] = useState("");
+
+  // const [name, setName] = useState("");
+  // const [surname, setSurname] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [area, setArea] = useState("");
+  // const [image, setProfileImage] = useState("");
+  // const [bio, setBio] = useState("");
+  // const [email, setEmail] = useState("");
 
   // SEZIONE DISPATCH PER LEGGERE I FOLLOWING
 
@@ -37,29 +39,29 @@ const Profile = () => {
   const [show2, setShow2] = useState(false);
 
   const handleShow = () => {
-    setName(myProfile.name || "");
-    setSurname(myProfile.surname || "");
-    setUsername(myProfile.username || "");
-    setEmail(myProfile.email || "");
-    setTitle(myProfile.title || "");
-    setArea(myProfile.area || "");
-    setProfileImage(myProfile.image || "");
-    setBio(myProfile.bio || "");
+    // setName(myProfile.name || "");
+    // setSurname(myProfile.surname || "");
+    // setUsername(myProfile.username || "");
+    // setEmail(myProfile.email || "");
+    // setTitle(myProfile.title || "");
+    // setArea(myProfile.area || "");
+    // setProfileImage(myProfile.image || "");
+    // setBio(myProfile.bio || "");
 
     setShow(true);
   };
 
   const handleSave = () => {
-    const updatedData = {
-      name,
-      surname,
-      username,
-      email,
-      title,
-      area,
-      image,
-      bio,
-    };
+    // const updatedData = {
+    //   name,
+    //   surname,
+    //   username,
+    //   email,
+    //   title,
+    //   area,
+    //   image,
+    //   bio,
+    // };
 
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
@@ -67,19 +69,16 @@ const Profile = () => {
         Authorization: apiKey,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(editProfile),
     })
       .then((res) => {
         if (res.ok) {
-          return res.json();
+          alert("dati modificati!");
+          getMyProfile();
+          handleClose();
         } else {
           throw new Error("error in fetching user profiles");
         }
-      })
-      .then(() => {
-        console.log("dati modificati!");
-        handleClose();
-        getMyProfile();
       })
       .catch((err) => {
         console.log(err);
@@ -125,6 +124,16 @@ const Profile = () => {
       .then((data) => {
         console.log(data);
         setMyProfile(data);
+        setEditProfile({
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          username: data.username,
+          bio: data.bio,
+          title: data.title,
+          area: data.area,
+          image: data.image,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -275,25 +284,13 @@ const Profile = () => {
                       Profili che potresti conoscere
                     </p>
                     {profilesData.slice(0, 6).map((profile, index) => {
-                      return (
-                        <SuggestedProfile
-                          key={index}
-                          profile={profile}
-                          dispatch={dispatch}
-                        />
-                      );
+                      return <SuggestedProfile key={index} profile={profile} />;
                     })}
                   </Col>
                   <Col className="border my-2 bg-white d-flex flex-column rounded">
                     <p className="fw-bold mt-2">Protrebbero interessarti</p>
                     {profilesData.slice(6, 8).map((profile, index) => {
-                      return (
-                        <SuggestedProfile
-                          key={index}
-                          profile={profile}
-                          dispatch={dispatch}
-                        />
-                      );
+                      return <SuggestedProfile key={index} profile={profile} />;
                     })}
                   </Col>
                 </>
@@ -325,10 +322,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Your name"
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      name: e.target.value,
+                    });
                   }}
                   required
-                  value={name}
+                  value={editProfile.name}
                 />
 
                 <Form.Label>Surname</Form.Label>
@@ -336,10 +336,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Your surname"
                   onChange={(e) => {
-                    setSurname(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      surname: e.target.value,
+                    });
                   }}
                   required
-                  value={surname}
+                  value={editProfile.surname}
                 />
 
                 <Form.Label>Username</Form.Label>
@@ -347,10 +350,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Your new username"
                   onChange={(e) => {
-                    setUsername(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      username: e.target.value,
+                    });
                   }}
                   required
-                  value={username}
+                  value={editProfile.username}
                 />
 
                 <Form.Label>Email</Form.Label>
@@ -358,10 +364,13 @@ const Profile = () => {
                   type="email"
                   placeholder="Your new email"
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      email: e.target.value,
+                    });
                   }}
                   required
-                  value={email}
+                  value={editProfile.email}
                 />
 
                 <Form.Label>Title</Form.Label>
@@ -369,10 +378,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Es Developer.."
                   onChange={(e) => {
-                    setTitle(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      title: e.target.value,
+                    });
                   }}
                   required
-                  value={title}
+                  value={editProfile.title}
                 />
 
                 <Form.Label>Area</Form.Label>
@@ -380,10 +392,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Your area region"
                   onChange={(e) => {
-                    setArea(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      area: e.target.value,
+                    });
                   }}
                   required
-                  value={area}
+                  value={editProfile.area}
                 />
 
                 <Form.Label>Profile image</Form.Label>
@@ -391,10 +406,13 @@ const Profile = () => {
                   type="text"
                   placeholder="Image url"
                   onChange={(e) => {
-                    setProfileImage(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      image: e.target.value,
+                    });
                   }}
                   required
-                  value={image}
+                  value={editProfile.image}
                 />
               </Form.Group>
               <Form.Group
@@ -407,10 +425,13 @@ const Profile = () => {
                   rows={3}
                   placeholder="Bio details"
                   onChange={(e) => {
-                    setBio(e.target.value);
+                    setEditProfile({
+                      ...editProfile,
+                      bio: e.target.value,
+                    });
                   }}
                   required
-                  value={bio}
+                  value={editProfile.bio}
                 />
               </Form.Group>
             </Form>
@@ -426,7 +447,9 @@ const Profile = () => {
             <Button
               variant="primary"
               className="rounded-pill"
-              onClick={handleSave}
+              onClick={() => {
+                handleSave();
+              }}
             >
               Save
             </Button>
