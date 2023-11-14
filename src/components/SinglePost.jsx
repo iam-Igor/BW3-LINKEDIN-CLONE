@@ -214,6 +214,7 @@ const SinglePost = ({ post, updatePosts }) => {
         <div>
           <Dropdown>
             <Dropdown.Toggle
+              className="text-end border-0"
               variant="none"
               drop="start"
               show="none"
