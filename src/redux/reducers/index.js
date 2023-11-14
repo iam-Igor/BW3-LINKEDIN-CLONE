@@ -1,10 +1,11 @@
 import { FOLLOW, REMOVE, PARAMS } from "../store";
-import { GET_PROFILE_DATA } from "../actions/actionsHome";
+import { CREATE_EVENT, GET_PROFILE_DATA } from "../actions/actionsHome";
 
 const initialState = {
   following: "",
   urlParams: "",
   profileData: null,
+  events: [],
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -31,6 +32,11 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         profileData: action.payload,
+      };
+    case CREATE_EVENT:
+      return {
+        ...state,
+        events: [...state.events, action.payload],
       };
     default:
       return state;
