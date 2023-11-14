@@ -19,8 +19,9 @@ import {
   Trash3Fill,
   PencilFill,
 } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
+import { useFetcher } from "react-router-dom";
 
 const SinglePost = ({ post, updatePosts }) => {
   // Testo di partenza, modificabile, del modale
@@ -28,6 +29,9 @@ const SinglePost = ({ post, updatePosts }) => {
 
   // Testo del commento
   const [commentContent, setCommentContent] = useState("");
+  // Commenti Filtrati in base all'id del post
+
+  const [commentsToShow, setCommentsToShow] = useState(null);
 
   // Funzionalità del modale
   const [show, setShow] = useState(false);
@@ -82,7 +86,7 @@ const SinglePost = ({ post, updatePosts }) => {
   // Fetch per ottenere i commenti
 
   const getComments = () => {
-    fetch(URL_COMMENTS + post._id, {
+    fetch(URL_COMMENTS, {
       headers: {
         Authorization: API_KEY_COMMENTS,
       },
@@ -96,6 +100,11 @@ const SinglePost = ({ post, updatePosts }) => {
       })
       .then((data) => {
         console.log(data, "COMMENTS");
+
+        const filteredData = data.filter(
+          (comment) => comment.elementId === post._id
+        );
+        setCommentsToShow(filteredData);
       })
       .catch((err) => {
         console.log(err);
@@ -119,6 +128,8 @@ const SinglePost = ({ post, updatePosts }) => {
     })
       .then((res) => {
         if (res.ok) {
+          setCommentContent("");
+
           console.log("YOUR COMMENT HAS BEEN SENT");
         } else {
           throw new Error("SOMETHING WENT WRONG!");
@@ -282,6 +293,7 @@ const SinglePost = ({ post, updatePosts }) => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
+          getComments();
           sendComment();
         }}
       >
@@ -300,11 +312,15 @@ const SinglePost = ({ post, updatePosts }) => {
             onChange={(e) => {
               setCommentContent(e.target.value);
             }}
+            onClick={() => {
+              getComments();
+            }}
             className="rounded-pill py-2 px-2 border-end-0"
           />
           <Button
             onClick={(e) => {
               e.preventDefault();
+              getComments();
               sendComment();
             }}
           >
@@ -312,7 +328,10 @@ const SinglePost = ({ post, updatePosts }) => {
           </Button>
         </Form.Group>
       </Form>
-      <SingleComment />
+      {commentsToShow &&
+        commentsToShow.map((comment) => (
+          <SingleComment comment={comment} getComments={getComments} />
+        ))}
     </Col>
   );
 };

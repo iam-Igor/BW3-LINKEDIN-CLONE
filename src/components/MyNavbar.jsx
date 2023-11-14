@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 const Mynavbar = () => {
   return (
     <>
@@ -38,7 +38,11 @@ const Mynavbar = () => {
                   className="d-flex flex-column text-center"
                 >
                   <i className="bi bi-house-door-fill fs-4"></i>
-                  <p className="m-0">Home</p>
+                  <Link to="/home" className="text-decoration-none">
+                    <p className="m-0" to="/home">
+                      Home
+                    </p>
+                  </Link>
                 </Nav.Link>
                 <Nav.Link
                   href="#link"
