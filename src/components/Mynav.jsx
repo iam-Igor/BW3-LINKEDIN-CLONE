@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const Mynav = () => {
   return (
     <Navbar className="d-flex px-3 bg-white" expand="md">
@@ -41,13 +42,13 @@ const Mynav = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav>
                 <div className="d-flex me-5">
-                  <Nav.Link
-                    href="#home"
-                    className="d-flex flex-column text-center mx-2 mx-md-0"
+                  <Link
+                    to={"/"}
+                    className="nav-link d-flex flex-column text-center 0 pe-3"
                   >
                     <i className="bi bi-house-door-fill fs-4"></i>
                     <p className="m-0">Home</p>
-                  </Nav.Link>
+                  </Link>
                   <Nav.Link
                     href="#link"
                     className="d-flex flex-column text-center d-none d-md-inline-block"
@@ -76,13 +77,13 @@ const Mynav = () => {
                     <i className="bi bi-bell-fill fs-4"></i>
                     <p className="m-0">Notifiche</p>
                   </Nav.Link>
-                  <Nav.Link
-                    className="nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3 mx-md-0"
-                    href="#link"
+                  <Link
+                    to={"/profile/me"}
+                    className="nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3"
                   >
                     <i className="bi bi-person-square fs-4"></i>
                     <p className="m-0">Tu</p>
-                  </Nav.Link>
+                  </Link>
                   <Nav.Link
                     href="#link"
                     className="d-flex flex-column text-center"

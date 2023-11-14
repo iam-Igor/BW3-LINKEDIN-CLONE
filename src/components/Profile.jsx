@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PARAMS } from "../redux/store";
 import { useLocation, useParams } from "react-router-dom";
 import SingleExperience from "./SingleExperience";
+import Myfooter from "./Myfooter";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -783,6 +784,7 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
+      <Myfooter />
     </Container>
   );
 };
