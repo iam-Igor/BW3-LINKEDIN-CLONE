@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
+import { FOLLOW } from "../redux/store";
+
 const SuggestedProfile = ({ profile }) => {
   const dispatch = useDispatch();
 
@@ -23,7 +25,7 @@ const SuggestedProfile = ({ profile }) => {
           variant="outline-dark"
           className="rounded-pill"
           onClick={() => {
-            dispatch({ type: "FOLLOW", payload: profile });
+            dispatch({ type: FOLLOW, payload: profile });
           }}
         >
           + Segui
