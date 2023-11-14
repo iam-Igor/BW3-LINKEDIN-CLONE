@@ -51,6 +51,10 @@ body {
 
 /* POSTS */
 
+#modal-event-paragraphs {
+  font-size: 0.7rem;
+}
+
 .dropdown-toggle::after {
   display: none !important;
 }

@@ -126,7 +126,7 @@ const SingleComment = ({ comment, getComments, postId }) => {
             </div>
             <Dropdown>
               <Dropdown.Toggle
-                className="pe-0 pt-0 w-25 e-caret-hide"
+                className="pe-0 pt-0 w-25 "
                 variant="none"
                 id="dropdown-basic"
               >
