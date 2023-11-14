@@ -87,14 +87,18 @@ const Posts = () => {
           <div className="d-flex align-items-center gap-3 ms-2">
             <div>
               <img
-                src="https://placekitten.com/50"
+                src={myProfile ? myProfile.image : "http://placekitten.com/50"}
+                width="50px"
+                height="50px"
                 className="rounded-circle"
                 fluid
                 alt="profile-img"
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">{myProfile.username}</Modal.Title>
+              <Modal.Title className="fs-5">
+                {myProfile ? myProfile.username : "Nome utente"}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
@@ -157,7 +161,9 @@ const Posts = () => {
         <div className="d-flex gap-3 align-items-center ">
           <div className="mb-3">
             <img
-              src="http://placekitten.com/50"
+              src={myProfile ? myProfile.image : "http://placekitten.com/50"}
+              width="50px"
+              height="50px"
               alt="profile-img"
               className="rounded-circle"
             />
@@ -172,19 +178,19 @@ const Posts = () => {
             </Form.Group>
           </Form>
         </div>
-        <div className="d-flex justify-content-between ">
+        <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center gap-2 cursor">
-            <CardImage />
+            <CardImage className="text-primary" />
             <p className="mb-0">Contenuti multimediali</p>
           </div>
-          <div className="d-flex align-items-center gap-2 cursor">
-            <Calendar3 />
+          <div className="d-flex align-items-center gap-2 cursor me-4">
+            <Calendar3 className="text-warning" />
 
             <p className="mb-0">Evento</p>
           </div>
 
           <div className="d-flex align-items-center gap-2 cursor">
-            <Postcard />
+            <Postcard className="text-danger" />
             <p className="mb-0">Scrivi un articolo</p>
           </div>
         </div>

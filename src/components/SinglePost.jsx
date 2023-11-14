@@ -197,7 +197,14 @@ const SinglePost = ({ post, updatePosts }) => {
 
       <div className="d-flex justify-content-between mb-2">
         <div className="d-flex gap-2">
-          <img src="https://placekitten.com/40" alt="author-img" />
+          <img
+            src={
+              post.user.image ? post.user.image : "https://placekitten.com/40"
+            }
+            width="50px"
+            height="50px"
+            alt="author-img"
+          />
 
           <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
         </div>
@@ -259,8 +266,8 @@ const SinglePost = ({ post, updatePosts }) => {
           alt="post-img"
         />
       </div>
-      <div className="d-flex justify-content-between mt-2">
-        <div className="d-flex align-items-center gap-2">
+      <div className="d-flex justify-content-between mt-2 stats">
+        <div className="d-flex align-items-center gap-2 ">
           <div
             className="border d-flex justify-content-center align-items-center rounded-circle"
             style={{ width: "25px", height: "25px" }}
@@ -278,7 +285,7 @@ const SinglePost = ({ post, updatePosts }) => {
         </div>
       </div>
       <hr className="mx-3" />
-      <div className="d-flex mt-3 justify-content-around">
+      <div className="d-flex mt-3 justify-content-around comments-actions">
         <div className="d-flex gap-2 align-items-center ">
           <HandThumbsUp />
           <p className="mb-0">Consiglia</p>
@@ -311,7 +318,9 @@ const SinglePost = ({ post, updatePosts }) => {
           controlId="exampleForm.ControlInput1"
         >
           <img
-            src="https://placekitten.com/40"
+            src={myProfile ? myProfile.image : "https://placekitten.com/40"}
+            width="40px"
+            height="40px"
             className="rounded-circle"
             alt="profile-img"
           />
@@ -325,9 +334,9 @@ const SinglePost = ({ post, updatePosts }) => {
             onClick={() => {
               getComments();
             }}
-            className="rounded-pill py-2 px-2 border-end-0"
+            className="rounded-pill py-2 px-2 "
           />
-          <Button
+          {/* <Button
             onClick={(e) => {
               e.preventDefault();
               sendComment();
@@ -336,7 +345,7 @@ const SinglePost = ({ post, updatePosts }) => {
             }}
           >
             INVIA
-          </Button>
+          </Button> */}
         </Form.Group>
       </Form>
       {commentsToShow &&

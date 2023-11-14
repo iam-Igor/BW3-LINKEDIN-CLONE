@@ -1,23 +1,30 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { BookmarkFill, PersonFillAdd, PlusLg } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
 
-const SideBar = () => {
-  const myProfile = useSelector((state) => state.profileData);
+const SideBar = ({ myProfile }) => {
   return (
     <Row>
       <Col className="p-4 border border-bottom rounded background-columns">
         <div>
           <div className="text-center">
             <img
-              src="https://previews.123rf.com/images/siamimages/siamimages1504/siamimages150400651/38413902-segno-icona-utente.jpg"
+              src={
+                myProfile
+                  ? myProfile.image
+                  : "https://previews.123rf.com/images/siamimages/siamimages1504/siamimages150400651/38413902-segno-icona-utente.jpg"
+              }
               alt="Immagine del profilo"
               className="img-fluid rounded-circle"
               style={{ width: "20%" }}
             />
-            <h3 className="mt-3">{myProfile.username}</h3>
-            <p className="text-secondary">{myProfile.title}</p>
+            <h3 className="mt-3">
+              {myProfile ? myProfile.username : "Nome utente"}
+            </h3>
+            <p className="text-secondary">
+              {" "}
+              {myProfile ? myProfile.title : "Titolo professionale"}
+            </p>
             <hr></hr>
           </div>
           <div className="mt-4">

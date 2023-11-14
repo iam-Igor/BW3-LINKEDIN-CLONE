@@ -8,7 +8,7 @@ const Mynavbar = () => {
   return (
     <>
       <Navbar className="d-flex sticky-top p-0" expand="lg">
-        <Container fluid className="p-0 bg-white ">
+        <Container className="p-0 bg-white ">
           <div className="d-flex ">
             <div className="d-flex align-items-center">
               <img

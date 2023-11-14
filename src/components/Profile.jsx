@@ -45,7 +45,7 @@ const Profile = () => {
   const handleShow = () => {
     // setName(myProfile.name || "");
     // setSurname(myProfile.surname || "");
-    // setUsername(myProfile.username || "");
+    // set(myProfile.username || "");
     // setEmail(myProfile.email || "");
     // setTitle(myProfile.title || "");
     // setArea(myProfile.area || "");
