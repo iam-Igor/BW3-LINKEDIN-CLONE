@@ -12,7 +12,7 @@ import SuggestedProfile from "./SuggestedProfile";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { PARAMS } from "../redux/store";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -209,17 +209,19 @@ const Profile = () => {
                       </div>
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
-                      <p>
-                        Following:{" "}
-                        <span
-                          className="fw-bold"
-                          onClick={() => {
-                            setShow2(true);
-                          }}
-                        >
-                          {following.length}
-                        </span>{" "}
-                      </p>
+                      {location.pathname === "/profile/me" ? (
+                        <p>
+                          Following:{" "}
+                          <span
+                            className="fw-bold"
+                            onClick={() => {
+                              setShow2(true);
+                            }}
+                          >
+                            {following.length}
+                          </span>{" "}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="mx-2">
                       <Button className="rounded-pill fw-bold">
