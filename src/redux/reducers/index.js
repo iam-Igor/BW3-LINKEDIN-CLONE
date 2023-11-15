@@ -1,9 +1,11 @@
-import { FOLLOW, REMOVE, PARAMS } from "../store";
+import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH } from "../store";
 import { CREATE_EVENT, GET_PROFILE_DATA } from "../actions/actionsHome";
 
 const initialState = {
   following: "",
   urlParams: "",
+  searchInput: "",
+  searchData: false,
   profileData: null,
   events: [],
 };
@@ -27,6 +29,16 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         urlParams: action.payload,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        searchInput: action.payload,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        searchData: action.payload,
       };
     case GET_PROFILE_DATA:
       return {

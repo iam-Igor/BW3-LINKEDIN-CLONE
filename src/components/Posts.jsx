@@ -91,7 +91,6 @@ const Posts = () => {
                 width="50px"
                 height="50px"
                 className="rounded-circle"
-                fluid
                 alt="profile-img"
               />
             </div>

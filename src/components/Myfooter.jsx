@@ -36,15 +36,15 @@ const Myfooter = () => {
         <Col id="icon-footer">
           <div className="d-flex flex-column">
             <p>
-              <i class="bi bi-question-circle-fill me-2"></i>Domande?
+              <i className="bi bi-question-circle-fill me-2"></i>Domande?
             </p>
             <p>
-              <i class="bi bi-gear-fill me-2"></i>Gestisci il tuo account e la
-              tua privacy
+              <i className="bi bi-gear-fill me-2"></i>Gestisci il tuo account e
+              la tua privacy
             </p>
             <p>
-              <i class="bi bi-shield-shaded me-2"></i>Trasparenza sui contenuti
-              consigliati
+              <i className="bi bi-shield-shaded me-2"></i>Trasparenza sui
+              contenuti consigliati
             </p>
           </div>
         </Col>
