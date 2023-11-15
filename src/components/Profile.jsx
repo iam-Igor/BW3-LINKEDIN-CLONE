@@ -134,6 +134,16 @@ const Profile = () => {
       .then((res) => {
         if (res.ok) {
           console.log("salvato");
+          setEditExoerience({
+            role: "",
+            company: "",
+            startDate: "",
+            endDate: "",
+            description: "",
+            area: "",
+            username: "totti10",
+            image: "",
+          });
         } else {
           throw new Error("error in saving content");
         }
@@ -362,7 +372,13 @@ const Profile = () => {
                   </div>
 
                   {allExperiences.map((exp, index) => {
-                    return <SingleExperience key={index} job={exp} getExperiences={getExperiences}/>;
+                    return (
+                      <SingleExperience
+                        key={index}
+                        job={exp}
+                        getExperiences={getExperiences}
+                      />
+                    );
                   })}
                 </div>
               )}
