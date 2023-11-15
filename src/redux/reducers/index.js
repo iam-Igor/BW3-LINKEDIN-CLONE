@@ -1,4 +1,4 @@
-import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH } from "../store";
+import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH, LOADING } from "../store";
 import {
   CREATE_EVENT,
   GET_PROFILE_DATA,
@@ -13,6 +13,7 @@ const initialState = {
   profileData: null,
   events: [],
   likedPosts: [],
+  isLoading: true,
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -67,6 +68,11 @@ const mainReducer = (state = initialState, action) => {
         likedPosts: state.likedPosts.filter(
           (postId) => postId !== action.payload
         ),
+      };
+    case LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
 
     default:
