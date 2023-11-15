@@ -64,7 +64,7 @@ export const sortPostsByDateOldest = (posts) => {
   });
 };
 
-export const getRandomPhotos = () => {
+export const getRandomPhotos = (recentSelected) => {
   return async (dispatch) => {
     fetch(URL_PEXEL, {
       headers: {

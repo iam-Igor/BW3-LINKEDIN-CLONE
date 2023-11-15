@@ -1,7 +1,14 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Col, Row, Dropdown, DropdownMenu, Offcanvas } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Dropdown,
+  DropdownMenu,
+  Offcanvas,
+  Badge,
+} from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +29,12 @@ const Mynav = () => {
   const [open, setOpen] = useState(false);
   const searchInfo = useSelector((state) => state.searchData);
   const location = useLocation();
+  const [notifications, setNotifiactions] = useState(1);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  setTimeout(() => {
+    setShowNotifications(true);
+  }, 10000);
 
   // Funzionalità OFFCANVAS
   const [show, setShow] = useState(false);
@@ -116,7 +129,18 @@ const Mynav = () => {
                       <p className="m-0">Messaggistica</p>
                     </Nav.Link>
                     <Nav.Link className="d-flex flex-column text-center mx-2 mx-md-0">
-                      <i className="bi bi-bell-fill fs-4"></i>
+                      <div className="position-relative">
+                        <i className="bi bi-bell-fill fs-4"></i>
+                        {showNotifications && (
+                          <Badge
+                            className="rounded-circle"
+                            bg="danger"
+                            id="badge-notification"
+                          >
+                            {notifications}
+                          </Badge>
+                        )}
+                      </div>
                       <p className="m-0">Notifiche</p>
                     </Nav.Link>
                     <Link

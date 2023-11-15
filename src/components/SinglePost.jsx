@@ -31,6 +31,9 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
   const [randomNumOfLikes, setRandomNumOfLikes] = useState(
     Math.floor(Math.random() * 200)
   );
+  const [randomNumFrom0to80, setRandomNumFrom0to80] = useState(
+    Math.floor(Math.random() * 80)
+  );
 
   const likes = useSelector((state) => state.likedPosts);
   const dispatch = useDispatch();
@@ -301,8 +304,8 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
       <div className="d-flex justify-content-center">
         <img
           src={
-            randomPhotos.src.original
-              ? randomPhotos.src.original
+            randomPhotos[randomNumFrom0to80].src.original
+              ? randomPhotos[randomNumFrom0to80].src.original
               : "https://placekitten.com/500"
           }
           width="500px"

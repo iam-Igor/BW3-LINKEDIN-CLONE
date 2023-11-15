@@ -91,18 +91,20 @@ const Posts = () => {
 
   useEffect(() => {
     getPosts(mostRecent);
-    dispatch(getRandomPhotos());
+    dispatch(getRandomPhotos(mostRecent));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getPosts(mostRecent);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
 
   useEffect(() => {
     getPosts(mostRecent);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mostRecent]);
 
@@ -314,13 +316,13 @@ const Posts = () => {
       {/* SEZIONE POST */}
       <Row className="px-0">
         {posts &&
-          posts.slice(0, visiblePosts).map((post, i) => {
+          posts.slice(0, visiblePosts).map((post) => {
             return (
               <SinglePost
                 key={post._id}
                 post={post}
                 updatePosts={updatePosts}
-                randomPhotos={randomPhotos.photos[i]}
+                randomPhotos={randomPhotos.photos}
               />
             );
           })}

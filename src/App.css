@@ -267,6 +267,13 @@ nav,
   color: rgb(102, 102, 102);
 }
 
+#badge-notification {
+  position: absolute;
+  font-size: 10px;
+  left: 26px;
+  top: 3px;
+}
+
 /* Commenti */
 
 .comment-date {

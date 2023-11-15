@@ -23,7 +23,7 @@ const SideBarRight = () => {
             <p className="text-secondary">3 giorni fa </p>
             <li>PayPal si allarga alle bollette</li>
             <p className="text-secondary">7 ore fa </p>
-            <li>Impennata degli attacchi informarici</li>
+            <li>Impennata degli attacchi informatici</li>
             <p className="text-secondary">5 giorni fa </p>
             <li>I primi supermercati senza casse</li>
             <p className="text-secondary">3 giorni fa </p>
