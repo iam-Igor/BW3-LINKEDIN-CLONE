@@ -1,24 +1,32 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import {
-  Col,
-  Row,
-  Button,
-  Collapse,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-} from "react-bootstrap";
+import { Col, Row, Dropdown, DropdownMenu, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, SET_SEARCH } from "../redux/store";
 import JobsList from "./JobsList";
+import {
+  AwardFill,
+  Bullseye,
+  CaretUpSquareFill,
+  Check,
+  Compass,
+  PeopleFill,
+  PlayBtn,
+  PlusLg,
+} from "react-bootstrap-icons";
 
 const Mynav = () => {
   const [open, setOpen] = useState(false);
   const searchInfo = useSelector((state) => state.searchData);
+
+  // Funzionalità OFFCANVAS
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  //
 
   const dispatch = useDispatch();
 
@@ -120,6 +128,7 @@ const Mynav = () => {
                     <Nav.Link
                       href="#link"
                       className="d-flex flex-column text-center"
+                      onClick={handleShow}
                     >
                       <i className="bi bi-grid-3x3-gap-fill fs-4"></i>
                       <p className="m-0">Per le aziende</p>
@@ -129,6 +138,124 @@ const Mynav = () => {
               </Navbar.Collapse>
             </Col>
           </Row>
+          <Offcanvas
+            className="px-2"
+            show={show}
+            onHide={handleClose}
+            placement="end"
+          >
+            <Offcanvas.Header className="pb-1" closeButton>
+              <Offcanvas.Title className="ms-1 mb-0">
+                Per le aziende
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body id="body-canvas">
+              <div className="border rounded">
+                <div>
+                  <p className="fw-bold mt-3 ms-3">
+                    Scopri altri prodotti LinkedIn
+                  </p>
+                </div>
+                <hr />
+                <div
+                  className="d-flex flex-wrap gap-3 text-center justify-content-center"
+                  id="icons-offcanvas"
+                >
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <PlayBtn className="fs-2 text-primary" />
+                    </div>
+                    <p>Learning</p>
+                  </div>
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <AwardFill className="fs-2 text-primary" />{" "}
+                    </div>
+                    <p>Talent Insights</p>
+                  </div>
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <CaretUpSquareFill className="fs-2 text-primary" />{" "}
+                    </div>
+                    <p className="mb-0">
+                      Pubblica un <br />
+                      offerta di lavoro
+                    </p>
+                  </div>
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <Bullseye className="fs-2 text-primary" />
+                    </div>
+                    <p>Pubblicizza</p>
+                  </div>
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <PeopleFill className="fs-2 text-primary" />
+                    </div>
+
+                    <p>Trova nuovi clienti</p>
+                  </div>
+
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <Bullseye className="fs-2 text-primary" />
+                    </div>
+                    <p>Gruppi</p>
+                  </div>
+                  <div className="d-flex justify-content-center align-items-center flex-column ">
+                    <div className="border d-flex justify-content-center align-items-center icons-div rounded">
+                      <Check className="fs-2 text-primary" />
+                    </div>
+                    <p>Marketplace dei servizi</p>
+                  </div>
+                </div>
+              </div>
+              <div className="border rounded mt-3">
+                <div>
+                  <p className="fw-bold mt-3 ms-3">
+                    Scopri altro per il business
+                  </p>
+                </div>
+                <hr />
+                <div>
+                  <ul>
+                    <li>
+                      <p className="fw-bold">Assumi su LinkedIn</p>
+                      <p>Trova, attrai e assumi</p>
+                    </li>
+                    <li>
+                      <p className="fw-bold">Vendi con LinkedIn</p>
+                      <p>Costruisci relazioni con i buyer</p>
+                    </li>
+                    <li>
+                      <p className="fw-bold">Offerta di lavoro gratuita</p>
+                      <p>Trova candidati di qualità</p>
+                    </li>
+                    <li>
+                      <p className="fw-bold">Fai pubblicità su LinkedIn</p>
+                      <p>Acquisisci clienti e fai crescere la tua azienda</p>
+                    </li>
+                    <li>
+                      <p className="fw-bold">Impara con LinkedIn</p>
+                      <p>Corsi per formare i tuoi dipendenti</p>
+                    </li>
+                    <li>
+                      <p className="fw-bold">Centro amministrazione</p>
+                      <p>Gestisci i dettagli di fatturazione e account</p>
+                    </li>
+                  </ul>
+                </div>
+                <hr />
+                <div
+                  className="d-flex align-items-center cursor"
+                  id="last-div-canvas"
+                >
+                  <p className="fw-bold ms-4">Crea una pagina aziendale</p>
+                  <PlusLg className="mb-3 ms-2" />
+                </div>
+              </div>
+            </Offcanvas.Body>
+          </Offcanvas>
         </Container>
       </Navbar>
 
