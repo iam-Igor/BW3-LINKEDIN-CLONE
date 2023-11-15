@@ -58,19 +58,29 @@ const Mynav = () => {
                     >
                       <i className="bi bi-search"></i>
                     </div>
-                    <input
-                      onFocus={() => {
-                        setOpen(true);
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        dispatch({ type: SET_SEARCH, payload: !searchInfo });
+                        setTimeout(() => {
+                          dispatch({ type: SET_SEARCH, payload: false });
+                        }, 500);
                       }}
-                      id="search"
-                      className="rounded-end input-bar"
-                      style={{ height: "45px" }}
-                      type="search"
-                      placeholder="cerca"
-                      onChange={(e) => {
-                        dispatch({ type: SEARCH, payload: e.target.value });
-                      }}
-                    />
+                    >
+                      <input
+                        onFocus={() => {
+                          setOpen(true);
+                        }}
+                        id="search"
+                        className="rounded-end input-bar"
+                        style={{ height: "45px" }}
+                        type="search"
+                        placeholder="cerca"
+                        onChange={(e) => {
+                          dispatch({ type: SEARCH, payload: e.target.value });
+                        }}
+                      />
+                    </form>
                   </div>
                 </div>
 

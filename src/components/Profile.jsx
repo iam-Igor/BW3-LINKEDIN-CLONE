@@ -153,17 +153,6 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    // const updatedData = {
-    //   name,
-    //   surname,
-    //   username,
-    //   email,
-    //   title,
-    //   area,
-    //   image,
-    //   bio,
-    // };
-
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
       headers: {
@@ -265,13 +254,13 @@ const Profile = () => {
                 <Card>
                   <Card.Img
                     variant="fluid"
-                    style={{ height: "150px", objectFit: "cover" }}
+                    style={{ height: "180px", objectFit: "cover" }}
                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/488f115d-6e44-4ccd-b238-b2699af64966/d7bmt54-cde04c58-1c7d-41d2-84aa-ba777a5e5e57.jpg/v1/fill/w_1192,h_670,q_70,strp/web_developer_wallpaper__code__by_plusjack_d7bmt54-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvNDg4ZjExNWQtNmU0NC00Y2NkLWIyMzgtYjI2OTlhZjY0OTY2XC9kN2JtdDU0LWNkZTA0YzU4LTFjN2QtNDFkMi04NGFhLWJhNzc3YTVlNWU1Ny5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.vHgupyecAg5BSAmKddsETVA6TmT2Dp-kGL64C5Oprqk"
                   />
                   <Card.Body>
                     {location.pathname === "/profile/me" ? (
                       <div
-                        className="pencil-button p-2 rounded-circle pointer"
+                        className="pencilButton p-2 rounded-circle pointer"
                         onClick={handleShow}
                       >
                         <svg
@@ -353,7 +342,7 @@ const Profile = () => {
                     <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
                     {location.pathname === "/profile/me" ? (
                       <div
-                        className="pencil-button p-2 rounded-circle pointer"
+                        className="plus-button p-2 rounded-circle"
                         onClick={() => setShow3(true)}
                       >
                         <svg
@@ -366,14 +355,14 @@ const Profile = () => {
                           height="24"
                           focusable="false"
                         >
-                          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                          <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                         </svg>
                       </div>
                     ) : null}
                   </div>
 
                   {allExperiences.map((exp, index) => {
-                    return <SingleExperience key={index} job={exp} />;
+                    return <SingleExperience key={index} job={exp} getExperiences={getExperiences}/>;
                   })}
                 </div>
               )}
@@ -670,7 +659,7 @@ const Profile = () => {
       <>
         <Modal show={show3} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit profile</Modal.Title>
+            <Modal.Title>Aggiungi esperienza lavorativa</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {contentSaved ? (

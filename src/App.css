@@ -27,16 +27,29 @@ body {
 .search-icon i {
   font-size: 0.8em;
 }
-.pencil-button {
+.plus-button {
   position: absolute;
   right: 5%;
   text-decoration: none;
   color: rgb(94, 94, 94);
   cursor: pointer;
 }
-.pencil-button:hover {
+.plus-button:hover {
   background-color: rgb(235, 235, 235);
 }
+
+.pencilButton {
+  position: absolute;
+  right: 5%;
+  color: rgb(94, 94, 94);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pencilButton:hover {
+  background-color: rgb(235, 235, 235);
+}
+
 #dropdown-basic {
   width: 250px;
 }
@@ -167,6 +180,51 @@ nav,
 @media screen and (min-width: 992px) {
   input[type="search"]:focus {
     width: 350px;
+  }
+}
+
+.chat-container {
+  box-shadow: -1px -15px 11px -2px rgba(0, 0, 0, 0.3);
+}
+
+.chat-box {
+  width: 20%;
+}
+
+.single-chat p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.single-chat:hover {
+  background-color: lightgray;
+}
+
+.chat-on {
+  animation: slide-top 0.3s linear forwards;
+}
+
+.chat-off {
+  animation: slide-bottom 0.3s linear forwards;
+}
+
+@keyframes slide-top {
+  0% {
+    transform: translateY(90%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(90%);
   }
 }
 
