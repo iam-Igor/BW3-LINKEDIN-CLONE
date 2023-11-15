@@ -27,16 +27,34 @@ body {
 .search-icon i {
   font-size: 0.8em;
 }
-.pencil-button {
+.plus-button {
   position: absolute;
   right: 5%;
   text-decoration: none;
   color: rgb(94, 94, 94);
   cursor: pointer;
 }
-.pencil-button:hover {
+.plus-button:hover {
   background-color: rgb(235, 235, 235);
 }
+
+.pencilButton {
+  position: absolute;
+  right: 5%;
+  color: rgb(94, 94, 94);
+  cursor: pointer;
+  text-decoration: none;
+
+}
+
+.pencilButton:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+
+
+
+
 #dropdown-basic {
   width: 250px;
 }

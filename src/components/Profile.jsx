@@ -151,17 +151,6 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    // const updatedData = {
-    //   name,
-    //   surname,
-    //   username,
-    //   email,
-    //   title,
-    //   area,
-    //   image,
-    //   bio,
-    // };
-
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
       headers: {
@@ -269,7 +258,7 @@ const Profile = () => {
                   <Card.Body>
                     {location.pathname === "/profile/me" ? (
                       <div
-                        className="pencil-button p-2 rounded-circle pointer"
+                        className="pencilButton p-2 rounded-circle pointer"
                         onClick={handleShow}
                       >
                         <svg
@@ -351,7 +340,7 @@ const Profile = () => {
                     <h3 className="p-0 mt-3 mb-4 mx-2">Esperienza</h3>
                     {location.pathname === "/profile/me" ? (
                       <div
-                        className="pencil-button p-2 rounded-circle pointer"
+                        className="plus-button p-2 rounded-circle"
                         onClick={() => setShow3(true)}
                       >
                         <svg
@@ -364,7 +353,7 @@ const Profile = () => {
                           height="24"
                           focusable="false"
                         >
-                          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                          <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                         </svg>
                       </div>
                     ) : null}
@@ -647,7 +636,7 @@ const Profile = () => {
       <>
         <Modal show={show3} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit profile</Modal.Title>
+            <Modal.Title>Aggiungi esperienza lavorativa</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {contentSaved ? (
