@@ -163,19 +163,19 @@ const Mynav = () => {
                 >
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <PlayBtn className="fs-2 text-primary" />
+                      <PlayBtn className="fs-3 text-primary" />
                     </div>
                     <p>Learning</p>
                   </div>
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <AwardFill className="fs-2 text-primary" />{" "}
+                      <AwardFill className="fs-3 text-primary" />{" "}
                     </div>
                     <p>Talent Insights</p>
                   </div>
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <CaretUpSquareFill className="fs-2 text-primary" />{" "}
+                      <CaretUpSquareFill className="fs-3 text-primary" />{" "}
                     </div>
                     <p className="mb-0">
                       Pubblica un <br />
@@ -184,13 +184,13 @@ const Mynav = () => {
                   </div>
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <Bullseye className="fs-2 text-primary" />
+                      <Bullseye className="fs-3 text-primary" />
                     </div>
                     <p>Pubblicizza</p>
                   </div>
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <PeopleFill className="fs-2 text-primary" />
+                      <Compass className="fs-3 text-primary" />
                     </div>
 
                     <p>Trova nuovi clienti</p>
@@ -198,13 +198,13 @@ const Mynav = () => {
 
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <Bullseye className="fs-2 text-primary" />
+                      <PeopleFill className="fs-3 text-primary" />
                     </div>
                     <p>Gruppi</p>
                   </div>
                   <div className="d-flex justify-content-center align-items-center flex-column ">
                     <div className="border d-flex justify-content-center align-items-center icons-div rounded">
-                      <Check className="fs-2 text-primary" />
+                      <Check className="fs-3 text-primary" />
                     </div>
                     <p>Marketplace dei servizi</p>
                   </div>
