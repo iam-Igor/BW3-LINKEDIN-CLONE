@@ -1,5 +1,6 @@
 import { Dropdown, Modal, Form, Button } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { URL_COMMENTS, API_KEY_COMMENTS } from "../redux/actions/actionsHome";
 import { useState } from "react";
 const SingleComment = ({ comment, getComments, postId }) => {
@@ -126,7 +127,7 @@ const SingleComment = ({ comment, getComments, postId }) => {
             </div>
             <Dropdown>
               <Dropdown.Toggle
-                className="pe-0 pt-0 w-25 "
+                className="pe-0 pt-0 w-25 border-0"
                 variant="none"
                 id="dropdown-basic"
               >
@@ -146,7 +147,7 @@ const SingleComment = ({ comment, getComments, postId }) => {
                     deleteComment();
                   }}
                 >
-                  Delete comment
+                  Elimina commento
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
