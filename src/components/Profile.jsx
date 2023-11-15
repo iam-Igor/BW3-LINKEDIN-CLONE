@@ -360,7 +360,7 @@ const Profile = () => {
                   </div>
 
                   {allExperiences.map((exp, index) => {
-                    return <SingleExperience key={index} job={exp} />;
+                    return <SingleExperience key={index} job={exp} getExperiences={getExperiences}/>;
                   })}
                 </div>
               )}

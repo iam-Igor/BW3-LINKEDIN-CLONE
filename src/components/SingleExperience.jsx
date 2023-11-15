@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 
-const SingleExperience = ({ job }) => {
+const SingleExperience = ({ job, getExperiences }) => {
   const inputStart = job.startDate;
   const inputEnd = job.endDate;
   const location = useLocation();
@@ -64,6 +64,7 @@ const SingleExperience = ({ job }) => {
       })
       .then(() => {
         handleClose();
+        getExperiences()
       })
       .catch((err) => {
         console.log(err);
