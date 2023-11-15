@@ -50,8 +50,7 @@ const JobsList = ({ popup }) => {
                 popup(false);
               }}
             >
-              <i className="bi bi-x-square-fill fs-4 btn p-0"></i>
-              <p className="m-0">Close</p>
+              <p className="m-0 btn btn-primary rounded-pill">Close</p>
             </div>
           </div>
           {jobData.map((job, i) => {
@@ -69,8 +68,7 @@ const JobsList = ({ popup }) => {
                   popup(false);
                 }}
               >
-                <i className="bi bi-x-square-fill fs-4 btn p-0"></i>
-                <p className="m-0">Close</p>
+                <p className="m-0 btn btn-primary rounded-pill">Close</p>
               </div>
             </Alert>
           </Col>
