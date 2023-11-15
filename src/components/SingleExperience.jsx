@@ -73,10 +73,10 @@ const SingleExperience = ({ job, getExperiences }) => {
 
   return (
     <div className="row mx-2 border-bottom mb-4">
-      <div className="p-0 col-2">
-        <img style={{ width: "60px" }} src={job.image} alt="job-icon" />
+      <div className="p-0 col-2 col-lg-1">
+        <img className="w-100" src={job.image} alt="job-icon" />
       </div>
-      <div className="col-7">
+      <div className="col-7 col-lg-8">
         <h6>Ruolo: {job.role}</h6>
         <p className="mb-1">Compagnia: {job.company}</p>
         <p className="mb-1">
@@ -96,8 +96,8 @@ const SingleExperience = ({ job, getExperiences }) => {
               setInfoExperience({
                 role: job.role,
                 company: job.company,
-                startDate: job.startDate,
-                endDate: job.endDate,
+                startDate: "",
+                endDate: "",
                 description: job.description,
                 area: job.area,
                 username: "totti10",
@@ -158,7 +158,7 @@ const SingleExperience = ({ job, getExperiences }) => {
 
               <Form.Label>Start Date</Form.Label>
               <Form.Control
-                type="text"
+                type="date"
                 placeholder="Your start date"
                 onChange={(e) => {
                   setInfoExperience({
@@ -172,7 +172,7 @@ const SingleExperience = ({ job, getExperiences }) => {
 
               <Form.Label>End Date</Form.Label>
               <Form.Control
-                type="text"
+                type="date"
                 placeholder="Your start date"
                 onChange={(e) => {
                   setInfoExperience({
