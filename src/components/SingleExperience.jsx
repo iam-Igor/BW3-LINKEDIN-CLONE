@@ -33,7 +33,7 @@ const SingleExperience = ({ job, getExperiences }) => {
   });
 
   const inputDate = parseISO(inputStart);
-  const inputDate2 = parseISO(inputEnd);
+  const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
 
   const formattedDate = format(inputDate, "yyyy-MM-dd");
   const formattedDate2 = format(inputDate2, "yyyy-MM-dd");

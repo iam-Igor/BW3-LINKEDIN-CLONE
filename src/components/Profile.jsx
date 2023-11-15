@@ -16,6 +16,7 @@ import { PARAMS } from "../redux/store";
 import { useLocation, useParams } from "react-router-dom";
 import SingleExperience from "./SingleExperience";
 import Myfooter from "./Myfooter";
+import Events from "./Events";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -71,6 +72,7 @@ const Profile = () => {
 
   const following = useSelector((state) => state.following);
   const dispatch = useDispatch();
+  const events = useSelector((state) => state.events);
 
   // SEXIONE SECONDO SHOWTIME PER MODALE DEI FOLLOWING
   const [show2, setShow2] = useState(false);
@@ -364,6 +366,27 @@ const Profile = () => {
                   })}
                 </div>
               )}
+              <div className="bg-white rounded-2 border info-section mb-2">
+                <div className="d-flex  flex-column ">
+                  <h3 className="p-0 mt-3 mb-4 mx-2">Attività</h3>
+                  <div className="d-flex gap-2 mb-2">
+                    {" "}
+                    <Button className="rounded-pill py-1 " variant="success">
+                      Post
+                    </Button>
+                    <Button
+                      className="rounded-pill py-1 btn btn-outline-secondary"
+                      variant="none"
+                    >
+                      Eventi
+                    </Button>
+                  </div>
+                  {events &&
+                    events.map((event) => {
+                      return <Events event={event} myProfile={myProfile} />;
+                    })}
+                </div>
+              </div>
             </Row>
           </Col>
           <Col className="col-12 col-md-3 ps-0">

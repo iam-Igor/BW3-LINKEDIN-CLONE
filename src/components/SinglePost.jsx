@@ -10,6 +10,7 @@ import {
   ChatText,
   Dot,
   HandThumbsUp,
+  HandThumbsUpFill,
   SendFill,
   ShareFill,
   ThreeDots,
@@ -22,9 +23,14 @@ import {
 } from "react-bootstrap-icons";
 import { useState } from "react";
 import SingleComment from "./SingleComment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { LIKE_POST } from "../redux/actions/actionsHome";
 
 const SinglePost = ({ post, updatePosts }) => {
+  const likes = useSelector((state) => state.likedPosts);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const myProfile = useSelector((state) => state.profileData);
   // Testo di partenza, modificabile, del modale
   const [textArea, setTextArea] = useState(post.text);
@@ -158,7 +164,9 @@ const SinglePost = ({ post, updatePosts }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">
+                {post.username ? post.username.split("@")[0] : "Nome utente"}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
@@ -207,14 +215,21 @@ const SinglePost = ({ post, updatePosts }) => {
             />
           )}
 
-          {!post.user.image && <PersonCircle className="fs-1" />}
+          {!post.user.image && <PersonCircle className="fs-1 text-secondary" />}
 
-          <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
+          <h4
+            onClick={() => {
+              navigate(`/profile/${post.user._id ? post.user._id : ""}`);
+            }}
+            className="fw-bold fs-6 cursor"
+          >
+            {post.username.split("@")[0]}
+          </h4>
         </div>
         <div>
           <Dropdown>
             <Dropdown.Toggle
-              className="text-end border-0"
+              className="text-end border-0 w-25"
               variant="none"
               drop="start"
               show="none"
@@ -297,8 +312,21 @@ const SinglePost = ({ post, updatePosts }) => {
       </div>
       <hr className="mx-3" />
       <div className="d-flex mt-3 justify-content-around comments-actions">
-        <div className="d-flex gap-2 align-items-center ">
-          <HandThumbsUp />
+        <div
+          className="d-flex gap-2 align-items-center "
+          onClick={() => {
+            dispatch({
+              type: LIKE_POST,
+              payload: post._id,
+            });
+          }}
+        >
+          {likes.includes(post._id) ? (
+            <HandThumbsUpFill className={`text-primary`} />
+          ) : (
+            <HandThumbsUp />
+          )}
+
           <p className="mb-0">Consiglia</p>
         </div>
         <div className="d-flex gap-2 align-items-center ">
@@ -365,6 +393,7 @@ const SinglePost = ({ post, updatePosts }) => {
             comment={comment}
             getComments={getComments}
             postId={post._id}
+            key={comment._id}
           />
         ))}
     </Col>

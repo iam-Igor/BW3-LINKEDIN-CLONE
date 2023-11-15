@@ -69,6 +69,22 @@ body {
 
 /* POSTS */
 
+#control-input:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.single-event {
+  font-size: 0.8rem;
+}
+
+#modal-event-paragraphs {
+  font-size: 0.7rem;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
 #select-feed {
   font-size: 0.7rem;
 }
@@ -151,4 +167,87 @@ nav,
   input[type="search"]:focus {
     width: 350px;
   }
+}
+
+.chat-container {
+  box-shadow: -1px -15px 11px -2px rgba(0, 0, 0, 0.3);
+}
+
+.chat-box {
+  width: 20%;
+}
+
+.single-chat p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.single-chat:hover {
+  background-color: lightgray;
+}
+
+.chat-on {
+  animation: slide-top 0.3s linear forwards;
+}
+
+.chat-off {
+  animation: slide-bottom 0.3s linear forwards;
+}
+
+@keyframes slide-top {
+  0% {
+    transform: translateY(378px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(458px);
+  }
+}
+
+#icons-offcanvas {
+  font-size: 0.7rem;
+  color: grey;
+}
+#icons-offcanvas svg {
+  cursor: pointer;
+}
+#icons-offcanvas p {
+  margin-top: 0.3rem;
+}
+
+.icons-div {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+#body-canvas li {
+  list-style-type: none;
+}
+
+#body-canvas li p:first-of-type {
+  font-size: 0.9rem;
+  margin-bottom: 0.1em;
+  cursor: pointer;
+}
+#body-canvas li p:nth-of-type(2) {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+#last-div-canvas {
+  font-size: 0.9rem;
+}
+
+#navbar-col {
+  color: rgb(102, 102, 102);
 }
