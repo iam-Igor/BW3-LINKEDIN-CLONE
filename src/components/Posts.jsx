@@ -230,7 +230,7 @@ const Posts = () => {
               }
             }}
             aria-label="Default select example"
-            className="custom-select-paragraph"
+            className="custom-select-paragraph cursor"
           >
             <option>Seleziona la visualizzazione dei feed:</option>
             <option value={"mostRecent"}>Più recenti per primi</option>

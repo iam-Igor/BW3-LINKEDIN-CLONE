@@ -118,6 +118,7 @@ body {
 
 #ul-sidebar li {
   font-weight: 500;
+  cursor: pointer;
 }
 
 #ul-sidebar p {

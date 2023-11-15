@@ -13,7 +13,7 @@ const SideBarRight = () => {
           <div className="">
             <div className="d-flex justify-content-between">
               <h5 className="mt-3 ms-3">Linkedln Notizie</h5>
-              <InfoSquareFill className="me-3" />
+              <InfoSquareFill className="me-3 cursor" />
             </div>
           </div>
           <ul id="ul-sidebar">
