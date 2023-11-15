@@ -6,8 +6,11 @@ import {
   ThreeDots,
   Trash3,
 } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
-import { URL_COMMENTS, API_KEY_COMMENTS } from "../redux/actions/actionsHome";
+import {
+  URL_COMMENTS,
+  API_KEY_COMMENTS,
+  passedTime,
+} from "../redux/actions/actionsHome";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 const SingleComment = ({ comment, getComments, postId, postUserId }) => {
@@ -133,7 +136,9 @@ const SingleComment = ({ comment, getComments, postId, postUserId }) => {
         <div>
           <div className="d-flex justify-content-end">
             <div className="text-end">
-              <span className="comment-date">3 giorni</span>
+              <span className="comment-date">
+                {passedTime(comment.createdAt)}
+              </span>
             </div>
             <Dropdown>
               <Dropdown.Toggle

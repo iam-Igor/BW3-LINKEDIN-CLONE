@@ -10,7 +10,7 @@ import {
   Badge,
 } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, SET_SEARCH } from "../redux/store";
 import JobsList from "./JobsList";
@@ -24,6 +24,7 @@ import {
   PlayBtn,
   PlusLg,
 } from "react-bootstrap-icons";
+import { notify } from "../App";
 
 const Mynav = () => {
   const [open, setOpen] = useState(false);
@@ -32,9 +33,12 @@ const Mynav = () => {
   const [notifications, setNotifiactions] = useState(1);
   const [showNotifications, setShowNotifications] = useState(false);
 
-  setTimeout(() => {
-    setShowNotifications(true);
-  }, 10000);
+  useEffect(() => {
+    setTimeout(() => {
+      notify();
+      setShowNotifications(true);
+    }, 5000);
+  }, []);
 
   // Funzionalità OFFCANVAS
   const [show, setShow] = useState(false);
