@@ -152,8 +152,11 @@ nav,
 }
 
 .chat-container {
-  width: 16%;
   box-shadow: -1px -15px 11px -2px rgba(0, 0, 0, 0.3);
+}
+
+.chat-box {
+  width: 20%;
 }
 
 .single-chat p {

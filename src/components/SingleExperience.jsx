@@ -5,10 +5,12 @@ const SingleExperience = ({ job }) => {
   const inputEnd = job.endDate;
 
   const inputDate = parseISO(inputStart);
-  const inputDate2 = parseISO(inputEnd);
+  const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
 
   const formattedDate = format(inputDate, "dd/MM/yyyy");
-  const formattedDate2 = format(inputDate2, "dd/MM/yyyy");
+  const formattedDate2 = inputDate2
+    ? format(inputDate2, "dd/MM/yyyy")
+    : "Nessuna data di fine rapporto";
 
   return (
     <div className="d-flex mx-2">

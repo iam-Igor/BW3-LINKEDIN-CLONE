@@ -9,9 +9,12 @@ const ChatBox = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <Container fluid className="sticky-bottom d-flex justify-content-end ">
+    <Container
+      fluid
+      className="sticky-bottom d-lg-inline-block chat-box d-none"
+    >
       <Row
-        className={`d-flex justify-content-end chat-container bg-white me-5 rounded flex-column ${
+        className={`d-flex justify-content-end chat-container bg-white ms-5 rounded flex-column ${
           show ? `chat-on` : `chat-off`
         }`}
       >
