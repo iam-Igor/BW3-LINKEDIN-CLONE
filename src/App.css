@@ -172,6 +172,10 @@ nav,
   width: 20%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .single-chat p {
   white-space: nowrap;
   overflow: hidden;
