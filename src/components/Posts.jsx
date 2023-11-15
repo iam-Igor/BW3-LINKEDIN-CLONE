@@ -13,13 +13,17 @@ import { useEffect, useState } from "react";
 import {
   API_KEY,
   URL_POSTS,
+  getRandomPhotos,
   sortPostsByDate,
   sortPostsByDateOldest,
 } from "../redux/actions/actionsHome";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Posts = () => {
+  const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profileData);
+  const randomPhotos = useSelector((state) => state.randomPhotos);
+  console.log(randomPhotos, "SONO LE FOTO");
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
   // eslint-disable-next-line no-unused-vars
@@ -27,7 +31,7 @@ const Posts = () => {
   const [mostRecent, setMostRecent] = useState(true);
 
   const [update, setUpdate] = useState(0);
-  const [visiblePosts, setVisiblePosts] = useState(4);
+  const [visiblePosts, setVisiblePosts] = useState(2);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -87,6 +91,8 @@ const Posts = () => {
 
   useEffect(() => {
     getPosts(mostRecent);
+    dispatch(getRandomPhotos());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -308,12 +314,13 @@ const Posts = () => {
       {/* SEZIONE POST */}
       <Row className="px-0">
         {posts &&
-          posts.slice(0, visiblePosts).map((post) => {
+          posts.slice(0, visiblePosts).map((post, i) => {
             return (
               <SinglePost
                 key={post._id}
                 post={post}
                 updatePosts={updatePosts}
+                randomPhotos={randomPhotos.photos[i]}
               />
             );
           })}

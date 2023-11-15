@@ -27,7 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { LIKE_POST } from "../redux/actions/actionsHome";
 
-const SinglePost = ({ post, updatePosts }) => {
+const SinglePost = ({ post, updatePosts, randomPhotos }) => {
   const [randomNumOfLikes, setRandomNumOfLikes] = useState(
     Math.floor(Math.random() * 200)
   );
@@ -300,7 +300,12 @@ const SinglePost = ({ post, updatePosts }) => {
       <p>{post.text}</p>
       <div className="d-flex justify-content-center">
         <img
-          src="https://placekitten.com/500"
+          src={
+            randomPhotos.src.original
+              ? randomPhotos.src.original
+              : "https://placekitten.com/500"
+          }
+          width="500px"
           className="w-100"
           alt="post-img"
         />

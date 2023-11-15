@@ -10,6 +10,10 @@ export const API_KEY_COMMENTS =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyNTlkNWM1NWU3ZTAwMThmODNjZDIiLCJpYXQiOjE2OTk4OTU3NjYsImV4cCI6MTcwMTEwNTM2Nn0.N1id-dNfADyfRGpvBvNv7h9g-L1-pFkS3NQzDrVD7fs";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const LIKE_POST = "LIKE_POST";
+export const URL_PEXEL = `https://api.pexels.com/v1/search?query=random%20photos&per_page=80`;
+export const GET_RANDOM_PHOTOS = "GET_RANDOM_PHOTOS";
+export const PEXEL_KEY =
+  "5RKicZfAEfo8m1JX6yT1vyTmAYDVq4777xWQyZfx1QBRZM4xWq7CeS1i";
 
 export const getProfileAction = () => {
   return async (dispatch) => {
@@ -58,4 +62,31 @@ export const sortPostsByDateOldest = (posts) => {
     // Ordina in base alla differenza di tempo
     return dateA - dateB;
   });
+};
+
+export const getRandomPhotos = () => {
+  return async (dispatch) => {
+    fetch(URL_PEXEL, {
+      headers: {
+        Authorization: PEXEL_KEY,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        dispatch({
+          type: GET_RANDOM_PHOTOS,
+          payload: data,
+        });
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 };
