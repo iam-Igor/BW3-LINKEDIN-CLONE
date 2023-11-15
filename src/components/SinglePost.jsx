@@ -376,6 +376,7 @@ const SinglePost = ({ post, updatePosts }) => {
             comment={comment}
             getComments={getComments}
             postId={post._id}
+            key={comment._id}
           />
         ))}
     </Col>
