@@ -51,3 +51,9 @@ body {
 .navbar-nav a {
     color: inherit;
 }
+/* css pagina notifiche */
+.lista-notifiche {
+  font-size: small;
+  /* width: 429px; */
+ margin: 1em;
+}

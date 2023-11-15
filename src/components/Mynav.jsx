@@ -70,13 +70,13 @@ const Mynav = () => {
                     <i className="bi bi-chat-dots-fill fs-4"></i>
                     <p className="m-0">Messaggistica</p>
                   </Nav.Link>
-                  <Nav.Link
-                    href="#link"
-                    className="d-flex flex-column text-center mx-2 mx-md-0"
+                  <Link
+                    to={"/Notifiche/"}
+                    className="nav-link d-flex flex-column text-center mx-2 mx-md-0"
                   >
                     <i className="bi bi-bell-fill fs-4"></i>
                     <p className="m-0">Notifiche</p>
-                  </Nav.Link>
+                  </Link>
                   <Link
                     to={"/profile/me"}
                     className="nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3"
