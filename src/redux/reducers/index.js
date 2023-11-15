@@ -1,5 +1,9 @@
 import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH } from "../store";
-import { CREATE_EVENT, GET_PROFILE_DATA } from "../actions/actionsHome";
+import {
+  CREATE_EVENT,
+  GET_PROFILE_DATA,
+  LIKE_POST,
+} from "../actions/actionsHome";
 
 const initialState = {
   following: "",
@@ -8,6 +12,7 @@ const initialState = {
   searchData: false,
   profileData: null,
   events: [],
+  likedPosts: [],
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -50,6 +55,20 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         events: [...state.events, action.payload],
       };
+    case LIKE_POST:
+      if (!state.likedPosts.includes(action.payload)) {
+        return {
+          ...state,
+          likedPosts: [...state.likedPosts, action.payload],
+        };
+      }
+      return {
+        ...state,
+        likedPosts: state.likedPosts.filter(
+          (postId) => postId !== action.payload
+        ),
+      };
+
     default:
       return state;
   }

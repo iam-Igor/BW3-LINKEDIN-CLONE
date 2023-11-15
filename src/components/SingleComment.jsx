@@ -1,5 +1,6 @@
 import { Dropdown, Modal, Form, Button } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { URL_COMMENTS, API_KEY_COMMENTS } from "../redux/actions/actionsHome";
 import { useState } from "react";
 const SingleComment = ({ comment, getComments, postId }) => {
@@ -69,7 +70,9 @@ const SingleComment = ({ comment, getComments, postId }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">
+                {comment.author.split("@")[0]}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
@@ -120,11 +123,13 @@ const SingleComment = ({ comment, getComments, postId }) => {
           <p className="mb-0">{comment.comment}</p>
         </div>
         <div>
-          <div className="d-flex">
-            <span>3 giorni</span>
+          <div className="d-flex justify-content-end">
+            <div className="text-end">
+              <span>3 giorni</span>
+            </div>
             <Dropdown>
               <Dropdown.Toggle
-                className="pe-0 pt-0"
+                className="pe-0 pt-0 w-25 border-0"
                 variant="none"
                 id="dropdown-basic"
               >
@@ -144,7 +149,7 @@ const SingleComment = ({ comment, getComments, postId }) => {
                     deleteComment();
                   }}
                 >
-                  Delete comment
+                  Elimina commento
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

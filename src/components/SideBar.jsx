@@ -129,6 +129,21 @@ const SideBar = ({ myProfile }) => {
                 />
               </Form.Group>
             </Form.Group>
+            <div id="modal-event-paragraphs">
+              <p>
+                Se continui, accetti le{" "}
+                <span className="text-primary fw-bold ">
+                  norme sugli eventi di LinkedIn.{" "}
+                </span>
+              </p>
+              <p>
+                Sfrutta tutti i vantaggi di LinkedIn Events.{" "}
+                <span className="text-primary fw-bold">
+                  {" "}
+                  Per saperne di più.
+                </span>
+              </p>
+            </div>
           </Form>
         </Modal.Body>
         <Modal.Footer>

@@ -34,7 +34,7 @@ const SideBarRight = () => {
       </Col>
       <Col
         xs={12}
-        className="mt-4 d-flex gap-2 flex-column "
+        className="my-4 d-flex gap-2 flex-column"
         id="footer-sidebar"
       >
         <div className="d-flex gap-3 justify-content-center ">
