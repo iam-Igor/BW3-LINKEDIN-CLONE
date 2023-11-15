@@ -6,16 +6,18 @@ import Mynav from "./components/Mynav";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
+import GoUpButton from "./components/GoUpButton";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App position-relative">
       <BrowserRouter>
         <Mynav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
         </Routes>
+        <GoUpButton />
         <ChatBox />
       </BrowserRouter>
     </div>

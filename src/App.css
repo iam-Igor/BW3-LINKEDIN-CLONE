@@ -257,3 +257,9 @@ nav,
 #navbar-col {
   color: rgb(102, 102, 102);
 }
+
+.go-up {
+  position: fixed;
+  top: 90%;
+  right: 8%;
+}
