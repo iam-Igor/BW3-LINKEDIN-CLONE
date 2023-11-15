@@ -70,7 +70,9 @@ const SingleComment = ({ comment, getComments, postId }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">
+                {comment.author.split("@")[0]}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>

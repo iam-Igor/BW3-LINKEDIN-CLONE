@@ -158,7 +158,9 @@ const SinglePost = ({ post, updatePosts }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">
+                {post.username ? post.username.split("@")[0] : "Nome utente"}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
