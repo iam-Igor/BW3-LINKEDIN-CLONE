@@ -18,6 +18,8 @@ const SingleExperience = ({ job, getExperiences }) => {
 
   const location = useLocation();
 
+  console.log(job.startDate);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,14 +44,14 @@ const SingleExperience = ({ job, getExperiences }) => {
     image: "",
   });
 
-  // // const inputDate = parseISO(inputStart);
-  // const formattedDate = format(inputStart, "dd-MM-yyyy");
-
-  // const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
-
-  // const formattedDate2 = inputDate2
-  //  ? format(inputDate2, "dd/MM/yyyy")
-  //   : "Nessuna data di fine rapporto";
+  const inputDate = job.startDate ? parseISO(inputStart) : null;
+  const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
+  const formattedDate = inputDate
+    ? format(inputDate, "dd/MM/yyyy")
+    : "Nessuna data di inizio rapporto";
+  const formattedDate2 = inputDate2
+    ? format(inputDate2, "dd/MM/yyyy")
+    : "Nessuna data di fine rapporto";
 
   useEffect(() => {}, [urlId]);
 
@@ -109,7 +111,7 @@ const SingleExperience = ({ job, getExperiences }) => {
               setInfoExperience({
                 role: job.role,
                 company: job.company,
-                startDate: "",
+                startDate: job.startDate,
                 endDate: "",
                 description: job.description,
                 area: job.area,
