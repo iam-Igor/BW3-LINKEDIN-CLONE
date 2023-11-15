@@ -36,7 +36,9 @@ const SingleExperience = ({ job, getExperiences }) => {
   const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
 
   const formattedDate = format(inputDate, "yyyy-MM-dd");
-  const formattedDate2 = format(inputDate2, "yyyy-MM-dd");
+  const formattedDate2 = inputDate2
+  ? format(inputDate2, "dd/MM/yyyy")
+  : "Nessuna data di fine rapporto";
 
   useEffect(() => {}, [urlId]);
 
