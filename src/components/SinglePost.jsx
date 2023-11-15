@@ -10,6 +10,7 @@ import {
   ChatText,
   Dot,
   HandThumbsUp,
+  HandThumbsUpFill,
   SendFill,
   ShareFill,
   ThreeDots,
@@ -22,10 +23,13 @@ import {
 } from "react-bootstrap-icons";
 import { useState } from "react";
 import SingleComment from "./SingleComment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { LIKE_POST } from "../redux/actions/actionsHome";
 
 const SinglePost = ({ post, updatePosts }) => {
+  const likes = useSelector((state) => state.likedPosts);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const myProfile = useSelector((state) => state.profileData);
   // Testo di partenza, modificabile, del modale
@@ -308,8 +312,21 @@ const SinglePost = ({ post, updatePosts }) => {
       </div>
       <hr className="mx-3" />
       <div className="d-flex mt-3 justify-content-around comments-actions">
-        <div className="d-flex gap-2 align-items-center ">
-          <HandThumbsUp />
+        <div
+          className="d-flex gap-2 align-items-center "
+          onClick={() => {
+            dispatch({
+              type: LIKE_POST,
+              payload: post._id,
+            });
+          }}
+        >
+          {likes.includes(post._id) ? (
+            <HandThumbsUpFill className={`text-primary`} />
+          ) : (
+            <HandThumbsUp />
+          )}
+
           <p className="mb-0">Consiglia</p>
         </div>
         <div className="d-flex gap-2 align-items-center ">
