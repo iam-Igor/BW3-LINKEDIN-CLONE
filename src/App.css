@@ -44,16 +44,11 @@ body {
   color: rgb(94, 94, 94);
   cursor: pointer;
   text-decoration: none;
-
 }
 
 .pencilButton:hover {
   background-color: rgb(235, 235, 235);
 }
-
-
-
-
 
 #dropdown-basic {
   width: 250px;
@@ -174,7 +169,7 @@ nav,
 }
 
 .chat-box {
-  width: 30%;
+  width: 20%;
 }
 
 .single-chat p {
@@ -197,20 +192,20 @@ nav,
 
 @keyframes slide-top {
   0% {
-    transform: translateY(378px);
+    transform: translateY(90%);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0%);
   }
 }
 
 @keyframes slide-bottom {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0%);
   }
   100% {
-    transform: translateY(570px);
+    transform: translateY(90%);
   }
 }
 
