@@ -21,7 +21,7 @@ const SuggestedProfile = ({ profile }) => {
       </div>
       <div className="ms-2">
         <p
-          className="fw-bold m-0"
+          className="fw-bold m-0 pointer"
           onClick={() => {
             location(`/profile/${profile._id}`);
           }}

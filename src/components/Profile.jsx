@@ -307,7 +307,7 @@ const Profile = () => {
                       <h4>{myProfile.title}</h4>
                       <p>{myProfile.area}</p>
                       {location.pathname === "/profile/me" ? (
-                        <p>
+                        <p className="pointer">
                           Following:{" "}
                           <span
                             className="fw-bold"
