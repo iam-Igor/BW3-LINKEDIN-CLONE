@@ -11,11 +11,11 @@ const SingleExperience = ({ job }) => {
   const formattedDate2 = format(inputDate2, "dd/MM/yyyy");
 
   return (
-    <div className="d-flex mx-2 border-bottom mb-4">
-      <div className="p-0 me-3">
-        <img style={{ width: "70px" }} src={job.image} alt="job-icon" />
+    <div className="d-flex mx-2">
+      <div className="p-0 me-3 w-25">
+        <img src={job.image} alt="job-icon" style={{ width: "60%" }} />
       </div>
-      <div className="">
+      <div className="w-75">
         <h6>Ruolo: {job.role}</h6>
         <p className="mb-1">Compagnia: {job.company}</p>
         <p className="mb-1">
