@@ -1,9 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./App.css";
 import Profile from "./components/Profile";
 import Mynav from "./components/Mynav";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ChatBox from "./components/Chatbox";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
         </Routes>
+        <ChatBox />
       </BrowserRouter>
     </div>
   );
