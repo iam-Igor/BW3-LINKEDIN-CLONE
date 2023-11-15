@@ -170,6 +170,14 @@ nav,
 
 .chat-box {
   width: 20%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+  .chat-box {
+    width: 30%;
+    overflow: hidden;
+  }
 }
 
 .pointer {
@@ -195,25 +203,24 @@ nav,
 }
 
 @keyframes slide-top {
-  0% {
-    transform: translateY(90%);
+  from {
+    height: 6vh;
   }
-
-  100% {
-    transform: translateY(0%);
+  to {
+    height: 60vh;
   }
 }
 
 @keyframes slide-bottom {
-  0% {
-    transform: translateY(0%);
+  from {
+    height: 60vh;
   }
-  100% {
-    transform: translateY(90%);
+  to {
+    height: 6vh;
   }
 }
 
-#icons-offcanvas {
+*/ #icons-offcanvas {
   font-size: 0.7rem;
   color: grey;
 }
