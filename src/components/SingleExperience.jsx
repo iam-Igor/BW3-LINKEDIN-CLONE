@@ -1,11 +1,21 @@
-import { format, parseISO } from "date-fns";
+import { format, parse } from "date-fns";
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 
 const SingleExperience = ({ job, getExperiences }) => {
-  const inputStart = job.startDate;
-  const inputEnd = job.endDate;
+  let inputStart = job.startDate;
+  let inputEnd = job.endDate;
+
+  if (inputStart || inputEnd) {
+    inputStart = job.startDate.slice(0, 10);
+    inputEnd = job.endDate.slice(0, 10);
+  } else {
+    inputStart = null;
+  }
+
+  console.log(inputStart, inputEnd);
+
   const location = useLocation();
 
   const [show, setShow] = useState(false);
@@ -32,13 +42,14 @@ const SingleExperience = ({ job, getExperiences }) => {
     image: "",
   });
 
-  const inputDate = parseISO(inputStart);
-  const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
+  // // const inputDate = parseISO(inputStart);
+  // const formattedDate = format(inputStart, "dd-MM-yyyy");
 
-  const formattedDate = format(inputDate, "yyyy-MM-dd");
-  const formattedDate2 = inputDate2
-  ? format(inputDate2, "dd/MM/yyyy")
-  : "Nessuna data di fine rapporto";
+  // const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
+
+  // const formattedDate2 = inputDate2
+  //  ? format(inputDate2, "dd/MM/yyyy")
+  //   : "Nessuna data di fine rapporto";
 
   useEffect(() => {}, [urlId]);
 
@@ -66,7 +77,7 @@ const SingleExperience = ({ job, getExperiences }) => {
       })
       .then(() => {
         handleClose();
-        getExperiences()
+        getExperiences();
       })
       .catch((err) => {
         console.log(err);
@@ -82,7 +93,7 @@ const SingleExperience = ({ job, getExperiences }) => {
         <h6>Ruolo: {job.role}</h6>
         <p className="mb-1">Compagnia: {job.company}</p>
         <p className="mb-1">
-          Dal: {formattedDate} Al: {formattedDate2}
+          Dal: {inputStart} Al: {inputEnd}
         </p>
         <p className="mb-1">Area: {job.area}</p>
         <p className="mt-2 mb-4">

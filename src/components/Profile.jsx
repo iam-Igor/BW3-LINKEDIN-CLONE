@@ -362,7 +362,13 @@ const Profile = () => {
                   </div>
 
                   {allExperiences.map((exp, index) => {
-                    return <SingleExperience key={index} job={exp} getExperiences={getExperiences}/>;
+                    return (
+                      <SingleExperience
+                        key={index}
+                        job={exp}
+                        getExperiences={getExperiences}
+                      />
+                    );
                   })}
                 </div>
               )}
