@@ -86,7 +86,6 @@ const Posts = () => {
               <img
                 src="https://placekitten.com/50"
                 className="rounded-circle"
-                fluid
                 alt="profile-img"
               />
             </div>

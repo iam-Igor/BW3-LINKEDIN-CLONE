@@ -54,7 +54,7 @@ const Mynav = () => {
                         setOpen(true);
                       }}
                       id="search"
-                      className="rounded-end"
+                      className="rounded-end input-bar"
                       style={{ height: "45px" }}
                       type="search"
                       placeholder="cerca"

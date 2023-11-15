@@ -81,3 +81,15 @@ nav,
     width: 100%;
   }
 }
+
+.input-bar {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+  input[type="search"]:focus {
+    width: 350px;
+  }
+}
