@@ -7,23 +7,32 @@ import {
   ArrowRight,
   Clock,
   ThreeDots,
-  CaretDownFill,
 } from "react-bootstrap-icons";
 import SinglePost from "./SinglePost";
 import { useEffect, useState } from "react";
-import { API_KEY, URL_POSTS } from "../redux/actions/actionsHome";
+import {
+  API_KEY,
+  URL_POSTS,
+  sortPostsByDate,
+  sortPostsByDateOldest,
+} from "../redux/actions/actionsHome";
 import { useSelector } from "react-redux";
 
 const Posts = () => {
   const myProfile = useSelector((state) => state.profileData);
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [recentPosts, setRecentPosts] = useState(null);
+  const [mostRecent, setMostRecent] = useState(true);
+
   const [update, setUpdate] = useState(0);
+  const [visiblePosts, setVisiblePosts] = useState(4);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const getPosts = () => {
+  const getPosts = (recentSelected) => {
     fetch(URL_POSTS, {
       headers: {
         Authorization: API_KEY,
@@ -38,6 +47,11 @@ const Posts = () => {
       })
       .then((data) => {
         console.log(data);
+        if (recentSelected) {
+          sortPostsByDate(data);
+        } else {
+          sortPostsByDateOldest(data);
+        }
         setPosts(data);
       })
       .catch((err) => {
@@ -72,12 +86,19 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    getPosts(mostRecent);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    getPosts();
+    getPosts(mostRecent);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+
+  useEffect(() => {
+    getPosts(mostRecent);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mostRecent]);
 
   return (
     <Row className="justify-content-center mx-1">
@@ -104,10 +125,7 @@ const Posts = () => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+            <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => {
                   e.preventDefault();
@@ -168,7 +186,7 @@ const Posts = () => {
             />
           </div>
           <Form className="flex-grow-1" onClick={handleShow}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Control
                 id="control-input"
                 type="email"
@@ -199,10 +217,25 @@ const Posts = () => {
         <div className="d-flex align-items-center" id="select-feed">
           <hr />
           <p className="cursor">
-            Seleziona la visualizzazione dei feed:
-            <strong className="ms-1">Più rilevanti per primi</strong>
-            <CaretDownFill />
+            {/* <strong className="ms-1">Più rilevanti per primi</strong> */}
           </p>
+          <Form.Select
+            onChange={(e) => {
+              const selectedValue = e.target.value;
+              if (selectedValue === "mostRecent") {
+                console.log("ok");
+                setMostRecent(true);
+              } else if (selectedValue === "leastRecent") {
+                setMostRecent(false);
+              }
+            }}
+            aria-label="Default select example"
+            className="custom-select-paragraph"
+          >
+            <option>Seleziona la visualizzazione dei feed:</option>
+            <option value={"mostRecent"}>Più recenti per primi</option>
+            <option value={"leastRecent"}>Meno recenti per primi</option>
+          </Form.Select>
         </div>
       </Col>
       {/* SEZIONE CONSIGLIATI */}
@@ -275,7 +308,7 @@ const Posts = () => {
       {/* SEZIONE POST */}
       <Row className="px-0">
         {posts &&
-          posts.map((post) => {
+          posts.slice(0, visiblePosts).map((post) => {
             return (
               <SinglePost
                 key={post._id}
@@ -284,6 +317,16 @@ const Posts = () => {
               />
             );
           })}
+        <div className="text-center">
+          <Button
+            className="w-50 btn btn-secondary my-3"
+            onClick={() => {
+              setVisiblePosts(visiblePosts + 6);
+            }}
+          >
+            Mostra altri
+          </Button>
+        </div>
       </Row>
     </Row>
   );

@@ -37,3 +37,25 @@ export const getProfileAction = () => {
       });
   };
 };
+
+export const sortPostsByDate = (posts) => {
+  return posts.sort((a, b) => {
+    // Converti le stringhe di date in oggetti Date
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    // Ordina in base alla differenza di tempo
+    return dateB - dateA;
+  });
+};
+
+export const sortPostsByDateOldest = (posts) => {
+  return posts.sort((a, b) => {
+    // Converti le stringhe di date in oggetti Date
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    // Ordina in base alla differenza di tempo
+    return dateA - dateB;
+  });
+};

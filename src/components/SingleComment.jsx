@@ -1,9 +1,17 @@
 import { Dropdown, Modal, Form, Button } from "react-bootstrap";
-import { ThreeDots } from "react-bootstrap-icons";
+import {
+  Clipboard,
+  Pencil,
+  Share,
+  ThreeDots,
+  Trash3,
+} from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { URL_COMMENTS, API_KEY_COMMENTS } from "../redux/actions/actionsHome";
 import { useState } from "react";
-const SingleComment = ({ comment, getComments, postId }) => {
+import { useSelector } from "react-redux";
+const SingleComment = ({ comment, getComments, postId, postUserId }) => {
+  const myProfile = useSelector((state) => state.profileData);
   // Funzionalità del modale
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -117,15 +125,15 @@ const SingleComment = ({ comment, getComments, postId }) => {
         height="40px"
         alt="profile-img"
       />
-      <div className="d-flex justify-content-between flex-grow-1 bg-secondary-subtle py-2 px-2 rounded-bottom rounded-end">
+      <div className="d-flex justify-content-between flex-grow-1 bg-secondary-subtle py-2 px-2 rounded-bottom rounded-end ">
         <div>
           <p className="mb-0 fw-bold ">{comment.author.split("@")[0]}</p>
-          <p className="mb-0">{comment.comment}</p>
+          <p className="mb-0 comment-content truncated">{comment.comment}</p>
         </div>
         <div>
           <div className="d-flex justify-content-end">
             <div className="text-end">
-              <span>3 giorni</span>
+              <span className="comment-date">3 giorni</span>
             </div>
             <Dropdown>
               <Dropdown.Toggle
@@ -135,21 +143,36 @@ const SingleComment = ({ comment, getComments, postId }) => {
               >
                 <ThreeDots />
               </Dropdown.Toggle>
-
               <Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={() => {
-                    handleShow();
-                  }}
-                >
-                  Modifica commento
+                {myProfile._id === postUserId ? (
+                  <>
+                    <Dropdown.Item
+                      onClick={() => {
+                        handleShow();
+                      }}
+                    >
+                      <Pencil className="me-2" />
+                      Modifica commento
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        deleteComment();
+                      }}
+                    >
+                      <Trash3 className="me-2" />
+                      Elimina commento
+                    </Dropdown.Item>{" "}
+                  </>
+                ) : (
+                  ""
+                )}
+                <Dropdown.Item>
+                  <Clipboard className="me-2" />
+                  Copia il link nel commento
                 </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => {
-                    deleteComment();
-                  }}
-                >
-                  Elimina commento
+                <Dropdown.Item>
+                  <Share className="me-2" />
+                  Segnala
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

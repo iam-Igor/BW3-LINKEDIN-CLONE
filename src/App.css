@@ -80,6 +80,25 @@ body {
   margin-top: 1em;
 }
 
+/* Rimuove stile select feed */
+
+.custom-select-paragraph {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.7rem;
+  line-height: inherit;
+  color: currentColor;
+}
+
+.custom-select-paragraph:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .cursor {
   cursor: pointer;
 }
@@ -187,4 +206,21 @@ nav,
 
 #navbar-col {
   color: rgb(102, 102, 102);
+}
+
+/* Commenti */
+
+.comment-date {
+  font-size: 0.8rem;
+}
+
+.comment-content {
+  font-size: 0.9rem;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
