@@ -4,18 +4,8 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 
 const SingleExperience = ({ job, getExperiences }) => {
-  let inputStart = job.startDate;
-  let inputEnd = job.endDate;
-
-  if (inputStart || inputEnd) {
-    inputStart = job.startDate.slice(0, 10);
-    inputEnd = job.endDate.slice(0, 10);
-  } else {
-    inputStart = null;
-  }
-
-  console.log(inputStart, inputEnd);
-
+  const inputStart = job.startDate;
+  const inputEnd = job.endDate;
   const location = useLocation();
 
   console.log(job.startDate);
@@ -95,7 +85,7 @@ const SingleExperience = ({ job, getExperiences }) => {
         <h6>Ruolo: {job.role}</h6>
         <p className="mb-1">Compagnia: {job.company}</p>
         <p className="mb-1">
-          Dal: {inputStart} Al: {inputEnd}
+          Dal: {formattedDate} Al: {formattedDate2}
         </p>
         <p className="mb-1">Area: {job.area}</p>
         <p className="mt-2 mb-4">
