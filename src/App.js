@@ -6,6 +6,7 @@ import Mynav from "./components/Mynav";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
+import PageNotFound from "./components/PageNotFound"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <ChatBox />
       </BrowserRouter>
