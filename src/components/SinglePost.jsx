@@ -23,8 +23,10 @@ import {
 import { useState } from "react";
 import SingleComment from "./SingleComment";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const SinglePost = ({ post, updatePosts }) => {
+  const navigate = useNavigate();
   const myProfile = useSelector((state) => state.profileData);
   // Testo di partenza, modificabile, del modale
   const [textArea, setTextArea] = useState(post.text);
@@ -211,7 +213,14 @@ const SinglePost = ({ post, updatePosts }) => {
 
           {!post.user.image && <PersonCircle className="fs-1 text-secondary" />}
 
-          <h4 className="fw-bold fs-6 cursor">{post.username.split("@")[0]}</h4>
+          <h4
+            onClick={() => {
+              navigate(`/profile/${post.user._id ? post.user._id : ""}`);
+            }}
+            className="fw-bold fs-6 cursor"
+          >
+            {post.username.split("@")[0]}
+          </h4>
         </div>
         <div>
           <Dropdown>
