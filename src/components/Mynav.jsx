@@ -137,7 +137,12 @@ const Mynav = () => {
                       <i className="bi bi-house-door-fill fs-4"></i>
                       <p className="m-0">Home</p>
                     </Link>
-                    <Nav.Link className="d-flex flex-column text-center d-none d-md-inline-block">
+                    <Nav.Link
+                      className="d-flex flex-column text-center d-none d-md-inline-block"
+                      onClick={() => {
+                        navigate("/net");
+                      }}
+                    >
                       <i className="bi bi-people-fill fs-4"></i>
                       <p className="m-0">Rete</p>
                     </Nav.Link>

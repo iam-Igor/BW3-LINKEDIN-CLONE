@@ -12,6 +12,7 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
 import JobsPage from "./components/JobsPage";
+import Net from "./components/Net";
 export const notify = () =>
   toast.info(
     <div>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
           <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/net/" element={<Net />} />
           <Route path="/*" element={<PageNotFound />} />
           <Route path="/Notifiche/" element={<Notifiche />} />
         </Routes>
