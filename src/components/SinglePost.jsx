@@ -323,7 +323,9 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
             <HandThumbsUp />
           </div>
           <p className="mb-0">
-            {likes.includes(post._id) ? randomNumOfLikes + 1 : randomNumOfLikes}
+            {likes.includes(post._id) && randomNumOfLikes
+              ? randomNumOfLikes + 1
+              : randomNumOfLikes}
           </p>
         </div>
         <div className="d-flex align-items-center cursor">
