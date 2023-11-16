@@ -10,6 +10,7 @@ import {
   ChatText,
   Dot,
   HandThumbsUp,
+  HandThumbsUpFill,
   SendFill,
   ShareFill,
   ThreeDots,
@@ -18,11 +19,27 @@ import {
   EyeSlashFill,
   Trash3Fill,
   PencilFill,
+  PersonCircle,
 } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { LIKE_POST } from "../redux/actions/actionsHome";
 
-const SinglePost = ({ post, updatePosts }) => {
+const SinglePost = ({ post, updatePosts, randomPhotos }) => {
+  const [randomNumOfLikes, setRandomNumOfLikes] = useState(
+    Math.floor(Math.random() * 200)
+  );
+  const [randomNumFrom0to80, setRandomNumFrom0to80] = useState(
+    Math.floor(Math.random() * 80)
+  );
+
+  const likes = useSelector((state) => state.likedPosts);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const myProfile = useSelector((state) => state.profileData);
+  const [commmentsNumber, setCommentsNumber] = useState(0);
   // Testo di partenza, modificabile, del modale
   const [textArea, setTextArea] = useState(post.text);
 
@@ -84,7 +101,7 @@ const SinglePost = ({ post, updatePosts }) => {
 
   // Fetch per ottenere i commenti
 
-  const getComments = () => {
+  const getComments = (showThem) => {
     fetch(URL_COMMENTS, {
       headers: {
         Authorization: API_KEY_COMMENTS,
@@ -103,7 +120,12 @@ const SinglePost = ({ post, updatePosts }) => {
         const filteredData = data.filter(
           (comment) => comment.elementId === post._id
         );
-        setCommentsToShow(filteredData);
+        if (showThem !== "no") {
+          setCommentsToShow(filteredData);
+          setCommentsNumber(filteredData.length);
+        } else {
+          setCommentsNumber(filteredData.length);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -139,6 +161,12 @@ const SinglePost = ({ post, updatePosts }) => {
       });
   };
 
+  useEffect(() => {
+    getComments("no");
+    setRandomNumOfLikes(Math.floor(Math.random() * 200));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Col xs={12} className="py-3 my-2 border rounded-3 background-columns">
       {/* MODALE per modificare il contenuto del post */}
@@ -155,7 +183,9 @@ const SinglePost = ({ post, updatePosts }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">Nome utente</Modal.Title>
+              <Modal.Title className="fs-5">
+                {post.username ? post.username.split("@")[0] : "Nome utente"}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>
@@ -169,7 +199,6 @@ const SinglePost = ({ post, updatePosts }) => {
               <Form.Control
                 onChange={(e) => {
                   setTextArea(e.target.value);
-                  console.log(e.target.value);
                 }}
                 as="textarea"
                 className="border-0 fs-5"
@@ -195,13 +224,30 @@ const SinglePost = ({ post, updatePosts }) => {
 
       <div className="d-flex justify-content-between mb-2">
         <div className="d-flex gap-2">
-          <img src="https://placekitten.com/40" alt="author-img" />
+          {post.user.image && (
+            <img
+              src={post.user.image}
+              width="50px"
+              height="50px"
+              alt="author-img"
+            />
+          )}
 
-          <h4 className="fw-bold fs-6">{post.username.split("@")[0]}</h4>
+          {!post.user.image && <PersonCircle className="fs-1 text-secondary" />}
+
+          <h4
+            onClick={() => {
+              navigate(`/profile/${post.user._id ? post.user._id : ""}`);
+            }}
+            className="fw-bold fs-6 cursor"
+          >
+            {post.username.split("@")[0]}
+          </h4>
         </div>
         <div>
           <Dropdown>
             <Dropdown.Toggle
+              className="text-end border-0 w-25"
               variant="none"
               drop="start"
               show="none"
@@ -219,23 +265,29 @@ const SinglePost = ({ post, updatePosts }) => {
                 <Clipboard className="me-2 mt-1" />
                 Copia link al post
               </Dropdown.Item>
-              <Dropdown.Item
-                className={"d-flex align-items-center"}
-                onClick={deletePost}
-              >
-                <Trash3Fill className="me-2 mt-1" />
-                Elimina questo post
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="d-flex align-items-center"
-                onClick={() => {
-                  console.log("cliccato");
-                  handleShow();
-                }}
-              >
-                <PencilFill className="me-2 mt-1" />
-                Modifica questo post
-              </Dropdown.Item>
+              {myProfile._id === post.user._id ? (
+                <>
+                  <Dropdown.Item
+                    className={"d-flex align-items-center"}
+                    onClick={deletePost}
+                  >
+                    <Trash3Fill className="me-2 mt-1" />
+                    Elimina questo post
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="d-flex align-items-center"
+                    onClick={() => {
+                      handleShow();
+                    }}
+                  >
+                    <PencilFill className="me-2 mt-1" />
+                    Modifica questo post
+                  </Dropdown.Item>
+                </>
+              ) : (
+                ""
+              )}
+
               <Dropdown.Item className="d-flex align-items-center">
                 <CodeSlash className="me-2 mt-1" />
                 Incorpora questo post
@@ -251,40 +303,63 @@ const SinglePost = ({ post, updatePosts }) => {
       <p>{post.text}</p>
       <div className="d-flex justify-content-center">
         <img
-          src="https://placekitten.com/500"
+          src={
+            randomPhotos[randomNumFrom0to80].src.original
+              ? randomPhotos[randomNumFrom0to80].src.original
+              : "https://placekitten.com/500"
+          }
+          width="500px"
           className="w-100"
           alt="post-img"
         />
       </div>
-      <div className="d-flex justify-content-between mt-2">
-        <div className="d-flex align-items-center gap-2">
-          <div>
-            <HandThumbsUp className="ms-2 rounded-circle border " />
+      <div className="d-flex justify-content-between mt-2 stats">
+        <div className="d-flex align-items-center gap-2 ">
+          <div
+            className="border d-flex justify-content-center align-items-center rounded-circle cursor"
+            style={{ width: "25px", height: "25px" }}
+          >
+            <HandThumbsUp />
           </div>
-          <p className="mb-0">1.213</p>
+          <p className="mb-0">
+            {likes.includes(post._id) ? randomNumOfLikes + 1 : randomNumOfLikes}
+          </p>
         </div>
-        <div className="d-flex align-items-center ">
-          <p className="mb-0">6 commenti</p> <Dot className="mt-1" />{" "}
-          <p className="mb-0">44 diffusioni post</p>
+        <div className="d-flex align-items-center cursor">
+          <p className="mb-0">{commmentsNumber} commenti</p>{" "}
+          <Dot className="mt-1" /> <p className="mb-0">23 diffusioni post</p>
         </div>
       </div>
       <hr className="mx-3" />
-      <div className="d-flex mt-3 justify-content-around">
-        <div className="d-flex gap-2 align-items-center ">
-          <HandThumbsUp />
+      <div className="d-flex mt-3 justify-content-around comments-actions">
+        <div
+          className="d-flex gap-2 align-items-center cursor"
+          onClick={() => {
+            dispatch({
+              type: LIKE_POST,
+              payload: post._id,
+            });
+          }}
+        >
+          {likes.includes(post._id) ? (
+            <HandThumbsUpFill className={`text-primary`} />
+          ) : (
+            <HandThumbsUp />
+          )}
+
           <p className="mb-0">Consiglia</p>
         </div>
-        <div className="d-flex gap-2 align-items-center ">
+        <div className="d-flex gap-2 align-items-center cursor">
           <ChatText />
           <p className="mb-0" onClick={getComments}>
             Commenta
           </p>
         </div>
-        <div className="d-flex gap-2 align-items-center ">
+        <div className="d-flex gap-2 align-items-center cursor">
           <ShareFill />
           <p className="mb-0">Diffondi il post</p>
         </div>
-        <div className="d-flex gap-2 align-items-center ">
+        <div className="d-flex gap-2 align-items-center cursor">
           <SendFill />
           <p className="mb-0">Invia</p>
         </div>
@@ -292,44 +367,52 @@ const SinglePost = ({ post, updatePosts }) => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          getComments();
           sendComment();
+          setCommentContent("");
+          getComments();
         }}
       >
-        <Form.Group
-          className="mb-3 d-flex gap-2 mt-4"
-          controlId="exampleForm.ControlInput1"
-        >
+        <Form.Group className="mb-3 d-flex gap-2 mt-4">
           <img
-            src="https://placekitten.com/40"
+            src={myProfile ? myProfile.image : "https://placekitten.com/40"}
+            width="40px"
+            height="40px"
             className="rounded-circle"
             alt="profile-img"
           />
           <Form.Control
             type="text"
             placeholder="Aggiungi un commento"
+            value={commentContent}
             onChange={(e) => {
               setCommentContent(e.target.value);
             }}
             onClick={() => {
               getComments();
             }}
-            className="rounded-pill py-2 px-2 border-end-0"
+            className="rounded-pill py-2 px-2 "
           />
-          <Button
+          {/* <Button
             onClick={(e) => {
               e.preventDefault();
-              getComments();
               sendComment();
+              setCommentContent("");
+              getComments();
             }}
           >
             INVIA
-          </Button>
+          </Button> */}
         </Form.Group>
       </Form>
       {commentsToShow &&
         commentsToShow.map((comment) => (
-          <SingleComment comment={comment} getComments={getComments} />
+          <SingleComment
+            comment={comment}
+            getComments={getComments}
+            postId={post._id}
+            key={comment._id}
+            postUserId={post.user._id}
+          />
         ))}
     </Col>
   );

@@ -27,30 +27,310 @@ body {
 .search-icon i {
   font-size: 0.8em;
 }
-.pencil-button {
+.plus-button {
   position: absolute;
   right: 5%;
   text-decoration: none;
   color: rgb(94, 94, 94);
   cursor: pointer;
 }
-.pencil-button:hover {
+.plus-button:hover {
   background-color: rgb(235, 235, 235);
 }
-#dropdown-basic{
-    width: 250px;
+
+.pencilButton {
+  position: absolute;
+  right: 5%;
+  color: rgb(94, 94, 94);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pencilButton:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#dropdown-basic {
+  width: 250px;
 }
 #icon-footer i {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 /* COLORE BACKGROUND */
 .background-columns {
-  background-color: #f3f3f3;
+  background-color: rgb(255, 255, 255);
+}
+
+/* POSTS */
+.justify-content-between .gap-2 {
+  border-radius: 0.2em;
+  padding: 3px;
+}
+
+.justify-content-between .gap-2:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#control-input:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.single-event {
+  font-size: 0.8rem;
+}
+
+#modal-event-paragraphs {
+  font-size: 0.7rem;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+#select-feed {
+  font-size: 0.7rem;
+}
+
+#select-feed hr {
+  width: 25%;
+}
+
+#select-feed p {
+  margin-left: 0.2em;
+  margin-top: 1em;
+}
+
+/* Rimuove stile select feed */
+
+.custom-select-paragraph {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.7rem;
+  line-height: inherit;
+  color: currentColor;
+}
+
+.custom-select-paragraph:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+#ul-sidebar li {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#ul-sidebar p {
+  font-size: 0.8rem;
+}
+
+.stats {
+  font-size: 0.8rem;
+}
+
+.comments-actions {
+  font-size: 0.9rem;
+}
+
+/* FOOTER SIDEBAR DESTRA */
+
+#footer-sidebar {
+  font-size: 0.8rem;
 }
 .navbar-nav a {
-    color: inherit;
+  color: inherit;
 }
+
+/* SEZIONE NAV E JOB LIST */
+nav,
+.job-list {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.job-info p {
+  font-size: 0.8em;
+}
+
+.job-info {
+  line-height: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.job-button {
+  font-size: 0.8em;
+  font-weight: bold;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.job-menu {
+  width: 75%;
+}
+
+@media screen and (max-width: 768px) {
+  .job-menu {
+    width: 100%;
+  }
+}
+
+.input-bar {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+  input[type="search"]:focus {
+    width: 350px;
+  }
+}
+
+/* SEZIONE CHAT */
+
+.chat-container {
+  border: 1px solid lightgray;
+}
+
+.chat-box {
+  width: 20%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+  .chat-box {
+    width: 30%;
+    overflow: hidden;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.single-chat p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.single-chat:hover {
+  background-color: lightgray;
+}
+
+.chat-on {
+  animation: slide-top 0.3s linear forwards;
+}
+
+.chat-off {
+  animation: slide-bottom 0.3s linear forwards;
+}
+
+@keyframes slide-top {
+  from {
+    height: 6vh;
+  }
+  to {
+    height: 60vh;
+  }
+}
+
+@keyframes slide-bottom {
+  from {
+    height: 60vh;
+  }
+  to {
+    height: 6vh;
+  }
+}
+
+/* SEZIONE OFF CANVAS */
+
+*/ #icons-offcanvas {
+  font-size: 0.7rem;
+  color: grey;
+}
+#icons-offcanvas svg {
+  cursor: pointer;
+}
+#icons-offcanvas p {
+  margin-top: 0.3rem;
+}
+
+.icons-div {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+#body-canvas li {
+  list-style-type: none;
+}
+
+#body-canvas li p:first-of-type {
+  font-size: 0.9rem;
+  margin-bottom: 0.1em;
+  cursor: pointer;
+}
+#body-canvas li p:nth-of-type(2) {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+#last-div-canvas {
+  font-size: 0.9rem;
+}
+
+#navbar-col {
+  color: rgb(102, 102, 102);
+}
+
+#button {
+  color: rgb(10, 102, 194);
+  border-color: rgb(10, 102, 194);
+  font-weight: 600;
+  border-width: 2px;
+}
+#badge-notification {
+  position: absolute;
+  font-size: 10px;
+  left: 26px;
+  top: 3px;
+}
+
+/* Commenti */
+
+.comment-date {
+  font-size: 0.8rem;
+}
+
+.comment-content {
+  font-size: 0.9rem;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+/* BOTTONE GO UP */
+
+.go-up {
+  position: fixed;
+  top: 90%;
+  right: 8%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+}
+
 /* css pagina notifiche */
 .lista-notifiche {
   font-size: small;
