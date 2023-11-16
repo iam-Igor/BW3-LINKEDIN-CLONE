@@ -5,7 +5,7 @@ import SideBarRight from "./SideBarRight";
 import { useEffect } from "react";
 import { getProfileAction } from "../redux/actions/actionsHome";
 import { useDispatch, useSelector } from "react-redux";
-import GoUpButton from "./GoUpButton";
+
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
