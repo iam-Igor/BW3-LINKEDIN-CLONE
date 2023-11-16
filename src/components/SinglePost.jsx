@@ -31,6 +31,7 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
   const [randomNumOfLikes, setRandomNumOfLikes] = useState(
     Math.floor(Math.random() * 200)
   );
+  // eslint-disable-next-line no-unused-vars
   const [randomNumFrom0to80, setRandomNumFrom0to80] = useState(
     Math.floor(Math.random() * 80)
   );
@@ -49,7 +50,7 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
 
   const [commentsToShow, setCommentsToShow] = useState(null);
 
-  // Funzionalità del modale
+  // FunzionalitÃ  del modale
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
