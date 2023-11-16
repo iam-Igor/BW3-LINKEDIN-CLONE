@@ -15,6 +15,7 @@ const initialState = {
   events: [],
   likedPosts: [],
   randomPhotos: [],
+  news: [],
 };
 
 const mainReducer = (state = initialState, action) => {
