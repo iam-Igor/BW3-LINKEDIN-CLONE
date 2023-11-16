@@ -291,6 +291,12 @@ nav,
   color: rgb(102, 102, 102);
 }
 
+#button {
+  color: rgb(10, 102, 194);
+  border-color: rgb(10, 102, 194);
+  font-weight: 600;
+  border-width: 2px;
+}
 #badge-notification {
   position: absolute;
   font-size: 10px;
