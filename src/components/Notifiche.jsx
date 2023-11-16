@@ -3,7 +3,7 @@ import SideBarRight from "./SideBarRight";
 
 const Notifiche = () => {
   return (
-    <Container className="mx-1">
+    <Container fluid className="mx-1">
       <Row className="d-flex justify-content-center">
         <Col className="col-12 col-lg-2 ">
           <div className="d-flex flex-column bg-white p-2 border rounded d-flex justify-content-start align-items-center">
@@ -36,9 +36,12 @@ const Notifiche = () => {
                   />
                   <p className="lista-notifiche mx-1">
                     MICROSOFT ha pubblicato: Countdown to #MSignite what are you
-                    lookin forward to?
+                    lookin forward to? Globalizzare le interazioni aziendali e
+                    con i clienti traducendo testo e sintesi vocale usando l'API
+                    Translator e il servizio di riconoscimento vocale, sia nella
+                    famiglia Servizi cognitivi di Azure.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">2 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -54,9 +57,12 @@ const Notifiche = () => {
                   />
                   <p className="lista-notifiche mx-1">
                     MICROSOFT ha pubblicato: Countdown to #MSignite what are you
-                    lookin forward to?
+                    lookin forward to? Globalizzare le interazioni aziendali e
+                    con i clienti traducendo testo e sintesi vocale usando l'API
+                    Translator e il servizio di riconoscimento vocale, sia nella
+                    famiglia Servizi cognitivi di Azure.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">8 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -72,9 +78,11 @@ const Notifiche = () => {
                   />
                   <p className="lista-notifiche mx-1">
                     FACEBOOK gentile utente: Hai una notifica sul tuo profilo.
-                    You are one notification.
+                    You are one notification in your profile. Candice Benjamin è
+                    un'insegnante specializzata nell’insegnamento della lingua
+                    inglese con più di 5 anni di esperienza.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">16 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -93,7 +101,7 @@ const Notifiche = () => {
                     we're always committed to providing you with the tools and
                     resourced your need. That's we've tailored our packages.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">19 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -112,7 +120,7 @@ const Notifiche = () => {
                     we're always committed to providing you with the tools and
                     resourced your need. That's we've tailored our packages.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">26 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -129,9 +137,10 @@ const Notifiche = () => {
                   <p className="lista-notifiche mx-1">
                     Datapizza ha pubblicato: Esame di fondamenti di informatica
                     nel 2015: "Scusi prof, il codice non funziona..." "il tuo
-                    algoritmo è sbagliato."
+                    algoritmo è sbagliato." il mondo della pizza italiana a
+                    portata di click. Su Pizza.it trovi le offerte di lavoro.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">33 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -148,9 +157,10 @@ const Notifiche = () => {
                   <p className="lista-notifiche mx-1">
                     Datapizza ha pubblicato: Esame di fondamenti di informatica
                     nel 2015: "Scusi prof, il codice non funziona..." "il tuo
-                    algoritmo è sbagliato."
+                    algoritmo è sbagliato." il mondo della pizza italiana a
+                    portata di click. Su Pizza.it trovi le offerte di lavoro.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">39 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -169,7 +179,7 @@ const Notifiche = () => {
                     pilastri deve fondarsi la gentilezza sul lavoro? La coach
                     Martina Sconcerti lo ha chiesto alla sua rete professionale.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">45 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -188,7 +198,7 @@ const Notifiche = () => {
                     pilastri deve fondarsi la gentilezza sul lavoro? La coach
                     Martina Sconcerti lo ha chiesto alla sua rete professionale.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">54 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
@@ -207,7 +217,7 @@ const Notifiche = () => {
                     pilastri deve fondarsi la gentilezza sul lavoro? La coach
                     Martina Sconcerti lo ha chiesto alla sua rete professionale.
                   </p>
-                  <div className="d-flex flex-column justify-content-center">
+                  <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">59 minuti</p>
                     <i class="bi bi-three-dots"></i>
                   </div>
