@@ -25,7 +25,24 @@ const Notifiche = () => {
           </div>
           <div className="d-flex mt-2 bg-white p-2 border rounded align-items-center">
             {/* lista notifiche centrale */}
-            <ul className="list-unstyled p-1 d-flex flex-column align-items-center">
+            <ul className="list-unstyled p-1 d-flex flex-column align-items-center cursor">
+              <li className="my-1 w-100 bg-info-subtle py-2 ">
+                <div className="d-flex align-items-center">
+                  <i class="bi bi-dot"></i>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                    alt="logo"
+                    style={{ height: "40px" }}
+                  />
+                  <p className="lista-notifiche mx-1">
+                    Stefano ti ha inviato una richiesta di collegamento.
+                  </p>
+                  <div className=" d-flex flex-column justify-content-center ms-5 flex-grow-1 text-end me-3">
+                    <p className="lista-notifiche m-0 ">Ora</p>
+                    <i class="bi bi-three-dots me-1"></i>
+                  </div>
+                </div>
+              </li>
               <li className="my-1">
                 <div className="d-flex align-items-center">
                   <i class="bi bi-dot"></i>

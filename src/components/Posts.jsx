@@ -338,7 +338,7 @@ const Posts = () => {
             })}
           <div className="text-center">
             <Button
-              className="w-50 btn btn-secondary my-3"
+              className="w-50 btn btn-secondary my-3 rounded-pill"
               onClick={() => {
                 setVisiblePosts(visiblePosts + 6);
               }}

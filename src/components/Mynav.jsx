@@ -33,6 +33,8 @@ const Mynav = () => {
   // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifiactions] = useState(1);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [firstTimeOnNotificationPage, setFirstTimeOnNotificationPage] =
+    useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,6 +51,14 @@ const Mynav = () => {
   //
 
   const dispatch = useDispatch();
+
+  if (
+    location.pathname.startsWith("/notifiche") &&
+    firstTimeOnNotificationPage
+  ) {
+    setShowNotifications(false);
+    setFirstTimeOnNotificationPage(false);
+  }
 
   return (
     <>
@@ -132,7 +142,9 @@ const Mynav = () => {
                       <p className="m-0">Rete</p>
                     </Nav.Link>
                     <Nav.Link
-                      className="d-flex flex-column text-center d-none d-md-inline-block"
+                      className={`d-flex flex-column text-center d-none d-md-inline-block ${
+                        location.pathname === "/jobs" ? "text-black" : ""
+                      }`}
                       onClick={() => {
                         navigate("/jobs");
                       }}

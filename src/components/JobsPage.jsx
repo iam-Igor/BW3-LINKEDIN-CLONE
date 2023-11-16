@@ -113,7 +113,7 @@ const JobsComponent = () => {
             <hr />
             <div className="text-center my-3">
               <Button
-                className="btn btn-secondary"
+                className="btn btn-secondary rounded-pill"
                 onClick={() => {
                   setVisibleJobs(visibleJobs + 3);
                 }}
