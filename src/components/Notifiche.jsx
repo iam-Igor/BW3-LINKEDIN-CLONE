@@ -3,7 +3,7 @@ import SideBarRight from "./SideBarRight";
 
 const Notifiche = () => {
   return (
-    <Container fluid className="mx-1">
+    <Container fluid className="mx-1 mt-4">
       <Row className="d-flex justify-content-center">
         <Col className="col-12 col-lg-2 ">
           <div className="d-flex flex-column bg-white p-2 border rounded d-flex justify-content-start align-items-center">
@@ -227,7 +227,7 @@ const Notifiche = () => {
             </ul>
           </div>
         </Col>
-        <Col className="col-12 col-lg-3 mt-5 ">
+        <Col className="col-12 col-lg-3">
           <SideBarRight />
         </Col>
       </Row>
