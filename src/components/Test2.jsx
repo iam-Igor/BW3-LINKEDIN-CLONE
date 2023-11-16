@@ -100,7 +100,7 @@ const Test2 = ({ visibility, profile }) => {
                   );
                 })}
                 {isLoading ? (
-                  <div class="typing-loader align-self-start"></div>
+                  <div className="typing-loader align-self-start"></div>
                 ) : (
                   ""
                 )}

@@ -283,7 +283,7 @@ const Profile = () => {
         <div className="d-flex align-items-center mt-5 flex-column">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="loader__linkedin-logo"
+            className="loader__linkedin-logo"
             width="190"
             height="48"
             viewBox="0 0 190 48"
