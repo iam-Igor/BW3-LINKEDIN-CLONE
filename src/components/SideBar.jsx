@@ -179,7 +179,10 @@ const SideBar = ({ myProfile }) => {
               style={{ width: "20%" }}
             />
             <h3 className="mt-3">
-              {myProfile ? myProfile.username : "Nome utente"}
+              {myProfile
+                ? myProfile.name + " " + myProfile.surname
+                : "Nome utente"}
+              {console.log(myProfile, "sono in sidebar")}
             </h3>
             <p className="text-secondary">
               {" "}

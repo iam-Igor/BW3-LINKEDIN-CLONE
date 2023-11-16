@@ -23,7 +23,6 @@ const Posts = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profileData);
   const randomPhotos = useSelector((state) => state.randomPhotos);
-  console.log(randomPhotos, "SONO LE FOTO");
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
   const [spinnerState, setSpinnerState] = useState(true);
@@ -54,7 +53,6 @@ const Posts = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         if (recentSelected) {
           sortPostsByDate(data);
         } else {
@@ -235,7 +233,6 @@ const Posts = () => {
             onChange={(e) => {
               const selectedValue = e.target.value;
               if (selectedValue === "mostRecent") {
-                console.log("ok");
                 setMostRecent(true);
               } else if (selectedValue === "leastRecent") {
                 setMostRecent(false);
