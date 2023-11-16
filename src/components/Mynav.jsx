@@ -30,6 +30,7 @@ const Mynav = () => {
   const [open, setOpen] = useState(false);
   const searchInfo = useSelector((state) => state.searchData);
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [notifications, setNotifiactions] = useState(1);
   const [showNotifications, setShowNotifications] = useState(false);
   const navigate = useNavigate();

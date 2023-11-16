@@ -31,6 +31,7 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
   const [randomNumOfLikes, setRandomNumOfLikes] = useState(
     Math.floor(Math.random() * 200)
   );
+  // eslint-disable-next-line no-unused-vars
   const [randomNumFrom0to80, setRandomNumFrom0to80] = useState(
     Math.floor(Math.random() * 80)
   );

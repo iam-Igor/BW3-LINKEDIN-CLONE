@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { InfoSquareFill, CaretDownFill } from "react-bootstrap-icons";
 

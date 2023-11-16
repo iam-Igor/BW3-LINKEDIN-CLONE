@@ -12,9 +12,7 @@ import {
   passedTime,
 } from "../redux/actions/actionsHome";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 const SingleComment = ({ comment, getComments, postId, postUserId }) => {
-  const myProfile = useSelector((state) => state.profileData);
   // Funzionalità del modale
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -149,28 +147,22 @@ const SingleComment = ({ comment, getComments, postId, postUserId }) => {
                 <ThreeDots />
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {myProfile._id === postUserId ? (
-                  <>
-                    <Dropdown.Item
-                      onClick={() => {
-                        handleShow();
-                      }}
-                    >
-                      <Pencil className="me-2" />
-                      Modifica commento
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        deleteComment();
-                      }}
-                    >
-                      <Trash3 className="me-2" />
-                      Elimina commento
-                    </Dropdown.Item>{" "}
-                  </>
-                ) : (
-                  ""
-                )}
+                <Dropdown.Item
+                  onClick={() => {
+                    handleShow();
+                  }}
+                >
+                  <Pencil className="me-2" />
+                  Modifica commento
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    deleteComment();
+                  }}
+                >
+                  <Trash3 className="me-2" />
+                  Elimina commento
+                </Dropdown.Item>{" "}
                 <Dropdown.Item>
                   <Clipboard className="me-2" />
                   Copia il link nel commento

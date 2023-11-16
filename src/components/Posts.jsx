@@ -1,4 +1,4 @@
-import { Row, Col, Form, Modal, Button } from "react-bootstrap";
+import { Row, Col, Form, Modal, Button, Spinner } from "react-bootstrap";
 import {
   CardImage,
   Calendar3,
@@ -26,6 +26,7 @@ const Posts = () => {
   console.log(randomPhotos, "SONO LE FOTO");
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
+  const [spinnerState, setSpinnerState] = useState(true);
   // eslint-disable-next-line no-unused-vars
   const [recentPosts, setRecentPosts] = useState(null);
   const [mostRecent, setMostRecent] = useState(true);
@@ -37,6 +38,7 @@ const Posts = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const getPosts = (recentSelected) => {
+    setSpinnerState(true);
     fetch(URL_POSTS, {
       headers: {
         Authorization: API_KEY,
@@ -44,8 +46,10 @@ const Posts = () => {
     })
       .then((res) => {
         if (res.ok) {
+          setSpinnerState(false);
           return res.json();
         } else {
+          setSpinnerState(false);
           throw new Error("SOMETHING WENT WRONG!");
         }
       })
@@ -314,29 +318,36 @@ const Posts = () => {
         </Row>
       </Col>
       {/* SEZIONE POST */}
-      <Row className="px-0">
-        {posts &&
-          posts.slice(0, visiblePosts).map((post) => {
-            return (
-              <SinglePost
-                key={post._id}
-                post={post}
-                updatePosts={updatePosts}
-                randomPhotos={randomPhotos.photos}
-              />
-            );
-          })}
-        <div className="text-center">
-          <Button
-            className="w-50 btn btn-secondary my-3"
-            onClick={() => {
-              setVisiblePosts(visiblePosts + 6);
-            }}
-          >
-            Mostra altri
-          </Button>
-        </div>
-      </Row>
+      {spinnerState && (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      )}
+      {!spinnerState && (
+        <Row className="px-0">
+          {posts &&
+            posts.slice(0, visiblePosts).map((post) => {
+              return (
+                <SinglePost
+                  key={post._id}
+                  post={post}
+                  updatePosts={updatePosts}
+                  randomPhotos={randomPhotos.photos}
+                />
+              );
+            })}
+          <div className="text-center">
+            <Button
+              className="w-50 btn btn-secondary my-3"
+              onClick={() => {
+                setVisiblePosts(visiblePosts + 6);
+              }}
+            >
+              Mostra altri
+            </Button>
+          </div>
+        </Row>
+      )}
     </Row>
   );
 };
