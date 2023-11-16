@@ -138,7 +138,10 @@ const Mynav = () => {
                       <i className="bi bi-chat-dots-fill fs-4"></i>
                       <p className="m-0">Messaggistica</p>
                     </Nav.Link>
-                    <Nav.Link className="d-flex flex-column text-center mx-2 mx-md-0">
+                    <Link
+                      className="nav-link d-flex flex-column text-center mx-2 mx-md-0"
+                      to={"/notifiche/"}
+                    >
                       <div className="position-relative">
                         <i className="bi bi-bell-fill fs-4"></i>
                         {showNotifications && (
@@ -152,7 +155,7 @@ const Mynav = () => {
                         )}
                       </div>
                       <p className="m-0">Notifiche</p>
-                    </Nav.Link>
+                    </Link>
                     <Link
                       to={"/profile/me"}
                       className={`nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3 ${

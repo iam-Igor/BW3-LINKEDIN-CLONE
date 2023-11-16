@@ -4,6 +4,7 @@ import "./App.css";
 import Profile from "./components/Profile";
 import Mynav from "./components/Mynav";
 import Home from "./components/Home";
+import Notifiche from "./components/Notifiche";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
 import PageNotFound from "./components/PageNotFound";
