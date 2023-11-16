@@ -1,5 +1,3 @@
-import { Button } from "react-bootstrap";
-
 const Events = ({ event, myProfile }) => {
   const date =
     event.date.slice(8, 10) +

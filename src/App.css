@@ -63,6 +63,14 @@ body {
 }
 
 /* POSTS */
+.justify-content-between .gap-2 {
+  border-radius: 0.2em;
+  padding: 3px;
+}
+
+.justify-content-between .gap-2:hover {
+  background-color: rgb(235, 235, 235);
+}
 
 #control-input:hover {
   background-color: rgb(235, 235, 235);
@@ -93,12 +101,32 @@ body {
   margin-top: 1em;
 }
 
+/* Rimuove stile select feed */
+
+.custom-select-paragraph {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.7rem;
+  line-height: inherit;
+  color: currentColor;
+}
+
+.custom-select-paragraph:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .cursor {
   cursor: pointer;
 }
 
 #ul-sidebar li {
   font-weight: 500;
+  cursor: pointer;
 }
 
 #ul-sidebar p {
@@ -122,6 +150,7 @@ body {
   color: inherit;
 }
 
+/* SEZIONE NAV E JOB LIST */
 nav,
 .job-list {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -164,12 +193,26 @@ nav,
   }
 }
 
+/* SEZIONE CHAT */
+
 .chat-container {
-  box-shadow: -1px -15px 11px -2px rgba(0, 0, 0, 0.3);
+  border: 1px solid lightgray;
 }
 
 .chat-box {
   width: 20%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+  .chat-box {
+    width: 30%;
+    overflow: hidden;
+  }
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .single-chat p {
@@ -191,25 +234,26 @@ nav,
 }
 
 @keyframes slide-top {
-  0% {
-    transform: translateY(90%);
+  from {
+    height: 6vh;
   }
-
-  100% {
-    transform: translateY(0%);
+  to {
+    height: 60vh;
   }
 }
 
 @keyframes slide-bottom {
-  0% {
-    transform: translateY(0%);
+  from {
+    height: 60vh;
   }
-  100% {
-    transform: translateY(90%);
+  to {
+    height: 6vh;
   }
 }
 
-#icons-offcanvas {
+/* SEZIONE OFF CANVAS */
+
+*/ #icons-offcanvas {
   font-size: 0.7rem;
   color: grey;
 }
@@ -252,4 +296,37 @@ nav,
   border-color: rgb(10, 102, 194);
   font-weight: 600;
   border-width: 2px;
+}
+#badge-notification {
+  position: absolute;
+  font-size: 10px;
+  left: 26px;
+  top: 3px;
+}
+
+/* Commenti */
+
+.comment-date {
+  font-size: 0.8rem;
+}
+
+.comment-content {
+  font-size: 0.9rem;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+/* BOTTONE GO UP */
+
+.go-up {
+  position: fixed;
+  top: 90%;
+  right: 8%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
 }

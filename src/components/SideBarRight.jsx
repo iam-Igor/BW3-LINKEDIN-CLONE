@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { InfoSquareFill, CaretDownFill } from "react-bootstrap-icons";
 
@@ -13,7 +13,7 @@ const SideBarRight = () => {
           <div className="">
             <div className="d-flex justify-content-between">
               <h5 className="mt-3 ms-3">Linkedln Notizie</h5>
-              <InfoSquareFill className="me-3" />
+              <InfoSquareFill className="me-3 cursor" />
             </div>
           </div>
           <ul id="ul-sidebar">
@@ -23,7 +23,7 @@ const SideBarRight = () => {
             <p className="text-secondary">3 giorni fa </p>
             <li>PayPal si allarga alle bollette</li>
             <p className="text-secondary">7 ore fa </p>
-            <li>Impennata degli attacchi informarici</li>
+            <li>Impennata degli attacchi informatici</li>
             <p className="text-secondary">5 giorni fa </p>
             <li>I primi supermercati senza casse</li>
             <p className="text-secondary">3 giorni fa </p>
