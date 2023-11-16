@@ -4,6 +4,7 @@ import "./App.css";
 import Profile from "./components/Profile";
 import Mynav from "./components/Mynav";
 import Home from "./components/Home";
+import Notifiche from "./components/Notifiche";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
 import PageNotFound from "./components/PageNotFound";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile/:userID" element={<Profile />} />
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/*" element={<PageNotFound />} />
+          <Route path="/Notifiche/" element={<Notifiche />} />
         </Routes>
         <GoUpButton />
         <ChatBox />
