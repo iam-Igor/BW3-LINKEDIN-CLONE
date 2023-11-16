@@ -62,7 +62,7 @@ const Net = () => {
           className="border rounded background-columns py-3 px-4 h-75 d-none d-md-block"
         >
           <p className="mb-3 fs-5">Gestisci la tua rete</p>
-          <div className="d-flex flex-column gap-3 text-secondary ">
+          <div className="d-flex flex-column gap-3 text-secondary cursor">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center gap-2">
                 <PeopleFill className="fs-5" />
@@ -98,13 +98,13 @@ const Net = () => {
               <p className="mb-0">Hashtag</p>
             </div>
           </div>
-          <div className="d-flex align-items-center gap-1">
-            <p className="mb-0 text-secondary ms-2 mt-3">Meno dettagli</p>
+          <div className="d-flex align-items-center gap-1 cursor">
+            <p className="mb-0 text-secondary ms-2 mt-3 ">Meno dettagli</p>
             <CaretUpFill className="mt-3" />
           </div>
           <hr />
           <div
-            className="mb-4 mt-3 d-flex gap-2 flex-column text-center"
+            className="mb-4 mt-3 d-flex gap-2 flex-column text-center cursor"
             id="footer-sidebar"
           >
             <div className="d-flex gap-3 justify-content-center ">
@@ -151,8 +151,12 @@ const Net = () => {
             </div>
           </div>
         </Col>
-        <Col xs={12} md={8} className="mt-3 mt-md-0">
-          <div className="d-flex justify-content-between  align-items-center rounded border background-columns px-3 py-3">
+        <Col xs={12} md={8} className="mt-3 mt-md-0 ">
+          <div
+            className={`d-flex justify-content-between  align-items-center rounded border background-columns px-3 py-3 ${
+              accepted ? "" : "bg-info-subtle"
+            }`}
+          >
             {accepted && (
               <>
                 <p className="mb-0">Nessun invito in sospeso</p>

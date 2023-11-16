@@ -1,7 +1,9 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import SideBarRight from "./SideBarRight";
+import { useNavigate } from "react-router-dom";
 
 const Notifiche = () => {
+  const navigate = useNavigate();
   return (
     <Container fluid className="mx-1 mt-4">
       <Row className="d-flex justify-content-center">
@@ -26,7 +28,12 @@ const Notifiche = () => {
           <div className="d-flex mt-2 bg-white p-2 border rounded align-items-center">
             {/* lista notifiche centrale */}
             <ul className="list-unstyled p-1 d-flex flex-column align-items-center cursor">
-              <li className="my-1 w-100 bg-info-subtle py-2 ">
+              <li
+                className="my-1 w-100 bg-info-subtle py-2"
+                onClick={() => {
+                  navigate("/net");
+                }}
+              >
                 <div className="d-flex align-items-center">
                   <i class="bi bi-dot"></i>
                   <img
