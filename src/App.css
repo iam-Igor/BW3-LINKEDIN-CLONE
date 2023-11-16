@@ -388,6 +388,30 @@ nav,
   width: 30%;
 }
 
+@media screen and (max-width: 992px) {
+  .chat-row {
+    width: 70%;
+  }
+
+  .assistant {
+    position: fixed;
+    top: 80%;
+    right: 4%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+      0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+  }
+
+  .go-up {
+    position: fixed;
+    top: 90%;
+    right: 4%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+      0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+  }
+}
+
 .typing-loader {
   width: 6px;
   height: 6px;
