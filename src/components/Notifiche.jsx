@@ -35,7 +35,8 @@ const Notifiche = () => {
                     style={{ height: "40px" }}
                   />
                   <p className="lista-notifiche mx-1">
-                    Stefano ti ha inviato una richiesta di collegamento.
+                    Stefano Casasola ti ha inviato una richiesta di
+                    collegamento.
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5 flex-grow-1 text-end me-3">
                     <p className="lista-notifiche m-0 ">Ora</p>

@@ -26,17 +26,15 @@ const SingleProfileSuggestion = ({ profile, addFollow }) => {
               <Card.Text>
                 {profile.title ? profile.title : "Software Developer"}
               </Card.Text>
-              <div className="d-flex align-items-center btn btn-outline-primary w-100 justify-content-center gap-1 ">
+              <div
+                className="d-flex align-items-center btn btn-outline-primary w-100 justify-content-center gap-1 "
+                onClick={() => {
+                  dispatch({ type: FOLLOW, payload: profile });
+                  addFollow();
+                }}
+              >
                 <PersonAdd />
-                <p
-                  className="mb-0"
-                  onClick={() => {
-                    dispatch({ type: FOLLOW, payload: profile });
-                    addFollow();
-                  }}
-                >
-                  Collegati
-                </p>
+                <p className="mb-0">Collegati</p>
               </div>
             </Card.Body>
           </Card>

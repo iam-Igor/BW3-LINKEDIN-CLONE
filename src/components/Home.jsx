@@ -22,13 +22,13 @@ const Home = () => {
             <SideBar myProfile={myProfile} />
           </Col>
           {/* COLONNA CENTRALE */}
-          <Col md={8} lg={5} xs={12} className="mt-5">
+          <Col md={8} lg={6} xs={12} className="mt-5">
             <Posts />
           </Col>
           {/* COLONNA A DESTRA */}
           <Col
             md={{ span: 8, offset: 4 }}
-            lg={{ span: 4, offset: 0 }}
+            lg={{ span: 3, offset: 0 }}
             className="mt-5 d-none d-md-block "
           >
             <SideBarRight />

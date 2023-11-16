@@ -4,8 +4,10 @@ import { BookmarkFill, PersonFillAdd, PlusLg } from "react-bootstrap-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CREATE_EVENT } from "../redux/actions/actionsHome";
+import { useNavigate } from "react-router";
 
 const SideBar = ({ myProfile }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [textArea, setTextArea] = useState({
     title: "",
@@ -187,9 +189,14 @@ const SideBar = ({ myProfile }) => {
           </div>
           <div className="mt-4">
             <div className="d-flex justify-content-between cursor">
-              <div className="d-flex flex-column">
+              <div
+                className="d-flex flex-column"
+                onClick={() => {
+                  navigate("/net");
+                }}
+              >
                 <p className="text-secondary ">Collegamenti</p>
-                <p>Espandi la tua rete</p>
+                <p className="fs-6">Espandi la tua rete</p>
               </div>
               <PersonFillAdd />
             </div>
@@ -198,7 +205,7 @@ const SideBar = ({ myProfile }) => {
             <p className="text-secondary ">
               Accedi a strumenti e informazioni in esclusiva
             </p>
-            <p className="text-decoration-underline cursor">
+            <p className="text-decoration-underline cursor fs-6">
               Prova Premium Gratis
             </p>
             <hr></hr>
@@ -216,7 +223,7 @@ const SideBar = ({ myProfile }) => {
             <p className="text-primary ms-4 cursor">Eventi</p>
             <PlusLg className="me-4 cursor" onClick={handleShow} />
           </div>
-          <p className="text-primary ms-4 cursor">Hashtag Seguiti</p>
+          <p className="text-primary ms-4 cursor fs-6">Hashtag Seguiti</p>
           <div>
             <hr></hr>
             <p className="text-secondary text-center cursor">Scopri di più</p>

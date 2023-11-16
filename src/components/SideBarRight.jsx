@@ -6,7 +6,7 @@ const SideBarRight = () => {
   return (
     <Row>
       <Col
-        className="p-4 border border-bottom rounded background-columns"
+        className="py-4 px-1 border border-bottom rounded background-columns"
         // style={{ backgroundColor: " #f3f3f3" }}
       >
         <div>
@@ -17,17 +17,17 @@ const SideBarRight = () => {
             </div>
           </div>
           <ul id="ul-sidebar">
-            <li>Single e fieri di esserlo</li>
+            <li className="fs-7">Single e fieri di esserlo</li>
             <p className="text-secondary">3 giorni fa </p>
-            <li>Che cosa vuole l'Italia dall'AI</li>
+            <li className="fs-7">Che cosa vuole l'Italia dall'AI</li>
             <p className="text-secondary">3 giorni fa </p>
-            <li>PayPal si allarga alle bollette</li>
+            <li className="fs-7">PayPal si allarga alle bollette</li>
             <p className="text-secondary">7 ore fa </p>
-            <li>Impennata degli attacchi informatici</li>
+            <li className="fs-7">Impennata degli attacchi informatici</li>
             <p className="text-secondary">5 giorni fa </p>
-            <li>I primi supermercati senza casse</li>
+            <li className="fs-7">I primi supermercati senza casse</li>
             <p className="text-secondary">3 giorni fa </p>
-            <li>Innovazione,ricerca e sviluppo</li>
+            <li className="fs-7">Innovazione,ricerca e sviluppo</li>
             <p className="text-secondary">1 ora fa </p>
           </ul>
         </div>
