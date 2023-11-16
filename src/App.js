@@ -6,10 +6,11 @@ import Mynav from "./components/Mynav";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
-import PageNotFound from "./components/PageNotFound"
+import PageNotFound from "./components/PageNotFound";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
+import JobsPage from "./components/JobsPage";
 export const notify = () =>
   toast.info(
     <div>
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
+          <Route path="/jobs" element={<JobsPage />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <GoUpButton />

@@ -131,7 +131,12 @@ const Mynav = () => {
                       <i className="bi bi-people-fill fs-4"></i>
                       <p className="m-0">Rete</p>
                     </Nav.Link>
-                    <Nav.Link className="d-flex flex-column text-center d-none d-md-inline-block">
+                    <Nav.Link
+                      className="d-flex flex-column text-center d-none d-md-inline-block"
+                      onClick={() => {
+                        navigate("/jobs");
+                      }}
+                    >
                       <i className="bi bi-suitcase-lg-fill fs-4"></i>
                       <p className="m-0">Lavoro</p>
                     </Nav.Link>

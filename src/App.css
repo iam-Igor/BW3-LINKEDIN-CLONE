@@ -330,3 +330,33 @@ nav,
     0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
     0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
 }
+
+/* JOBS SIDEBAR */
+
+#jobs-sidebar li p {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#jobs-main .cursor p:first-of-type {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+#jobs-main .cursor p:nth-of-type(2) {
+  font-size: 0.8rem;
+  color: grey;
+}
+#suggestions-jobs .cursor p:nth-of-type(1),
+p:nth-of-type(2) {
+  font-size: 0.8rem;
+}
+
+#suggestions-jobs .cursor p:first-of-type.fw-bold {
+  color: rgb(10, 102, 194);
+  font-weight: 600 !important;
+  font-size: 1rem;
+}
+
+#suggestions-jobs .cursor p.text-secondary {
+  font-size: 0.8rem;
+}
