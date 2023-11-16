@@ -1,9 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Col, Row, Dropdown, DropdownMenu, Offcanvas } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import {
+  Col,
+  Row,
+  Dropdown,
+  DropdownMenu,
+  Offcanvas,
+  Badge,
+} from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, SET_SEARCH } from "../redux/store";
 import JobsList from "./JobsList";
@@ -17,11 +24,22 @@ import {
   PlayBtn,
   PlusLg,
 } from "react-bootstrap-icons";
+import { notify } from "../App";
 
 const Mynav = () => {
   const [open, setOpen] = useState(false);
   const searchInfo = useSelector((state) => state.searchData);
   const location = useLocation();
+  const [notifications, setNotifiactions] = useState(1);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      notify();
+      setShowNotifications(true);
+    }, 5000);
+  }, []);
 
   // Funzionalità OFFCANVAS
   const [show, setShow] = useState(false);
@@ -39,7 +57,12 @@ const Mynav = () => {
           <Row className="align-items-center w-100 ">
             <Col className="col-10 col-md-6">
               <div className="d-flex ms-5 flex-grow-2">
-                <div className="d-flex align-items-center">
+                <div
+                  className="d-flex align-items-center cursor"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
                   <img
                     className="me-2"
                     style={{ width: "40px", height: "35px" }}
@@ -116,7 +139,18 @@ const Mynav = () => {
                       <p className="m-0">Messaggistica</p>
                     </Nav.Link>
                     <Nav.Link className="d-flex flex-column text-center mx-2 mx-md-0">
-                      <i className="bi bi-bell-fill fs-4"></i>
+                      <div className="position-relative">
+                        <i className="bi bi-bell-fill fs-4"></i>
+                        {showNotifications && (
+                          <Badge
+                            className="rounded-circle"
+                            bg="danger"
+                            id="badge-notification"
+                          >
+                            {notifications}
+                          </Badge>
+                        )}
+                      </div>
                       <p className="m-0">Notifiche</p>
                     </Nav.Link>
                     <Link

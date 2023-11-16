@@ -10,6 +10,10 @@ export const API_KEY_COMMENTS =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyNTlkNWM1NWU3ZTAwMThmODNjZDIiLCJpYXQiOjE2OTk4OTU3NjYsImV4cCI6MTcwMTEwNTM2Nn0.N1id-dNfADyfRGpvBvNv7h9g-L1-pFkS3NQzDrVD7fs";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const LIKE_POST = "LIKE_POST";
+export const URL_PEXEL = `https://api.pexels.com/v1/search?query=random%20photos&per_page=80`;
+export const GET_RANDOM_PHOTOS = "GET_RANDOM_PHOTOS";
+export const PEXEL_KEY =
+  "5RKicZfAEfo8m1JX6yT1vyTmAYDVq4777xWQyZfx1QBRZM4xWq7CeS1i";
 
 export const getProfileAction = () => {
   return async (dispatch) => {
@@ -36,4 +40,75 @@ export const getProfileAction = () => {
         console.log(err);
       });
   };
+};
+
+export const sortPostsByDate = (posts) => {
+  return posts.sort((a, b) => {
+    // Converti le stringhe di date in oggetti Date
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    // Ordina in base alla differenza di tempo
+    return dateB - dateA;
+  });
+};
+
+export const sortPostsByDateOldest = (posts) => {
+  return posts.sort((a, b) => {
+    // Converti le stringhe di date in oggetti Date
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    // Ordina in base alla differenza di tempo
+    return dateA - dateB;
+  });
+};
+
+export const getRandomPhotos = (recentSelected) => {
+  return async (dispatch) => {
+    fetch(URL_PEXEL, {
+      headers: {
+        Authorization: PEXEL_KEY,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
+      })
+      .then((data) => {
+        dispatch({
+          type: GET_RANDOM_PHOTOS,
+          payload: data,
+        });
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const passedTime = (dateParam) => {
+  const date = new Date(dateParam);
+  const today = new Date();
+  const seconds = Math.round((today - date) / 1000);
+  const minutes = Math.round(seconds / 60);
+  const hours = Math.round(minutes / 60);
+  const days = Math.round(hours / 24);
+  const months = Math.round(days / 30);
+
+  if (seconds < 60) {
+    return "Just now";
+  } else if (minutes < 60) {
+    return `${minutes} minutes ago`;
+  } else if (hours < 24) {
+    return `${hours} hours ago`;
+  } else if (days < 30) {
+    return `${days} days ago`;
+  } else {
+    return `${months} months ago`;
+  }
 };

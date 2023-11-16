@@ -6,12 +6,25 @@ import Mynav from "./components/Mynav";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
+export const notify = () =>
+  toast.info(
+    <div>
+      <strong>Stefano</strong> ti ha inviato una richiesta di collegamento.
+    </div>,
+    {
+      transition: Flip,
+      autoClose: 2000,
+    }
+  );
 
 function App() {
   return (
     <div className="App position-relative">
       <BrowserRouter>
+        <ToastContainer />
         <Mynav />
         <Routes>
           <Route path="/" element={<Home />} />

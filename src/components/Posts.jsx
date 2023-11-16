@@ -7,23 +7,36 @@ import {
   ArrowRight,
   Clock,
   ThreeDots,
-  CaretDownFill,
 } from "react-bootstrap-icons";
 import SinglePost from "./SinglePost";
 import { useEffect, useState } from "react";
-import { API_KEY, URL_POSTS } from "../redux/actions/actionsHome";
-import { useSelector } from "react-redux";
+import {
+  API_KEY,
+  URL_POSTS,
+  getRandomPhotos,
+  sortPostsByDate,
+  sortPostsByDateOldest,
+} from "../redux/actions/actionsHome";
+import { useDispatch, useSelector } from "react-redux";
 
 const Posts = () => {
+  const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profileData);
+  const randomPhotos = useSelector((state) => state.randomPhotos);
+  console.log(randomPhotos, "SONO LE FOTO");
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [recentPosts, setRecentPosts] = useState(null);
+  const [mostRecent, setMostRecent] = useState(true);
+
   const [update, setUpdate] = useState(0);
+  const [visiblePosts, setVisiblePosts] = useState(2);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const getPosts = () => {
+  const getPosts = (recentSelected) => {
     fetch(URL_POSTS, {
       headers: {
         Authorization: API_KEY,
@@ -38,6 +51,11 @@ const Posts = () => {
       })
       .then((data) => {
         console.log(data);
+        if (recentSelected) {
+          sortPostsByDate(data);
+        } else {
+          sortPostsByDateOldest(data);
+        }
         setPosts(data);
       })
       .catch((err) => {
@@ -72,12 +90,23 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    getPosts(mostRecent);
+    dispatch(getRandomPhotos(mostRecent));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    getPosts();
+    getPosts(mostRecent);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+
+  useEffect(() => {
+    getPosts(mostRecent);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mostRecent]);
 
   return (
     <Row className="justify-content-center mx-1">
@@ -104,10 +133,7 @@ const Posts = () => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+            <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => {
                   e.preventDefault();
@@ -122,19 +148,19 @@ const Posts = () => {
           </Form>
           <div className="d-flex gap-2 fs-4">
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <CardImage />
             </div>
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <Calendar3 />
             </div>
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <ThreeDots />
@@ -142,7 +168,7 @@ const Posts = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Clock className="fw-bold fs-5 me-3" />
+          <Clock className="fw-bold fs-5 me-3 cursor" />
           <Button
             variant="primary"
             className="rounded-pill py-1"
@@ -168,7 +194,7 @@ const Posts = () => {
             />
           </div>
           <Form className="flex-grow-1" onClick={handleShow}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Control
                 id="control-input"
                 type="email"
@@ -199,10 +225,25 @@ const Posts = () => {
         <div className="d-flex align-items-center" id="select-feed">
           <hr />
           <p className="cursor">
-            Seleziona la visualizzazione dei feed:
-            <strong className="ms-1">Più rilevanti per primi</strong>
-            <CaretDownFill />
+            {/* <strong className="ms-1">Più rilevanti per primi</strong> */}
           </p>
+          <Form.Select
+            onChange={(e) => {
+              const selectedValue = e.target.value;
+              if (selectedValue === "mostRecent") {
+                console.log("ok");
+                setMostRecent(true);
+              } else if (selectedValue === "leastRecent") {
+                setMostRecent(false);
+              }
+            }}
+            aria-label="Default select example"
+            className="custom-select-paragraph cursor text-secondary"
+          >
+            <option>Seleziona la visualizzazione dei feed:</option>
+            <option value={"mostRecent"}>Più recenti per primi</option>
+            <option value={"leastRecent"}>Meno recenti per primi</option>
+          </Form.Select>
         </div>
       </Col>
       {/* SEZIONE CONSIGLIATI */}
@@ -213,7 +254,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -232,7 +273,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -251,7 +292,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -266,7 +307,7 @@ const Posts = () => {
         </Row>
         <hr className="my-0" />
         <Row className="mt-3">
-          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold cursor">
+          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold cursor text-secondary">
             <p>Visualizza altro</p>
             <ArrowRight className="mb-3" />
           </Col>
@@ -275,15 +316,26 @@ const Posts = () => {
       {/* SEZIONE POST */}
       <Row className="px-0">
         {posts &&
-          posts.map((post) => {
+          posts.slice(0, visiblePosts).map((post) => {
             return (
               <SinglePost
                 key={post._id}
                 post={post}
                 updatePosts={updatePosts}
+                randomPhotos={randomPhotos.photos}
               />
             );
           })}
+        <div className="text-center">
+          <Button
+            className="w-50 btn btn-secondary my-3"
+            onClick={() => {
+              setVisiblePosts(visiblePosts + 6);
+            }}
+          >
+            Mostra altri
+          </Button>
+        </div>
       </Row>
     </Row>
   );

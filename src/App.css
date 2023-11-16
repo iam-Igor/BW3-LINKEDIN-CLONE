@@ -63,6 +63,14 @@ body {
 }
 
 /* POSTS */
+.justify-content-between .gap-2 {
+  border-radius: 0.2em;
+  padding: 3px;
+}
+
+.justify-content-between .gap-2:hover {
+  background-color: rgb(235, 235, 235);
+}
 
 #control-input:hover {
   background-color: rgb(235, 235, 235);
@@ -93,12 +101,32 @@ body {
   margin-top: 1em;
 }
 
+/* Rimuove stile select feed */
+
+.custom-select-paragraph {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.7rem;
+  line-height: inherit;
+  color: currentColor;
+}
+
+.custom-select-paragraph:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .cursor {
   cursor: pointer;
 }
 
 #ul-sidebar li {
   font-weight: 500;
+  cursor: pointer;
 }
 
 #ul-sidebar p {
@@ -263,6 +291,29 @@ nav,
   color: rgb(102, 102, 102);
 }
 
+#badge-notification {
+  position: absolute;
+  font-size: 10px;
+  left: 26px;
+  top: 3px;
+}
+
+/* Commenti */
+
+.comment-date {
+  font-size: 0.8rem;
+}
+
+.comment-content {
+  font-size: 0.9rem;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+}
 /* BOTTONE GO UP */
 
 .go-up {

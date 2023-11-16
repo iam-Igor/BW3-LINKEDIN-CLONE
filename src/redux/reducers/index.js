@@ -2,6 +2,7 @@ import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH, LOADING } from "../store";
 import {
   CREATE_EVENT,
   GET_PROFILE_DATA,
+  GET_RANDOM_PHOTOS,
   LIKE_POST,
 } from "../actions/actionsHome";
 
@@ -13,6 +14,7 @@ const initialState = {
   profileData: null,
   events: [],
   likedPosts: [],
+  randomPhotos: [],
   isLoading: true,
 };
 
@@ -68,6 +70,11 @@ const mainReducer = (state = initialState, action) => {
         likedPosts: state.likedPosts.filter(
           (postId) => postId !== action.payload
         ),
+      };
+    case GET_RANDOM_PHOTOS:
+      return {
+        ...state,
+        randomPhotos: action.payload,
       };
     case LOADING:
       return {
