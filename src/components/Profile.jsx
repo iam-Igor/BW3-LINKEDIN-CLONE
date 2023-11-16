@@ -20,6 +20,7 @@ import Myfooter from "./Myfooter";
 import Events from "./Events";
 import { LOADING } from "../redux/store";
 import Test2 from "./Test2";
+import AssistanButton from "./AssistantButton";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -372,9 +373,6 @@ const Profile = () => {
                           <Button
                             variant="outline-primary fw-bold"
                             className="rounded-pill mx-2"
-                            onClick={() => {
-                              setisVisible(true);
-                            }}
                           >
                             Messaggio
                           </Button>
@@ -876,6 +874,7 @@ const Profile = () => {
               <Test2 visibility={setisVisible} profile={editProfile} />
             )}
           </>
+          <AssistanButton show={setisVisible} visible={isVisible} />
           <Myfooter />
         </>
       )}

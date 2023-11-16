@@ -14,9 +14,17 @@ const Test2 = ({ visibility, profile }) => {
     options: {
       temperature: 1,
       language: "it",
-      max_tokens: 100,
+      max_tokens: 50,
     },
   };
+
+  const combinedChatHistory = historyChat.reduce((acc, message, index) => {
+    acc.push(message);
+    if (historyChat2[index]) {
+      acc.push(historyChat2[index]);
+    }
+    return acc;
+  }, []);
 
   const TestGpt = (param) => {
     const config = {
@@ -47,8 +55,6 @@ const Test2 = ({ visibility, profile }) => {
       });
   };
 
-  console.log(profile);
-
   const sendMessage = () => {
     if (chatMessage.trim() !== "") {
       setHistoryChat([...historyChat, chatMessage]);
@@ -61,7 +67,7 @@ const Test2 = ({ visibility, profile }) => {
 
   return (
     <Container fluid className="sticky-bottom d-flex justify-content-center">
-      <Row className="bg-white chat-row border flex-column p-2 rounded">
+      <Row className="bg-white chat-row border flex-column p-2 rounded-4">
         <Col className="d-flex justify-content-between p-3">
           <p className="m-0">Nuovo Messaggio</p>
           <i
@@ -72,50 +78,32 @@ const Test2 = ({ visibility, profile }) => {
           ></i>
         </Col>
         <Col className="d-flex align-items-center">
-          <img
-            src={profile.image}
-            style={{ width: "15%" }}
-            alt="user"
-            className="rounded-circle"
-          />
-          <p className="m-0 fw-bold ms-3">
-            {profile.name} {profile.surname}
-          </p>
+          <i className="bi bi-headset fs-2"></i>
+          <p className="m-0 fw-bold ms-3">Linkedin Assistant</p>
         </Col>
         <Col className="text-field p-2 rounded-3 my-3">
-          {historyChat && (
+          {combinedChatHistory.length > 0 && (
             <Row>
-              {isLoading ? (
-                <Col>
-                  {" "}
-                  <div className="typing-loader m-0"></div>
-                </Col>
-              ) : (
-                <Col className="my-4">
-                  {historyChat2.map((message, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="btn btn-secondary rounded-5 chat-bubble my-3"
-                      >
-                        <h6 className="m-0">{message}</h6>
-                      </div>
-                    );
-                  })}
-                </Col>
-              )}
+              <Col className="my-4 d-flex flex-column">
+                {combinedChatHistory.map((message, index) => {
+                  const isUserMessage = index % 2 === 0;
+                  const bubbleClass = isUserMessage
+                    ? "btn btn-primary rounded-5 chat-bubble w-50 my-3 text-end align-self-end"
+                    : `btn btn-secondary rounded-5 chat-bubble w-50 my-3`;
 
-              <Col className="d-flex flex-column align-items-end">
-                {historyChat.map((message, index) => {
                   return (
-                    <div
-                      key={index}
-                      className="btn btn-primary  rounded-5 chat-bubble my-3"
-                    >
-                      <h6 className="text-end m-0">{message}</h6>
-                    </div>
+                    <>
+                      <div key={index} className={bubbleClass}>
+                        <h6 className={`m-0`}>{message}</h6>
+                      </div>
+                    </>
                   );
                 })}
+                {isLoading ? (
+                  <div class="typing-loader align-self-start"></div>
+                ) : (
+                  ""
+                )}
               </Col>
             </Row>
           )}
