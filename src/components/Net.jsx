@@ -22,6 +22,10 @@ const Net = () => {
   const friends = useSelector((state) => state.following.length);
   const [following, setFollowing] = useState(friends);
 
+  const addFollow = () => {
+    setFollowing(following + 1);
+  };
+
   const getAllprofilesInfo = () => {
     setSpinnerState(true);
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
@@ -100,7 +104,7 @@ const Net = () => {
           </div>
           <hr />
           <div
-            className="mb-4 mt-3 d-flex gap-2 flex-column"
+            className="mb-4 mt-3 d-flex gap-2 flex-column text-center"
             id="footer-sidebar"
           >
             <div className="d-flex gap-3 justify-content-center ">
@@ -173,7 +177,7 @@ const Net = () => {
                     className="btn btn-outline-primary cursor"
                     onClick={() => {
                       setAccepted(true);
-                      setFollowing(following + 1);
+                      addFollow();
                     }}
                   >
                     Accetta
@@ -204,6 +208,7 @@ const Net = () => {
                     <SingleProfileSuggestion
                       key={profile._id}
                       profile={profile}
+                      addFollow={addFollow}
                     />
                   ))}
             </Row>
