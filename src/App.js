@@ -32,6 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/notifiche/" element={<Notifiche />} />
         </Routes>
         <GoUpButton />
         <ChatBox />
