@@ -63,6 +63,14 @@ body {
 }
 
 /* POSTS */
+.justify-content-between .gap-2 {
+  border-radius: 0.2em;
+  padding: 3px;
+}
+
+.justify-content-between .gap-2:hover {
+  background-color: rgb(235, 235, 235);
+}
 
 #control-input:hover {
   background-color: rgb(235, 235, 235);

@@ -9,7 +9,7 @@ import {
   Offcanvas,
   Badge,
 } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, SET_SEARCH } from "../redux/store";
@@ -32,6 +32,7 @@ const Mynav = () => {
   const location = useLocation();
   const [notifications, setNotifiactions] = useState(1);
   const [showNotifications, setShowNotifications] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,7 +57,12 @@ const Mynav = () => {
           <Row className="align-items-center w-100 ">
             <Col className="col-10 col-md-6">
               <div className="d-flex ms-5 flex-grow-2">
-                <div className="d-flex align-items-center">
+                <div
+                  className="d-flex align-items-center cursor"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
                   <img
                     className="me-2"
                     style={{ width: "40px", height: "35px" }}

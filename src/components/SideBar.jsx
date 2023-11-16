@@ -186,10 +186,10 @@ const SideBar = ({ myProfile }) => {
             <hr></hr>
           </div>
           <div className="mt-4">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between cursor">
               <div className="d-flex flex-column">
                 <p className="text-secondary ">Collegamenti</p>
-                <p className="">Espandi la tua rete</p>
+                <p>Espandi la tua rete</p>
               </div>
               <PersonFillAdd />
             </div>
@@ -198,11 +198,13 @@ const SideBar = ({ myProfile }) => {
             <p className="text-secondary ">
               Accedi a strumenti e informazioni in esclusiva
             </p>
-            <p className="text-decoration-underline">Prova Premium Gratis</p>
+            <p className="text-decoration-underline cursor">
+              Prova Premium Gratis
+            </p>
             <hr></hr>
             <p>
               {" "}
-              <BookmarkFill /> I miei elementi
+              <BookmarkFill className="cursor" /> I miei elementi
             </p>
           </div>
         </div>

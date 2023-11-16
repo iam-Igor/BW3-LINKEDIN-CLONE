@@ -148,19 +148,19 @@ const Posts = () => {
           </Form>
           <div className="d-flex gap-2 fs-4">
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <CardImage />
             </div>
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <Calendar3 />
             </div>
             <div
-              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+              className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center cursor"
               style={{ width: "50px", height: "50px" }}
             >
               <ThreeDots />
@@ -168,7 +168,7 @@ const Posts = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Clock className="fw-bold fs-5 me-3" />
+          <Clock className="fw-bold fs-5 me-3 cursor" />
           <Button
             variant="primary"
             className="rounded-pill py-1"
@@ -238,7 +238,7 @@ const Posts = () => {
               }
             }}
             aria-label="Default select example"
-            className="custom-select-paragraph cursor"
+            className="custom-select-paragraph cursor text-secondary"
           >
             <option>Seleziona la visualizzazione dei feed:</option>
             <option value={"mostRecent"}>Più recenti per primi</option>
@@ -254,7 +254,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -273,7 +273,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -292,7 +292,7 @@ const Posts = () => {
             <img src="http://placekitten.com/50" width={"100%"} alt="" />
           </Col>
 
-          <Col xs={9} className="p-0">
+          <Col xs={9} className="p-0 cursor">
             <h5 className="fs-6">Stack Overflow</h5>
             <p>
               Stack Overflow empowers the world to develop technology through
@@ -307,7 +307,7 @@ const Posts = () => {
         </Row>
         <hr className="my-0" />
         <Row className="mt-3">
-          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold cursor">
+          <Col className="d-flex justify-content-center align-items-center gap-2 fw-bold cursor text-secondary">
             <p>Visualizza altro</p>
             <ArrowRight className="mb-3" />
           </Col>
