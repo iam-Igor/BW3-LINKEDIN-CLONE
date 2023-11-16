@@ -382,10 +382,15 @@ nav,
 
 .text-field {
   background-color: rgb(244, 242, 238);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 }
 
 .chat-row {
   width: 30%;
+}
+
+.chat-bubble {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 @media screen and (max-width: 992px) {

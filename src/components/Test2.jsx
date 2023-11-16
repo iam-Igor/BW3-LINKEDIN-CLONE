@@ -77,12 +77,12 @@ const Test2 = ({ visibility, profile }) => {
             }}
           ></i>
         </Col>
-        <Col className="d-flex align-items-center">
+        <Col className="d-flex align-items-center  border-top">
           <i className="bi bi-headset fs-2"></i>
           <p className="m-0 fw-bold ms-3">Linkedin Assistant</p>
         </Col>
-        <Col className="text-field p-2 rounded-3 my-3">
-          {combinedChatHistory.length > 0 && (
+        {combinedChatHistory.length > 0 && (
+          <Col className="text-field p-2 rounded-3 my-3">
             <Row>
               <Col className="my-4 d-flex flex-column">
                 {combinedChatHistory.map((message, index) => {
@@ -106,8 +106,8 @@ const Test2 = ({ visibility, profile }) => {
                 )}
               </Col>
             </Row>
-          )}
-        </Col>
+          </Col>
+        )}
         <Col>
           <Form
             onSubmit={(e) => {
