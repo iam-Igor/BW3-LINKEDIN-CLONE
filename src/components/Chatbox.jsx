@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { useSelector } from "react-redux";
 
 const ChatBox = () => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(!show);
+  const handleShow = () => setShow(!show);
+  const isLoading = useSelector((state) => state.isLoading);
 
   return (
     <Container
       fluid
-      className="sticky-bottom d-lg-inline-block chat-box d-none"
+      className={`sticky-bottom chat-box d-none ${
+        isLoading ? "" : " d-lg-inline-block "
+      }`}
     >
       <Row
-        className={`d-flex justify-content-end chat-container bg-white ms-5 rounded flex-column ${
+        className={`d-flex justify-content-end  bg-white ms-5 rounded flex-column chat-container ${
           show ? `chat-on` : `chat-off`
         }`}
       >
-        <Col className="d-flex align-items-center justify-content-between">
+        <Col className="d-flex align-items-center justify-content-between ">
           <div className="d-flex py-3" onClick={handleShow}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
@@ -44,7 +48,7 @@ const ChatBox = () => {
             style={{ fontFamily: "FontAwesome" }}
           />
         </Col>
-        <Col className="mt-2 d-flex single-chat align-items-center">
+        <Col className="d-flex single-chat align-items-center border">
           <div>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
@@ -57,7 +61,7 @@ const ChatBox = () => {
             <p>Na birretta stasera?</p>
           </div>
         </Col>
-        <Col className="mt-2 d-flex single-chat align-items-center">
+        <Col className="d-flex single-chat align-items-center border">
           <div>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
@@ -70,7 +74,7 @@ const ChatBox = () => {
             <p>Io stasera nun esco proprio</p>
           </div>
         </Col>
-        <Col className="mt-2 d-flex single-chat align-items-center">
+        <Col className="d-flex single-chat align-items-center border">
           <div>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
@@ -83,7 +87,7 @@ const ChatBox = () => {
             <p>Stasera festaaaa??</p>
           </div>
         </Col>
-        <Col className="mt-2 d-flex single-chat align-items-center">
+        <Col className=" d-flex single-chat align-items-center border">
           <div>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
@@ -93,10 +97,10 @@ const ChatBox = () => {
           </div>
           <div className="mt-3">
             <h6 className="fw-bold m-0">Eros Savogin</h6>
-            <p>Ma come si centra quel div ? ***</p>
+            <p>Ma come si centra quel div ? d**</p>
           </div>
         </Col>
-        <Col className="mt-2 d-flex single-chat align-items-center">
+        <Col className=" d-flex single-chat align-items-center border">
           <div>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"

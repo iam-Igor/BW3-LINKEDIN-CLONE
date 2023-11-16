@@ -1,4 +1,4 @@
-import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH } from "../store";
+import { FOLLOW, REMOVE, PARAMS, SEARCH, SET_SEARCH, LOADING } from "../store";
 import {
   CREATE_EVENT,
   GET_PROFILE_DATA,
@@ -15,7 +15,7 @@ const initialState = {
   events: [],
   likedPosts: [],
   randomPhotos: [],
-  news: [],
+  isLoading: true,
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -75,6 +75,11 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         randomPhotos: action.payload,
+      };
+    case LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
 
     default:

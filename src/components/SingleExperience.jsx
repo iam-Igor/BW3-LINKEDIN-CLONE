@@ -1,12 +1,14 @@
 import { format, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 
 const SingleExperience = ({ job, getExperiences }) => {
   const inputStart = job.startDate;
   const inputEnd = job.endDate;
   const location = useLocation();
+
+  console.log(job.startDate);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -32,13 +34,14 @@ const SingleExperience = ({ job, getExperiences }) => {
     image: "",
   });
 
-  const inputDate = parseISO(inputStart);
+  const inputDate = job.startDate ? parseISO(inputStart) : null;
   const inputDate2 = job.endDate ? parseISO(inputEnd) : null;
-
-  const formattedDate = format(inputDate, "yyyy-MM-dd");
+  const formattedDate = inputDate
+    ? format(inputDate, "dd/MM/yyyy")
+    : "Nessuna data di inizio rapporto";
   const formattedDate2 = inputDate2
-  ? format(inputDate2, "dd/MM/yyyy")
-  : "Nessuna data di fine rapporto";
+    ? format(inputDate2, "dd/MM/yyyy")
+    : "Nessuna data di fine rapporto";
 
   useEffect(() => {}, [urlId]);
 
@@ -66,7 +69,45 @@ const SingleExperience = ({ job, getExperiences }) => {
       })
       .then(() => {
         handleClose();
-        getExperiences()
+        getExperiences();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteExperience = () => {
+    fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/" +
+        newparams +
+        "/experiences/" +
+        job._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWQ1YWM1NWU3ZTAwMThmODNjMGIiLCJpYXQiOjE2OTk4Njc5OTQsImV4cCI6MTcwMTA3NzU5NH0.s42cKTE4Spw6hQNWnXWOTl1nLe5K6KLEtN_9S8-D2OU",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          alert("eliminazione avvenuta con successo");
+          handleClose();
+          getExperiences();
+          setInfoExperience({
+            role: "",
+            company: "",
+            startDate: "",
+            endDate: "",
+            description: "",
+            area: "",
+            username: "totti10",
+            image: "",
+          });
+        } else {
+          throw new Error("error in fetching user profiles");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +139,7 @@ const SingleExperience = ({ job, getExperiences }) => {
               setInfoExperience({
                 role: job.role,
                 company: job.company,
-                startDate: "",
+                startDate: job.startDate,
                 endDate: "",
                 description: job.description,
                 area: job.area,
@@ -235,23 +276,36 @@ const SingleExperience = ({ job, getExperiences }) => {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            className="rounded-pill"
-            onClick={() => setShow(false)}
-          >
-            Close
-          </Button>
-          <Button
-            variant="primary"
-            className="rounded-pill"
-            onClick={() => {
-              editExperience();
-            }}
-          >
-            Save
-          </Button>
+        <Modal.Footer className="d-flex justify-content-between">
+          <div>
+            <Button
+              variant="danger"
+              className="rounded-pill"
+              onClick={() => {
+                deleteExperience();
+              }}
+            >
+              Elimina
+            </Button>
+          </div>
+          <div>
+            <Button
+              variant="secondary"
+              className="rounded-pill me-2"
+              onClick={() => setShow(false)}
+            >
+              Chiudi
+            </Button>
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={() => {
+                editExperience();
+              }}
+            >
+              Salva
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </div>

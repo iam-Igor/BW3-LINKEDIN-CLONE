@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBox from "./components/Chatbox";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoUpButton from "./components/GoUpButton";
 export const notify = () =>
   toast.info(
     <div>
@@ -21,7 +22,7 @@ export const notify = () =>
 
 function App() {
   return (
-    <div className="App">
+    <div className="App position-relative">
       <BrowserRouter>
         <ToastContainer />
         <Mynav />
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
         </Routes>
+        <GoUpButton />
         <ChatBox />
       </BrowserRouter>
     </div>
