@@ -11,6 +11,8 @@ import PageNotFound from "./components/PageNotFound";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
+import Test2 from "./components/Test2";
+
 import JobsPage from "./components/JobsPage";
 import Net from "./components/Net";
 export const notify = () =>

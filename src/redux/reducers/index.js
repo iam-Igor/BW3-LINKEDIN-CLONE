@@ -16,6 +16,7 @@ const initialState = {
   likedPosts: [],
   randomPhotos: [],
   isLoading: true,
+  chatResponse: "",
 };
 
 const mainReducer = (state = initialState, action) => {

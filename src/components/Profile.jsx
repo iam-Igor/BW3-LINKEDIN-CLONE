@@ -19,6 +19,7 @@ import SingleExperience from "./SingleExperience";
 import Myfooter from "./Myfooter";
 import Events from "./Events";
 import { LOADING } from "../redux/store";
+import Test2 from "./Test2";
 
 const Profile = () => {
   //SEZIONE PROFILO  E MODALE PER MODIFICA PROFILO
@@ -32,6 +33,7 @@ const Profile = () => {
   };
 
   const [allExperiences, setAllExperiuences] = useState(null);
+  const [isVisible, setisVisible] = useState(false);
 
   console.log(allExperiences);
 
@@ -370,6 +372,9 @@ const Profile = () => {
                           <Button
                             variant="outline-primary fw-bold"
                             className="rounded-pill mx-2"
+                            onClick={() => {
+                              setisVisible(true);
+                            }}
                           >
                             Messaggio
                           </Button>
@@ -867,6 +872,9 @@ const Profile = () => {
                 </Button>
               </Modal.Footer>
             </Modal>
+            {isVisible && (
+              <Test2 visibility={setisVisible} profile={editProfile} />
+            )}
           </>
           <Myfooter />
         </>
