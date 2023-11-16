@@ -50,7 +50,7 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
 
   const [commentsToShow, setCommentsToShow] = useState(null);
 
-  // Funzionalità del modale
+  // FunzionalitÃ  del modale
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
