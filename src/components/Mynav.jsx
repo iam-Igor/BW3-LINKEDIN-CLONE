@@ -189,7 +189,10 @@ const Mynav = () => {
                     <Link
                       to={"/profile/me"}
                       className={`nav-link d-flex flex-column text-center border border-start-0 border-top-0 border-bottom-0 pe-3 ${
-                        location.pathname === "/profile" ? "text-black" : ""
+                        location.pathname === "/profile" ||
+                        location.pathname === "/profile/me"
+                          ? "text-black"
+                          : ""
                       }`}
                     >
                       <i className="bi bi-person-square fs-4"></i>
