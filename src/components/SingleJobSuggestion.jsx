@@ -1,10 +1,18 @@
 import { Col, Row } from "react-bootstrap";
 import { Bookmark, BookmarkFill, Bullseye } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-import { SEND_FAVOURITE_JOB } from "../redux/actions/actionsHome";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  REMOVE_FAVOURITE_JOB,
+  REMOVE_FAVOURITE_JOB_ID,
+  SEND_FAVOURITE_JOB,
+  SEND_FAVOURITE_JOB_ID,
+} from "../redux/actions/actionsHome";
+import { useEffect } from "react";
 
 const SingleJobSuggestion = ({ jobData }) => {
   const dispatch = useDispatch();
+  const favouriteJobsId = useSelector((state) => state.favouriteJobsId);
+
   return (
     <Row className="cursor">
       <Col xs={2} className="pe-0">
@@ -24,14 +32,33 @@ const SingleJobSuggestion = ({ jobData }) => {
       <Col
         className="text-end"
         onClick={() => {
-          dispatch({
-            type: SEND_FAVOURITE_JOB,
-            payload: jobData,
-          });
+          if (!favouriteJobsId.includes(jobData._id)) {
+            dispatch({
+              type: SEND_FAVOURITE_JOB,
+              payload: jobData,
+            });
+
+            dispatch({
+              type: SEND_FAVOURITE_JOB_ID,
+              payload: jobData._id,
+            });
+          } else {
+            dispatch({
+              type: REMOVE_FAVOURITE_JOB,
+              payload: jobData,
+            });
+            dispatch({
+              type: REMOVE_FAVOURITE_JOB_ID,
+              payload: jobData._id,
+            });
+          }
         }}
       >
-        <Bookmark />
-        {/* <BookmarkFill /> */}
+        {favouriteJobsId.includes(jobData._id) ? (
+          <BookmarkFill />
+        ) : (
+          <Bookmark />
+        )}
       </Col>
     </Row>
   );

@@ -7,7 +7,7 @@ export const API_KEY =
 export const URL_COMMENTS =
   "https://striveschool-api.herokuapp.com/api/comments/";
 export const API_KEY_COMMENTS =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyNTlkNWM1NWU3ZTAwMThmODNjZDIiLCJpYXQiOjE2OTk4OTU3NjYsImV4cCI6MTcwMTEwNTM2Nn0.N1id-dNfADyfRGpvBvNv7h9g-L1-pFkS3NQzDrVD7fs";
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU3MmU0MDgyMGJjZjAwMTg4NWZmYTMiLCJpYXQiOjE3MDAyMTIyODksImV4cCI6MTcwMTQyMTg4OX0.n7yd-W0sjW4bgcBroRdqXRBqeaR9yzhluwdeXoQJIds";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const LIKE_POST = "LIKE_POST";
 export const URL_PEXEL = `https://api.pexels.com/v1/search?query=random%20photos&per_page=80`;
@@ -15,6 +15,9 @@ export const GET_RANDOM_PHOTOS = "GET_RANDOM_PHOTOS";
 export const PEXEL_KEY =
   "5RKicZfAEfo8m1JX6yT1vyTmAYDVq4777xWQyZfx1QBRZM4xWq7CeS1i";
 export const SEND_FAVOURITE_JOB = "SEND_FAVOURITE_JOB";
+export const SEND_FAVOURITE_JOB_ID = "SEND_FAVOURITE_JOB_ID";
+export const REMOVE_FAVOURITE_JOB = "REMOVE_FAVOURITE_JOB";
+export const REMOVE_FAVOURITE_JOB_ID = "REMOVE_FAVOURITE_JOB_ID";
 
 export const getProfileAction = () => {
   return async (dispatch) => {

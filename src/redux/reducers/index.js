@@ -4,7 +4,10 @@ import {
   GET_PROFILE_DATA,
   GET_RANDOM_PHOTOS,
   LIKE_POST,
+  REMOVE_FAVOURITE_JOB,
+  REMOVE_FAVOURITE_JOB_ID,
   SEND_FAVOURITE_JOB,
+  SEND_FAVOURITE_JOB_ID,
 } from "../actions/actionsHome";
 
 const initialState = {
@@ -19,6 +22,7 @@ const initialState = {
   isLoading: true,
   chatResponse: "",
   favouriteJobs: [],
+  favouriteJobsId: [],
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -88,6 +92,25 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         favouriteJobs: [...state.favouriteJobs, action.payload],
+      };
+    case SEND_FAVOURITE_JOB_ID:
+      return {
+        ...state,
+        favouriteJobsId: [...state.favouriteJobsId, action.payload],
+      };
+    case REMOVE_FAVOURITE_JOB:
+      return {
+        ...state,
+        favouriteJobs: state.favouriteJobs.filter(
+          (job) => job !== action.payload
+        ),
+      };
+    case REMOVE_FAVOURITE_JOB_ID:
+      return {
+        ...state,
+        favouriteJobsId: state.favouriteJobsId.filter(
+          (id) => id !== action.payload
+        ),
       };
 
     default:
