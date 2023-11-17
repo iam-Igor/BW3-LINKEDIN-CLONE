@@ -118,12 +118,20 @@ const SingleExperience = ({ job, getExperiences }) => {
         <img className="w-100" src={job.image} alt="job-icon" />
       </div>
       <div className="col-7 col-lg-8">
-        <h6>Ruolo: {job.role}</h6>
-        <p className="mb-1">Compagnia: {job.company}</p>
+        <h6>
+          <strong>Ruolo:</strong> {job.role}
+        </h6>
         <p className="mb-1">
-          Dal: {formattedDate} Al: {formattedDate2}
+          <strong>Compagnia: </strong>
+          {job.company}
         </p>
-        <p className="mb-1">Area: {job.area}</p>
+        <p className="mb-1">
+          <strong>Dal:</strong> {formattedDate} <strong>Al: </strong>{" "}
+          {formattedDate2}
+        </p>
+        <p className="mb-1">
+          <strong>Area:</strong> {job.area}
+        </p>
         <p className="mt-2 mb-4">
           <strong>Competenze: </strong> {job.description}
         </p>

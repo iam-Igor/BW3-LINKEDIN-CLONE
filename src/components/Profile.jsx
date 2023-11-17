@@ -452,8 +452,8 @@ const Profile = () => {
               </Col>
               <Col className="col-12 col-md-3 ps-0">
                 <Row className="ms-md-4 flex-column ms-0">
-                  <Col className="bg-white p-3 border rounded d-flex justify-content-center">
-                    <div className="d-flex justify-content-around w-75">
+                  <Col className="bg-white p-3 border rounded d-flex justify-content-center d-none d-lg-block">
+                    <div className="d-flex justify-content-around w-75 ">
                       <Button
                         variant="success"
                         className="rounded-pill w-50 me-2"
