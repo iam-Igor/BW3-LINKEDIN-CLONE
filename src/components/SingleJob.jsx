@@ -29,7 +29,11 @@ const SingleJob = ({ job }) => {
         </div>
       </div>
 
-      <a className="btn btn-primary rounded-pill job-button" href={job.url}>
+      <a
+        className="btn btn-primary rounded-pill job-button"
+        href={job.url}
+        target="_blank"
+      >
         More info
       </a>
     </Col>
