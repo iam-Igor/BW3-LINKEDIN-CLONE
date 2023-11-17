@@ -21,6 +21,7 @@ const Net = () => {
   const [accepted, setAccepted] = useState(false);
   const friends = useSelector((state) => state.following.length);
   const [following, setFollowing] = useState(friends);
+  const [showOthers, setShowOthers] = useState(true);
 
   const addFollow = () => {
     setFollowing(following + 1);
@@ -77,31 +78,54 @@ const Net = () => {
                 </Badge>
               </div>
             </div>
-            <div className="d-flex align-items-center gap-2">
-              <PersonFill className="fs-5" />
-              <p className="mb-0">Persone che segui e follower</p>
-            </div>
-            <div className="d-flex align-items-center gap-2">
-              <Calendar2 className="fs-5" />
-              <p className="mb-0">Eventi</p>
-            </div>
-            <div className="d-flex align-items-center gap-2">
-              <File className="fs-5" />
-              <p className="mb-0">Pagine</p>
-            </div>
-            <div className="d-flex align-items-center gap-2">
-              <Newspaper className="fs-5" />
-              <p className="mb-0">Notiziario</p>
-            </div>
-            <div className="d-flex align-items-center gap-2">
-              <Hash className="fs-5" />
-              <p className="mb-0">Hashtag</p>
-            </div>
+            {showOthers && (
+              <>
+                <div className="d-flex align-items-center gap-2">
+                  <PersonFill className="fs-5" />
+                  <p className="mb-0">Persone che segui e follower</p>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <Calendar2 className="fs-5" />
+                  <p className="mb-0">Eventi</p>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <File className="fs-5" />
+                  <p className="mb-0">Pagine</p>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <Newspaper className="fs-5" />
+                  <p className="mb-0">Notiziario</p>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <Hash className="fs-5" />
+                  <p className="mb-0">Hashtag</p>
+                </div>
+              </>
+            )}
           </div>
-          <div className="d-flex align-items-center gap-1 cursor">
-            <p className="mb-0 text-secondary ms-2 mt-3 ">Meno dettagli</p>
-            <CaretUpFill className="mt-3" />
-          </div>
+          {showOthers && (
+            <div
+              className="d-flex align-items-center gap-1 cursor"
+              onClick={() => {
+                setShowOthers(false);
+              }}
+            >
+              <p className="mb-0 text-secondary ms-2 mt-3 ">Meno dettagli</p>
+              <CaretUpFill className="mt-3" />
+            </div>
+          )}
+          {!showOthers && (
+            <div
+              className="d-flex align-items-center gap-1 cursor"
+              onClick={() => {
+                setShowOthers(true);
+              }}
+            >
+              <p className="mb-0 text-secondary ms-2 mt-3 ">Vedi altro</p>
+              <CaretDownFill className="mt-3" />
+            </div>
+          )}
+
           <hr />
           <div
             className="mb-4 mt-3 d-flex gap-2 flex-column text-center cursor"
