@@ -16,9 +16,7 @@ const SideBar = ({ myProfile }) => {
     time: "",
     description: "",
   });
-  useEffect(() => {
-    console.log(textArea);
-  }, [textArea]);
+  useEffect(() => {}, [textArea]);
   const handleInputChange = (property, value) => {
     setTextArea({
       ...textArea,

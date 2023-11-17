@@ -90,7 +90,7 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
       .then((res) => {
         if (res.ok) {
           updatePosts();
-          console.log("YOUR POST HAS BEEN SENT.");
+          console.log("YOUR POST HAS BEEN DELETED.");
         } else {
           throw new Error("SOMETHING WENT WRONG!");
         }
@@ -116,8 +116,6 @@ const SinglePost = ({ post, updatePosts, randomPhotos }) => {
         }
       })
       .then((data) => {
-        console.log(data, "COMMENTS");
-
         const filteredData = data.filter(
           (comment) => comment.elementId === post._id
         );

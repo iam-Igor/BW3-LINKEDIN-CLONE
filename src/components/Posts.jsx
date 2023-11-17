@@ -23,6 +23,7 @@ const Posts = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profileData);
   const randomPhotos = useSelector((state) => state.randomPhotos);
+
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
   const [spinnerState, setSpinnerState] = useState(true);

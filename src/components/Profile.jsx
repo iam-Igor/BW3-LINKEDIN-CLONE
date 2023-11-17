@@ -36,8 +36,6 @@ const Profile = () => {
   const [allExperiences, setAllExperiuences] = useState(null);
   const [isVisible, setisVisible] = useState(false);
 
-  console.log(allExperiences);
-
   const [contentSaved, setContentSaved] = useState(false);
   const urlParams = useParams();
   const [editProfile, setEditProfile] = useState("");
@@ -117,7 +115,6 @@ const Profile = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         setAllExperiuences(data);
       })
       .catch((err) => {
@@ -235,7 +232,6 @@ const Profile = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         setMyProfile(data);
         setEditProfile({
           name: data.name,
@@ -283,7 +279,7 @@ const Profile = () => {
         <div className="d-flex align-items-center mt-5 flex-column">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="loader__linkedin-logo"
+            className="loader__linkedin-logo"
             width="190"
             height="48"
             viewBox="0 0 190 48"

@@ -55,7 +55,6 @@ const SingleComment = ({ comment, getComments, postId, postUserId }) => {
       .then((res) => {
         if (res.ok) {
           getComments();
-          console.log("YOUR COMMENT HAS BEEN MODIFIED.");
         } else {
           throw new Error("SOMETHING WENT WRONG!");
         }

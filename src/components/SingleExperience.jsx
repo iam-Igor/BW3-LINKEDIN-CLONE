@@ -8,8 +8,6 @@ const SingleExperience = ({ job, getExperiences }) => {
   const inputEnd = job.endDate;
   const location = useLocation();
 
-  console.log(job.startDate);
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
