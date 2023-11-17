@@ -11,7 +11,6 @@ import PageNotFound from "./components/PageNotFound";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
-import Test2 from "./components/Test2";
 import MyJobsOffers from "./components/MyJobsOffers";
 
 import JobsPage from "./components/JobsPage";
