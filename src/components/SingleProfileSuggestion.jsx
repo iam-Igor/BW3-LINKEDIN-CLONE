@@ -52,6 +52,7 @@ const SingleProfileSuggestion = ({ profile, addFollow }) => {
                 className="d-flex align-items-center btn btn-outline-primary w-100 justify-content-center gap-1 "
                 onClick={() => {
                   dispatch({ type: FOLLOW, payload: profile });
+                  setShowProfile(false);
                   addFollow();
                 }}
               >
