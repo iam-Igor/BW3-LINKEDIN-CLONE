@@ -12,6 +12,7 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoUpButton from "./components/GoUpButton";
 import Test2 from "./components/Test2";
+import MyJobsOffers from "./components/MyJobsOffers";
 
 import JobsPage from "./components/JobsPage";
 import Net from "./components/Net";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userID" element={<Profile />} />
           <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/jobs/offers" element={<MyJobsOffers />} />
           <Route path="/net/" element={<Net />} />
           <Route path="/*" element={<PageNotFound />} />
           <Route path="/Notifiche/" element={<Notifiche />} />
