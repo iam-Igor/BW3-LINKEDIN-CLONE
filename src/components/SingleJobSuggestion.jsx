@@ -7,7 +7,6 @@ import {
   SEND_FAVOURITE_JOB,
   SEND_FAVOURITE_JOB_ID,
 } from "../redux/actions/actionsHome";
-import { useEffect } from "react";
 
 const SingleJobSuggestion = ({ jobData }) => {
   const dispatch = useDispatch();
