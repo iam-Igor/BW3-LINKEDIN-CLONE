@@ -11,11 +11,9 @@ const Test2 = ({ visibility, profile }) => {
 
   const requestBody = {
     messages: { role: "user", content: chatMessage },
-    options: {
-      temperature: 1,
-      language: "it",
-      max_tokens: 50,
-    },
+
+    temperature: 1,
+    language: "it",
   };
 
   const combinedChatHistory = historyChat.reduce((acc, message, index) => {
@@ -92,11 +90,9 @@ const Test2 = ({ visibility, profile }) => {
                     : `btn btn-secondary rounded-5 chat-bubble w-50 my-3`;
 
                   return (
-                    <>
-                      <div key={index} className={bubbleClass}>
-                        <h6 className={`m-0`}>{message}</h6>
-                      </div>
-                    </>
+                    <div key={index} className={bubbleClass}>
+                      <h6 className={`m-0`}>{message}</h6>
+                    </div>
                   );
                 })}
                 {isLoading ? (

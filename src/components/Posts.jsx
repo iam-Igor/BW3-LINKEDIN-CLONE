@@ -23,7 +23,7 @@ const Posts = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profileData);
   const randomPhotos = useSelector((state) => state.randomPhotos);
-  console.log(randomPhotos, "SONO LE FOTO");
+
   const [textArea, setTextArea] = useState("");
   const [posts, setPosts] = useState(null);
   // eslint-disable-next-line no-unused-vars
@@ -50,7 +50,6 @@ const Posts = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         if (recentSelected) {
           sortPostsByDate(data);
         } else {

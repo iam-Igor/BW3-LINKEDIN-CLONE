@@ -9,8 +9,6 @@ const JobsList = ({ popup }) => {
 
   const [jobData, setJobData] = useState();
 
-  console.log(jobData);
-
   const getJobs = () => {
     fetch(
       "https://strive-benchmark.herokuapp.com/api/jobs?search=" + searchIndex
