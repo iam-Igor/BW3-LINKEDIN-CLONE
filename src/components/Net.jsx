@@ -245,7 +245,7 @@ const Net = () => {
               <Button
                 className="btn btn-secondary rounded-pill"
                 onClick={() => {
-                  setVisibleProfiles(visibleProfiles + 3);
+                  setVisibleProfiles(visibleProfiles + 6);
                 }}
               >
                 Mostra altri
