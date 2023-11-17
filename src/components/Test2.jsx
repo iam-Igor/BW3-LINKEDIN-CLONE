@@ -84,7 +84,7 @@ const Test2 = ({ visibility, profile }) => {
         {combinedChatHistory.length > 0 && (
           <Col className="text-field p-2 rounded-3 my-3">
             <Row>
-              <Col className="my-4 d-flex flex-column">
+              <Col className="my-4 d-flex flex-column ">
                 {combinedChatHistory.map((message, index) => {
                   const isUserMessage = index % 2 === 0;
                   const bubbleClass = isUserMessage
