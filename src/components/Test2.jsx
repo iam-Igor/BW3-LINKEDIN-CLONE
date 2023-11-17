@@ -11,9 +11,11 @@ const Test2 = ({ visibility, profile }) => {
 
   const requestBody = {
     messages: { role: "user", content: chatMessage },
-
-    temperature: 1,
-    language: "it",
+    options: {
+      temperature: 1,
+      language: "it",
+      max_tokens: 50,
+    },
   };
 
   const combinedChatHistory = historyChat.reduce((acc, message, index) => {
