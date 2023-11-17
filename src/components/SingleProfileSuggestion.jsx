@@ -17,7 +17,7 @@ const SingleProfileSuggestion = ({ profile, addFollow }) => {
           <Card className="d-flex flex-column justify-content-between h-100">
             <div className="position-relative">
               <Card.Img
-                className="cursor"
+                className="cursor profile-suggestion-image"
                 onClick={() => {
                   navigate(`/profile/${profile._id}`);
                 }}

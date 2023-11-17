@@ -8,7 +8,7 @@ const MyJobsOffers = () => {
   return (
     <Container>
       <Row className="mt-3">
-        <Col xs={12} md={3}>
+        <Col xs={12} md={3} className="mb-3">
           <div className="border rounded px-3 background-columns cursor">
             <div className="d-flex gap-2 text-secondary mt-2 align-items-center">
               <BookmarkFill className="mt-2" />

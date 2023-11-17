@@ -520,3 +520,7 @@ p:nth-of-type(2) {
   right: 10px;
   cursor: pointer;
 }
+
+.profile-suggestion-image {
+  height: 250px;
+}

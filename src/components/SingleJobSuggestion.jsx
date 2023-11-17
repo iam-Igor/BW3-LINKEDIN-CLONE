@@ -36,7 +36,6 @@ const SingleJobSuggestion = ({ jobData }) => {
               type: SEND_FAVOURITE_JOB,
               payload: jobData,
             });
-
             dispatch({
               type: SEND_FAVOURITE_JOB_ID,
               payload: jobData._id,

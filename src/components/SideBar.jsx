@@ -221,7 +221,14 @@ const SideBar = ({ myProfile }) => {
         <div className="d-flex flex-column mt-3">
           <p className="text-primary ms-4 cursor">Gruppi</p>
           <div className="d-flex justify-content-between">
-            <p className="text-primary ms-4 cursor">Eventi</p>
+            <p
+              className="text-primary ms-4 cursor"
+              onClick={() => {
+                navigate("/profile/me");
+              }}
+            >
+              Eventi
+            </p>
             <PlusLg className="me-4 cursor" onClick={handleShow} />
           </div>
           <p className="text-primary ms-4 cursor fs-6">Hashtag Seguiti</p>

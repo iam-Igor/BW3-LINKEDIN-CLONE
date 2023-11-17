@@ -35,7 +35,7 @@ const Notifiche = () => {
                 }}
               >
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                     alt="logo"
@@ -47,13 +47,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5 flex-grow-1 text-end me-3">
                     <p className="lista-notifiche m-0 ">Ora</p>
-                    <i class="bi bi-three-dots me-1"></i>
+                    <i className="bi bi-three-dots me-1"></i>
                   </div>
                 </div>
               </li>
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://purepng.com/public/uploads/large/purepng.com-microsoft-logo-iconlogobrand-logoiconslogos-251519939091wmudn.png"
                     alt="logo"
@@ -68,13 +68,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">2 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://purepng.com/public/uploads/large/purepng.com-microsoft-logo-iconlogobrand-logoiconslogos-251519939091wmudn.png"
                     alt="logo"
@@ -89,13 +89,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">8 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://th.bing.com/th/id/R.70ecfdd862bdc3fdbf5715085812f49e?rik=fDJPk4oWTEisvw&pid=ImgRaw&r=0"
                     alt="logo"
@@ -109,13 +109,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">16 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://th.bing.com/th/id/R.ed52f5f51ef07664bd615a932d569fc2?rik=jin4ji6h7xiTXg&pid=ImgRaw&r=0"
                     alt="logo"
@@ -128,13 +128,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">19 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://th.bing.com/th/id/R.ed52f5f51ef07664bd615a932d569fc2?rik=jin4ji6h7xiTXg&pid=ImgRaw&r=0"
                     alt="logo"
@@ -147,13 +147,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">26 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://static.vecteezy.com/system/resources/previews/000/600/805/original/pizza-logo-vector.png"
                     alt="logo"
@@ -167,13 +167,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">33 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://static.vecteezy.com/system/resources/previews/000/600/805/original/pizza-logo-vector.png"
                     alt="logo"
@@ -187,13 +187,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">39 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                     alt="logo"
@@ -206,13 +206,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">45 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                     alt="logo"
@@ -225,13 +225,13 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">54 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>{" "}
               <li className="my-1">
                 <div className="d-flex align-items-center">
-                  <i class="bi bi-dot"></i>
+                  <i className="bi bi-dot"></i>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                     alt="logo"
@@ -244,7 +244,7 @@ const Notifiche = () => {
                   </p>
                   <div className=" d-flex flex-column justify-content-center ms-5">
                     <p className="lista-notifiche m-0">59 minuti</p>
-                    <i class="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots"></i>
                   </div>
                 </div>
               </li>

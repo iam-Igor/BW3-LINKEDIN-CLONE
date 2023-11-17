@@ -8,7 +8,7 @@ const Myfooter = () => {
         <Col>
           <div className="d-flex flex-column">
             <p>Informazioni</p>
-            <p>Linee guida della community</p>
+            <p className="fs-6">Linee guida della community</p>
             <p>Privacy e condizioni</p>
             <p>Sales Solution</p>
             <p>Centro sicurezza</p>
@@ -18,7 +18,7 @@ const Myfooter = () => {
         <Col>
           <div className="d-flex flex-column">
             <p>Accessibilità</p>
-            <p>Carriera</p>
+            <p className="fs-6">Carriera</p>
             <p>Opzioni per gli annunci pubblicvitari</p>
             <p>Mobile</p>
           </div>
@@ -27,7 +27,7 @@ const Myfooter = () => {
         <Col>
           <div className="d-flex flex-column">
             <p>Talent Solution</p>
-            <p>Soluzioni di marketing</p>
+            <p className="fs-6">Soluzioni di marketing</p>
             <p>IPubblicità</p>
             <p>Piccole imprese</p>
           </div>
@@ -38,7 +38,7 @@ const Myfooter = () => {
             <p>
               <i className="bi bi-question-circle-fill me-2"></i>Domande?
             </p>
-            <p>
+            <p className="fs-6">
               <i className="bi bi-gear-fill me-2"></i>Gestisci il tuo account e
               la tua privacy
             </p>

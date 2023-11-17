@@ -138,7 +138,9 @@ const Mynav = () => {
                       <p className="m-0">Home</p>
                     </Link>
                     <Nav.Link
-                      className="d-flex flex-column text-center d-none d-md-inline-block"
+                      className={`d-flex flex-column text-center d-none d-md-inline-block ${
+                        location.pathname === "/net" ? "text-black" : ""
+                      }`}
                       onClick={() => {
                         navigate("/net");
                       }}
@@ -148,7 +150,10 @@ const Mynav = () => {
                     </Nav.Link>
                     <Nav.Link
                       className={`d-flex flex-column text-center d-none d-md-inline-block ${
-                        location.pathname === "/jobs" ? "text-black" : ""
+                        location.pathname === "/jobs" ||
+                        location.pathname === "/jobs/offers"
+                          ? "text-black"
+                          : ""
                       }`}
                       onClick={() => {
                         navigate("/jobs");
@@ -162,7 +167,9 @@ const Mynav = () => {
                       <p className="m-0">Messaggistica</p>
                     </Nav.Link>
                     <Link
-                      className="nav-link d-flex flex-column text-center mx-2 mx-md-0"
+                      className={`nav-link d-flex flex-column text-center mx-2 mx-md-0 ${
+                        location.pathname === "/Notifiche" ? "text-black" : ""
+                      }`}
                       to={"/notifiche/"}
                     >
                       <div className="position-relative">

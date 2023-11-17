@@ -22,7 +22,6 @@ const Net = () => {
   const friends = useSelector((state) => state.following.length);
   const [following, setFollowing] = useState(friends);
   const [showOthers, setShowOthers] = useState(true);
-
   const addFollow = () => {
     setFollowing(following + 1);
   };
