@@ -14,6 +14,7 @@ export const URL_PEXEL = `https://api.pexels.com/v1/search?query=random%20photos
 export const GET_RANDOM_PHOTOS = "GET_RANDOM_PHOTOS";
 export const PEXEL_KEY =
   "5RKicZfAEfo8m1JX6yT1vyTmAYDVq4777xWQyZfx1QBRZM4xWq7CeS1i";
+export const SEND_FAVOURITE_JOB = "SEND_FAVOURITE_JOB";
 
 export const getProfileAction = () => {
   return async (dispatch) => {

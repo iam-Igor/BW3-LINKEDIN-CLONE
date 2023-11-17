@@ -1,7 +1,10 @@
 import { Col, Row } from "react-bootstrap";
 import { Bookmark, BookmarkFill, Bullseye } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { SEND_FAVOURITE_JOB } from "../redux/actions/actionsHome";
 
 const SingleJobSuggestion = ({ jobData }) => {
+  const dispatch = useDispatch();
   return (
     <Row className="cursor">
       <Col xs={2} className="pe-0">
@@ -18,7 +21,15 @@ const SingleJobSuggestion = ({ jobData }) => {
           <p>Selezione attiva</p>
         </div>
       </Col>
-      <Col className="text-end">
+      <Col
+        className="text-end"
+        onClick={() => {
+          dispatch({
+            type: SEND_FAVOURITE_JOB,
+            payload: jobData,
+          });
+        }}
+      >
         <Bookmark />
         {/* <BookmarkFill /> */}
       </Col>

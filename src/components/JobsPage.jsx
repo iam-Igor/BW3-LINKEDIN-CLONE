@@ -10,8 +10,10 @@ import {
   PlayBtnFill,
 } from "react-bootstrap-icons";
 import SingleJobSuggestion from "./SingleJobSuggestion";
+import { useNavigate } from "react-router-dom";
 
 const JobsComponent = () => {
+  const navigate = useNavigate();
   const [jobData, setJobData] = useState();
   const [visibleJobs, setVisibleJobs] = useState(2);
 
@@ -42,8 +44,13 @@ const JobsComponent = () => {
       <Row className="mt-4">
         <Col xs={12} md={3} id="jobs-sidebar">
           <div className="border rounded background-columns">
-            <ul className="d-flex flex-column gap-3 ps-3 mt-3">
-              <li className="list-unstyled d-flex align-items-center gap-2">
+            <ul className="d-flex flex-column gap-3 ps-3 mt-3 cursor">
+              <li
+                className="list-unstyled d-flex align-items-center gap-2"
+                onClick={() => {
+                  navigate("/jobs/offers");
+                }}
+              >
                 <BookmarkFill className="mb-3" />
                 <p>Le mie offerte di lavoro</p>
               </li>
@@ -65,7 +72,7 @@ const JobsComponent = () => {
               </li>
             </ul>
           </div>
-          <div className="border rounded-4 border-primary d-flex gap-3 justify-content-center align-items-center btn btn-outline-primary mt-3 ">
+          <div className="border rounded-4 border-primary d-flex gap-3 justify-content-center align-items-center btn btn-outline-primary mt-3 mb-3 ">
             <PencilSquare />
             <p className="mb-0 py-2">Pubblica offerta gratuita</p>
           </div>

@@ -4,6 +4,7 @@ import {
   GET_PROFILE_DATA,
   GET_RANDOM_PHOTOS,
   LIKE_POST,
+  SEND_FAVOURITE_JOB,
 } from "../actions/actionsHome";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   randomPhotos: [],
   isLoading: true,
   chatResponse: "",
+  favouriteJobs: [],
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -81,6 +83,11 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case SEND_FAVOURITE_JOB:
+      return {
+        ...state,
+        favouriteJobs: [...state.favouriteJobs, action.payload],
       };
 
     default:

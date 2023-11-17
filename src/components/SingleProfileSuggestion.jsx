@@ -2,15 +2,21 @@ import { Card, Col } from "react-bootstrap";
 import { PersonAdd } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { FOLLOW } from "../redux/store";
+import { useNavigate } from "react-router-dom";
 
 const SingleProfileSuggestion = ({ profile, addFollow }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <>
       {profile._id !== "6551cb68c55e7e0018f83bd2" && (
         <Col>
           <Card className="d-flex flex-column justify-content-between h-100">
             <Card.Img
+              className="cursor"
+              onClick={() => {
+                navigate(`/profile/${profile._id}`);
+              }}
               variant="top"
               height={"100%"}
               src={
@@ -20,7 +26,12 @@ const SingleProfileSuggestion = ({ profile, addFollow }) => {
               }
             />
             <Card.Body className="d-flex flex-column justify-content-between text-center ">
-              <Card.Title>
+              <Card.Title
+                className="cursor"
+                onClick={() => {
+                  navigate(`/profile/${profile._id}`);
+                }}
+              >
                 {profile.name} {profile.surname}
               </Card.Title>
               <Card.Text>
