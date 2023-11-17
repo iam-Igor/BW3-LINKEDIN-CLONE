@@ -513,3 +513,10 @@ p:nth-of-type(2) {
       24px 0px 0px 0px rgba(0, 0, 0, 2);
   }
 }
+
+.cancel-circle {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
